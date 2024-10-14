@@ -1,0 +1,38 @@
+About: James Brudenell, 7th Earl of Cardigan
+About: James Brudenell, 7th Earl of Cardigan
+An Entity of Type : military person ,      from Named Graph : http://dbpedia.org ,      within Data Space : dbpedia.org
+Lieutenant-General James Thomas Brudenell, 7th Earl of Cardigan, KCB (16 October 1797 – 28 March 1868), was an officer in the British Army who commanded the Light Brigade during the Crimean War. He led the Charge of the Light Brigade at the Battle of Balaclava.
+Property
+abstract
+Lieutenant-General James Thomas Brudenell, 7th Earl of Cardigan, KCB (16 October 1797 – 28 March 1868), was an officer in the British Army who commanded the Light Brigade during the Crimean War. He led the Charge of the Light Brigade at the Battle of Balaclava. Throughout his life in politics and his long military career he characterised the arrogant and extravagant aristocrat of the period. His progression through the Army was marked by many episodes of extraordinary incompetence, but this can be measured against his generosity to the men under his command and genuine bravery. As a member of the landed aristocracy he had actively and steadfastly opposed any political reform in Britain, but in the last year of his life he relented and came to acknowledge that such reform would bring benefit to all classes of society.
+(en)
+James Thomas Brudenell, 7. Earl of Cardigan KCB (* 16. Oktober 1797 in London; † 28. März 1868 ebenda) war ein britischer General und führte die berühmt gewordene Attacke der Leichten Brigade im Krimkrieg.
+(de)
+James Thomas Brudenell, 7º Earl de Cardigan KCB (16 de octubre de 1797 – 28 de marzo de 1868) comandó la Brigada Ligera durante la guerra de Crimea.
+(es)
+James Thomas Brudenell, 7e comte de Cardigan ( – ), fut un général de l'Empire britannique. Lord Cardigan est resté célèbre pour avoir commandé la charge de la brigade légère lors de la guerre de Crimée. Au cours de la bataille de Balaklava, le 25 octobre 1854, se produit la charge de cavalerie immortalisée dans un poème de Lord Tennyson et adaptée plusieurs fois au cinéma : Lord Cardigan, à la tête du 11th Hussars, conduit ses 673 cavaliers au combat à la suite d'une mauvaise interprétation des ordres. 20 minutes plus tard, au terme d'un engagement aussi inutile que meurtrier, il laisse 113 morts et 247 blessés sur le terrain ! « C'est magnifique mais ce n'est pas la guerre », commente sobrement le général français Bosquet au vu de l'affrontement. Il meurt de blessures causées par une chute de cheval le 28 mars 1868. Lord Cardigan a laissé son nom à une pièce d'habillement: le cardigan.
+(fr)
+Джеймс Томас Браднелл, 7-й граф Кардиган, или лорд Кардиган (англ. James Thomas Brudenell, 7th Earl of Cardigan; 16 октября 1797 — 28 марта 1868) — английский генерал.В июне 1854 Кардиган был назначен начальником лёгкой кавалерийской бригады (The Light Brigade), отправленной в Крым. С ней он в сражении при Балаклаве 13 (25) октября произвёл свою знаменитую атаку, весьма блистательную вначале, но закончившуюся полным разгромом его бригады, потерявшей около половины людей.Английский поэт Альфред Теннисон написал об этом очень известное в англоязычных странах стихотворение «Атака бригады лёгкой кавалерии» (англ. The Charge of the Light Brigade).Лорду Кардигану приписывается изобретение вязаного жакета на пуговицах и без воротника, который поддевался под форменный мундир, так называемого свитера «кардиган».
+(ru)
+James Thomas Brudenell, 7.º Earl de Cardigan KCB (16 de outubro de 1797 - 28 de março de 1868) comandou a Brigada Ligeira durante a Guerra da Crimeia.
+(pt)
+James Thomas Brudenell, 7. Earl of Cardigan KCB (* 16. Oktober 1797 in London; † 28. März 1868 ebenda) war ein britischer General und führte die berühmt gewordene Attacke der Leichten Brigade im Krimkrieg.
+(de)
+James Thomas Brudenell, 7º Earl de Cardigan KCB (16 de octubre de 1797 – 28 de marzo de 1868) comandó la Brigada Ligera durante la guerra de Crimea.
+(es)
+James Thomas Brudenell, 7.º Earl de Cardigan KCB (16 de outubro de 1797 - 28 de março de 1868) comandou a Brigada Ligeira durante a Guerra da Crimeia.
+(pt)
+Lieutenant-General James Thomas Brudenell, 7th Earl of Cardigan, KCB (16 October 1797 – 28 March 1868), was an officer in the British Army who commanded the Light Brigade during the Crimean War. He led the Charge of the Light Brigade at the Battle of Balaclava.
+(en)
+James Thomas Brudenell, 7e comte de Cardigan ( – ), fut un général de l'Empire britannique. Lord Cardigan est resté célèbre pour avoir commandé la charge de la brigade légère lors de la guerre de Crimée.Il meurt de blessures causées par une chute de cheval le 28 mars 1868.Lord Cardigan a laissé son nom à une pièce d'habillement: le cardigan.
+(fr)
+Джеймс Томас Браднелл, 7-й граф Кардиган, или лорд Кардиган (англ. James Thomas Brudenell, 7th Earl of Cardigan; 16 октября 1797 — 28 марта 1868) — английский генерал.В июне 1854 Кардиган был назначен начальником лёгкой кавалерийской бригады (The Light Brigade), отправленной в Крым.
+(ru)
+James Brudenell, 7th Earl of Cardigan
+(en)
+James Brudenell, 7. Earl of Cardigan
+(de)
+James Brudenell, VII conte di Cardigan
+(it)
+Браднелл, Джеймс Томас, 7-й граф Кардиган
+(ru)

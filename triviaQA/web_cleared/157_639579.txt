@@ -1,0 +1,46 @@
+Triangles - Equilateral, Isosceles and Scalene
+Triangles
+A triangle has three sides and three angles
+The three angles always add to 180°
+Equilateral, Isosceles and Scalene
+There are three special names given to triangles that tell how many sides (or angles) are equal.
+There can be 3, 2 or no equal sides/angles:
+Equilateral Triangle
+Three equal angles, always 60°
+Isosceles Triangle
+Triangles can also  have names that tell you what type of angle is inside:
+Acute Triangle
+All angles are less than 90°
+Right Triangle
+Has a right angle (90°)
+Obtuse Triangle
+Has an  angle more than 90°
+Combining the Names
+Sometimes a triangle will have two names, for example:
+Right Isosceles Triangle
+Has a right angle (90°), and also two equal angles
+Can you guess what the equal angles are?
+Play With It ...
+Try dragging the points around and make different triangles:
+You might also like to play with the Interactive Triangle .
+Perimeter
+The perimeter is the distance around the edge of the triangle: just add up the three sides:
+Area
+The area is half of the base times height.
+"b" is the distance along the base
+"h" is the height (measured at right angles to the base)
+Area = ½ × b × h
+The formula works for all triangles.
+Note: a simpler way of writing the formula is bh/2
+Example: What is the area of this triangle?
+(Note: 12 is the height, not the length of the left-hand side)
+ 
+Base = b = 20
+Area = ½ × b × h = ½ × 20 × 12 = 120
+The base can  be any side, Just be sure the "height" is measured at right angles to the "base":
+(Note: You can also calculate the area from the lengths of all three sides using Heron's Formula .)
+ 
+Why is the Area "Half of bh"?
+Imagine you "doubled" the triangle (flip it around one of the upper edges) to make a square-like shape (a parallelogram ) which can be changed to a simple rectangle :
+THEN the whole area is bh, which  is for both triangles, so just one is ½ × bh.
+ 

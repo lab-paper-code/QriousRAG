@@ -1,0 +1,11 @@
+Franklin Discovered Electricity with Kite | MythBusters | Discovery
+Franklin Discovered Electricity with Kite
+posted: 04/11/12
+As seen in "MythBusters: Franklin's Kite."
+DCL
+Finding: BUSTED
+Explanation: Just like George Washington never chopped down that precious cherry tree, the venerable Benjamin Franklin probably didn't fly his famous kite, either.
+The American legend likely sprang from an article Franklin wrote for the Pennsylvania Gazette in 1752 describing a theoretical kite-lightning experiment. Supposedly, the genius of yore picked a stormy day to fly a silken kite, complete with a lightning rod and a key dangling on the end of the string. When the lightning struck the kite, the powerful bolt traveled down the string and charged the metal key. Franklin then touched the key and got zapped, thus proving the existence of electricity.
+To test the stunt, MythBusters Kari Byron, Grant Imahara and Tory Belleci reanimated Ben Franklin in the form of a ballistics gel dummy with a resistor nested in his torso to match a human's natural electrical resistance. They also outfitted Ben with a heart monitor to detect the amount of electricity the shocking key sent into the fake body. Any reading above 6 milliamps — the maximum charge of the average stun gun — would mean Ben's death sentence.
+They then attached a kite to Ben, flew it inside a power-plant testing facility and jolted it with half a million volts of fake lightning. For comparison, a real lightning bolt may contain several hundred million volts.
+Even with that fraction of electricity from the simulated lightning, that key would've been far too hot for the real Ben Franklin to handle. The heart monitor reading exceeded the 6 milliamp threshold, effectively killing off the myth.

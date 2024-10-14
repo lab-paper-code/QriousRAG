@@ -1,0 +1,792 @@
+TM-FORUM • View topic - [Xaseco] Quiz-plugin (finnish) v9.0 update 23.2.2010
+[Xaseco] Quiz-plugin (finnish) v9.0 update 23.2.2010
+ Post subject: [Xaseco] Quiz-plugin (finnish) v9.0 update 23.2.2010
+Posted: 02 Jul 2009 22:42 
+smooth traffic navigator
+Joined: 02 Jul 2009 22:24
+Posts: 213
+Owned TM-games: TMUF
+23.2.2010 - now version 9.0
+Lots of improvements, but lacks function to read questions from file, but you can copypaste it from version 1.5, hopefully
+* Admins
+* Ingame help
+* Admin can grant / remove points with single click
+* Questions queue, users can ask questions and they are shown by the order what they were asked
+* check for non-normal charracters on answer like ¨ ^ ´ `
+etc etc..
+http://koti.mbnet.fi/reaby/xaseco/
+----------------------------------------------------------------------
+Well, on one server we have a tradition of having a quiz run by a player. Today I had an idea to make actually a point calculating system for it. Apparently this script is so fresh that it isn't in use of any servers yet, but hopefully it finds its place on that server.
+Update: The script without reading questions from file is now in use on the server.
+how it works?
+type /quiz and new question is asked from file.
+how to ask questions outside of file?
+/quiz_ask what color is a red car ? red
+how to answer?
+simply type answer to chat, and if you get it right you will be given a point.
+other commands are /quiz_points and /quiz_reset
+The script doesn't require local database, and scores are only stored temporarily. Quiz questions are placed on xaseco folder, where all xml files are, but it's named quiz_questions.txt, the format is same as asking custom question and 1 question/line. End of this posting is some sample questions.
+Code:
+/* plugin.quiz_en.php
+English version of QuizBot 1.5 by Reaby
+Many thanks for Assembler Maniac for Chatbot which this bot utilizes the main loop for getting chat-text from users.
+How it works?
+To ask manually question simply type /quiz_ask [question] ? [answer]
+To ask question from file type /quiz
+To reset points /quiz_reset
+/quiz_ask which color has red car on ? red
+answering normally by typing to chat.
+*/
+Aseco::addChatCommand('quiz_ask', 'Ask a question, right answer after questionmark');
+Aseco::addChatCommand('quiz', 'Ask a question from file');
+class quizbot
+      // ignore text that comes from the server
+      // also ignore anything that looks like it's a command
+      if ( $command[0] == 0 || substr($command[2], 0, 1) == '/' )      // $command[0] is the player id, 0 = server
+         {
+         if ( strtolower($command[2]) == strtolower($this->rightAnswer) )
+            {
+         $message = "\$0b0 Right answer! \$fff".$this->rightAnswer;
+          $this->Aseco->client->query('GetPlayerInfo', $command[1]);
+         $info = $this->Aseco->client->getResponse();
+         $nick = $info['NickName'];
+         $this->points[$command[1]]['NickName'] = $nick;
+         $this->points[$command[1]]['Points']++;
+            $this->Aseco->client->query("ChatSendServerMessage", $message);
+            $this->points();  // show points at successcull answer
+      unset($this->rightAnswer);
+    $this->Aseco->client->query("ChatSendServerMessage", $message);
+    }
+    $this->Aseco->client->query("ChatSendServerMessage", $message);
+    }
+   foreach ($this->points as $info) {
+   $message .=$info['NickName'].": \$z\$s\$fff".$info['Points']." ";
+   }
+    $this->Aseco->client->query("ChatSendServerMessage", $message);
+    }
+$message = "Scores are now reset!";
+$aseco->client->query('ChatSendServerMessage', $aseco->formatColors($message));
+unset($quizbot->points);
+And the sample questions file: quiz_questions.txt
+Code:
+Which world famous landmark is found on Mount Lee? Hollywood Sign
+What is sake made from ? Rice
+In George Orwell`s Animal Farm, what type of animals were Clover, Mollie and Boxer? Horses
+What is the hardest natural substance? diamond
+How many different scoring areas are there on a standard dart board (type only number)? 82
+The pop groups Ace Of Base and The Cardigans both hail from which country? Sweden
+What colour are the shorts that Bart Simpson normally wears? Blue
+Which British female singer had a 2006 hit with `Rehab`? Amy Winehouse
+In which country would you find the Mojave Desert? USA
+Which Barbadian singer stayed ten weeks at number 1 with `Umbrella`? Rihanna
+What is a more common name for the Aurora Borealis? Northern Lights
+What does the information technology term RAM stand for? Random Access Memory
+In cycling, what colour jersey is awarded to the leader in a stage race of the Tour de France? Yellow
+By what name is the Sodium Chloride more commonly known? Salt
+Which american state has a name that ends in three vowels? Hawaii
+The does the chemical symbol Pb stand for? Lead
+What is the correct term for the people commonly known as `Eskimos`? Inuit
+What is the highest score a judge can award in figure skating (type only number)? 6
+Who sung the theme tune for the film `Goldeneye`? Tina Turner
+How many grooves are on one side of an LP record (type only number)? 1
+Last edited by reaby on 23 Feb 2010 22:01, edited 5 times in total.
+ Post subject: Re: Xaseco Quiz-plugin
+Posted: 03 Jul 2009 07:28 
+smooth traffic navigator
+Joined: 16 May 2008 21:57
+Posts: 204
+Owned TM-games: TMNF, TMUF
+Ok nice. I havent tried it yet but it would be great if u could have a bot that ask's a question every minute or something, and u can set so that you can play for coppers (Own choice) Hope u like those ideas
+ Post subject: Re: Xaseco Quiz-plugin 1.0
+Posted: 03 Jul 2009 11:28 
+smooth traffic navigator
+Joined: 02 Jul 2009 22:24
+Posts: 213
+I managed to fix this version with nickname support!
+Here it is
+Edit: removed the code and added new on first posting.
+Last edited by reaby on 03 Jul 2009 21:19, edited 1 time in total.
+ Post subject: Re: Xaseco Quiz-plugin
+Posted: 03 Jul 2009 13:14 
+swift roadking
+Joined: 16 Feb 2007 02:40
+Posts: 692
+Location: Between DisneyLand and Paris
+Owned TM-games: TMO/TMN/TMNF/TMU
+ Post subject: Re: Xaseco Quiz-plugin
+Posted: 04 Jul 2009 18:40 
+speedy pilot
+Joined: 27 May 2008 17:58
+Posts: 313
+Location: Scotland
+Owned TM-games: All
+Here is a copy of ours, it works 100% and has a fewmore questions than the default:
+Code:
+/* plugin.quiz_en.php
+English version of QuizBot 1.5 by Reaby
+Many thanks for Assembler Maniac for Chatbot which this bot utilizes the main loop for getting chat-text from users.
+How it works?
+To ask manually question simply type /quiz_ask [question] ? [answer]
+To ask question from file type /quiz
+To reset points /quiz_reset
+/quiz_ask which color has red car on ? red
+answering normally by typing to chat.
+*/
+Aseco::addChatCommand('quiz_ask', 'Ask a question, right answer after questionmark');
+Aseco::addChatCommand('quiz', 'Ask a question from file');
+class quizbot
+      // ignore text that comes from the server
+      // also ignore anything that looks like it's a command
+      if ( $command[0] == 0 || substr($command[2], 0, 1) == '/' )      // $command[0] is the player id, 0 = server
+         {
+         if ( strtolower($command[2]) == strtolower($this->rightAnswer) )
+            {
+         $message = "\$0b0 Right answer! \$fff".$this->rightAnswer;
+          $this->Aseco->client->query('GetPlayerInfo', $command[1]);
+         $info = $this->Aseco->client->getResponse();
+         $nick = $info['NickName'];
+         $this->points[$command[1]]['NickName'] = $nick;
+         $this->points[$command[1]]['Points']++;
+            $this->Aseco->client->query("ChatSendServerMessage", $message);
+            $this->points();  // show points at successcull answer
+      unset($this->rightAnswer);
+    $this->Aseco->client->query("ChatSendServerMessage", $message);
+    }
+    $this->Aseco->client->query("ChatSendServerMessage", $message);
+    }
+   foreach ($this->points as $info) {
+   $message .=$info['NickName'].": \$z\$s\$fff".$info['Points']." ";
+   }
+    $this->Aseco->client->query("ChatSendServerMessage", $message);
+    }
+$message = "Scores are now reset!";
+$aseco->client->query('ChatSendServerMessage', $aseco->formatColors($message));
+unset($quizbot->points);
+And here is the questions:
+Code:
+Which world famous landmark is found on Mount Lee? Hollywood Sign
+What is sake made from ? Rice
+In George Orwell`s Animal Farm, what type of animals were Clover, Mollie and Boxer? Horses
+What is the hardest natural substance? diamond
+How many different scoring areas are there on a standard dart board (type only number)? 82
+The pop groups Ace Of Base and The Cardigans both hail from which country? Sweden
+What colour are the shorts that Bart Simpson normally wears? Blue
+Which British female singer had a 2006 hit with `Rehab`? Amy Winehouse
+In which country would you find the Mojave Desert? USA
+Which Barbadian singer stayed ten weeks at number 1 with `Umbrella`? Rihanna
+What is a more common name for the Aurora Borealis? Northern Lights
+What does the information technology term RAM stand for? Random Access Memory
+In cycling, what colour jersey is awarded to the leader in a stage race of the Tour de France? Yellow
+By what name is the Sodium Chloride more commonly known? Salt
+Which american state has a name that ends in three vowels? Hawaii
+The does the chemical symbol Pb stand for? Lead
+What is the correct term for the people commonly known as `Eskimos`? Inuit
+What is the highest score a judge can award in figure skating (type only number)? 6
+Who sung the theme tune for the film `Goldeneye`? Tina Turner
+How many grooves are on one side of an LP record (type only number)? 1
+Who was the first ever man seen of Channel 4? Richard Whitely
+What was Don Diego De La Vega's secret identity? Zorro
+Who teamed up with Nancy Sinatra for the 1971 hit 'Did You Ever'? Lee Hazlewood
+Who links Yazoo and Erasure? Vince Clarke
+Who was Jimmy Somerville's partner in the Communards? Richard Coles
+Who cover of an Elvis song gave the Pet Shop Boys a number one in 1987? Always on My Mind
+Who joined Billy Preston on the 1979 hit 'With You I'm Born Again'? Syreeta
+Which two singers joined forces in 1986 for 'On My Own'? Patti Lebelle and Michael McDonald
+Which sixties duo could have been called Stewart and Clyde? Chad and Jeremy
+Which band had a hit in 1986 with 'Sometimes'? Erasure
+Which pair pleaded 'Don't Stay Awar Too Long'? In 1974? Peters and Lee
+What was the title of the Pet Shop Boys second UK number one? It' a Sin
+Which girl duo got to number five in the charts in 1984 with 'Since Yesterday'? Strawberry and Switchblade
+What was Peter and Gordon's follow-up to 'A World Without Love'? Nobody I Know
+With whom did Elton John release a live version of 'Don't Let The Sun Go Down On Me'? in 1991? George Michael
+For whom was it 'Yesterday Once More' in 1973? The Carpenters
+Which Everly Brothers classic was a hit for Bobbie Gentry and Glen Campbell in 1969? All I Have To Do Is Dream
+Which two country artists got together for 'Islands In The Steam' in 1983? Kenny Rogers and Dolly Parton
+Who has daughters called Fifi Trixibelle and Peaches? Bob Geldof
+Which actor was reported last week of having been the target of an Al-Queada kidnap plot in 2001? Russell Crowe
+What is Ozzy Osborne' real first name? John
+Which actor played the 8th Doctor Who in a one-off TV Movie made by America in 1996? Paul McGann
+Which comedy duo lived in Oil Drum Lane? Steptoe and Son
+Which duo foiled master criminal Feathers McGraw? Wallace & Gromit
+What is the name of the boy at the centre of the Michael Jackson abuse trial? Gavin Arvizo
+In which year did Robbie Williams leave Take That? 1995
+Who wrote The Sound of Music? Rodgers & Hammerstein
+What is the small town in which called in which Clark Kent grew up? Smallville
+Which very popular animated series has characters called Dizzy, Scoop and Muck? Bob The Builder
+What film remake is Lord of the Rings director Peter Jackson currently working on? King Kong
+In which year did the yellow puppet Flat Eric reach number 1 and Britney achieve her first UK #1? 1999
+Which Nintendo arcade game first introduced the character of Mario? Donkey Kong
+Which musical does "youll never walk alone" come from? Carousel
+In 2003, which entertainer sparked interested with a publicity stunt of apparently cutting off his ear during a press conference? David Blaine
+Charles Bronson who died in 2003 was best know for the film Death Wish. In which year was it released? 1974
+In a 2003 list compiled by the US film industry (actors, dir, critics), who was voted best screen villain? Hannibal Lecter
+Who directed the film Dune? A) David Lynch, b) Ridley Scott, c) David Fincher - answer A
+How is Ilyena Lydia Mironoff better known? Hellen Mirren
+Who, upon splitting with her partner said, "At least I can wear high heels now."? Nicole Kidman
+Who replaced Rick Waller in the finals of the UK TV programme in 2002 "Pop Idol"? Darius Danesh
+One half of a comedy due, by what name was Arthur Jefferson better known? Stan Laurel
+Which dancer created the role of Mr Mistoffolees in the original stage production of Cats in May 1981? Wayne Sleep
+What is the name of the cross eyed lion in "Daktari"? Clarence
+Who directed the film Crash? David Kronenberg
+Who said of Mick Jagger: I'm sure he'll find someone else to be unfaithful to soon.? Jerry Hall
+Who wrote the first series of Black Adder? Richard Curtis and Rowan Atkinson
+The song, Ain't Misbehavin' was written by which famous jazz musician? Fats Waller
+In which BBC TV series did Jean Alexander play Auntie Wainwright? Last of the Summer Wine
+Alison Hannigan plays which character in the TV series Buffy the Vampire Slayer? Willow
+Who were the writers of the TV comedy series Father Ted? Graham Linehan & Arthur Matthews
+Who wrote and composed the opera Oedipus Rex? Stravinsky
+The Matrix reloaded took $93 mil in its opening US weekend, a record secondly only to which previous film? Spider-man
+Which highly photographed mammal sleeps the least, about 20 minutes per day? Giraffe
+Which 1939 film starring Gary Cooper was banned in France from 1939 till 1977 due to its depiction of the French Foreign Legion? Beau Geste
+What are the four common colours on the flags of the following countries. Iraq, Syria, Kuwait and Afghanistan? Red, Green, White and Black
+Which very well known Italian surname means metal worker or smith? Ferrari
+Mahatma Gandhi. What does Mahatma mean? Great soul
+The building of what cost the lives of over 27,500 workmen before it's completion in 1914: Clue: It was built by French and American workmen and the biggest killers included mudslides, malaria and yellow fever? The Panama Canal
+The martyr and patron saint of Paris St Denis was buried on which famous hill? Montmartre
+Which railway line, running from Damascus to Medina, was the target for T.E. Lawrence's raiding Arabs in World War I? The Hejaz Railway
+Which son of a Coalminer shattered all attendance records in Las Vegas in 1969? Tom Jones
+Which chess piece is known in French as a 'fou' - an idiot or madman? Bishop
+The oldest of the five English horse racing classics, first run in 1776, is raced at Doncaster over 1 mile 6 furlongs and approximately 130 yards (127? 132?). Which is it? St Leger
+In which country does one leu (plural lei) equal 100 boni? Romania
+The local name is Hayastan - by what name do we know it? Armenia
+The Gog Magog hills lie just outside what town? Cambridge
+Which composer wrote The Water Music? Handel
+What colour does acid turn Litmus paper? Red
+What's the largest Scandinavian country? Sweden
+What was Mickey Mouse's original name? Mortimer Mouse
+Which metal do you get from bauxite? Aluminium
+Which animal produces the biggest baby? Blue Whale
+What was the name of the Benedictine monk who legend has it invented Champagne? Dom Perignon
+In which Country is Auschwitz (Birkenau)? Poland
+Who was Leonardo di Caprio's co-star in Titanic? Kate Winslett
+What sort of creature is a bustard? A bird
+What is calcium carbonate normally known as? Chalk
+Who commanded the Allied forces, which invaded Europe on D-Day? Dwight Eisenhower
+What word do we use to describe the Asexual reproduction of a genetic carbon copy of an animal or plant? Clone
+Which Spaniard is known for his hallucinatory paintings? Salvadore Dali
+In Basketball it’s called a Tip Off, in Football a Kick off what is it called in Ice Hockey? Face off
+In the USA what name was given to a seller of illegal alcohol? Bootlegger
+What word means gradually getting louder and louder? Crescendo
+Which country voted to keep the Queen in 1999? Australia
+Will Smith played the part of Steven Hiller in the film 'Independence Day'. What was his codename? Eagle
+Constantino Rocca plays which sport? Golf
+In mythology what was minerva the Goddess of? Wisdom
+In the movies who plays the role of Harry Potter? Daniel Radcliffe
+In the Hans Christian Andersen story, which little girl was found inside the petals of a flower? Thumbelina
+Which is the only US state to begin with the letter 'P'? Pennsylvania
+In 1996 what overtook Coca-Cola as being the most well known brand name in the world? McDonalds
+What is God called by the Islamic or Muslim faith? Allah
+Which spirit is the base for a Black Russian cocktail? Vodka
+What is the capital of Venezuela? Caracus
+The neutered male of which animal is called 'a Barrow'? Pig
+In which film did Jim Carrey play the bank clerk Stanley Ipkiss? The Mask
+If you were playing darts and got a 'Shanghai' score of 72 with 3 darts which number have you scored on? 12
+Which is the largest Fresh water lake in the world? Superior
+In motoring terms what does OHC stand for? Overhead Camshaft
+What is the title of the lowest order of the British nobility? Baron/Baroness
+What is the name of the process used for clarifying beer or wine? Fining
+How many hearts does an octopus have? 3
+Who is the Greek god of music? Apollo
+How many countries are still members of the British Commonwealth? 53
+In the TV comedy Dad's Army what is Captain Mainwaring's first name? George
+Pershore, Victoria and Washington are types of which fruit? Plum
+How many teeth does an elephant have? 4
+Which US city hosted the 1985 Live Aid concert? Philadelphia
+Haptic relates to which of the five senses? Touch
+What type of animal is a Saki? Monkey
+If a creature is edentulous what has it not got? Teeth
+What were the eldest sons of the Kings of France called? Dauphin
+What is a baby seal called? A pup
+In the human body what is Varicella commonly known as? Chicken Pox
+How many valves does a trumpet have? 3
+Brock is a nickname for which animal? A Badger
+What is the name of the RAF's aerobatics team? Red Arrows
+Which footballer’s autobiography is titled The Good The Bad and the Bubbly? George Best
+In which ocean are the Canary Islands? Atlantic
+Which branch of Medicine is concerned with providing artificial limbs for the body? Prosthetics
+What is a person who shoes horses called? Farrier
+Which team was Liverpool playing in the 1985 European Cup Final when the Heysel stadium disaster happened, banning all English clubs from European Football for 6 years? Juventus
+In which film did Patrick Swayze play Johnny Castle? Dirty Dancing
+In Iraq, what are the 2 main Muslim sects? Sunni and Shiite
+In the famous Nintendo games, what is the name of Mario's brother? Luigi
+What is the antonym of the word synonym? Antonym
+Which animal’s milk is used to make authentic Italian mozzarella cheese? Water buffalo
+What is the US equivalent of the S.A.S.? Delta Force
+Which expensive vinegar is aged in wooden barrels? Balsamic
+Who played Indiana Jones in the films? Harrison Ford
+Who changed his name from Gordon Sumner to top the charts? Sting
+Which Welsh Island is also known as Ynys Mon? Anglesey
+In which country is Acapulco? Mexico
+How many humps does a Bactrian camel have? 2
+Which footballer was also known as 'The Divine Ponytail'? Roberto Baggio
+What flavour is the liqueur Cointreau? Orange
+Which canal took 10 years to build and opened in 1869? The Suez Canal
+How is the number 14 written in Roman numerals? XIV
+Which planet is closest to the sun? Mercury
+Which Disney film features the song 'The Bear Necessities'? The Jungle Book
+What type of creature is a Guillemot? A Bird
+Before Winston Churchill went bald, what colour was his hair? Red/Ginger
+Which country was the first to legalise abortion? Iceland
+Which gentle water creature gives its name to a Florida river? Manatee
+What nationality was the famous spy Mata Hari - Dutch, Austrian, French? Dutch
+Which game can be 'lawn' or 'crown green'? Bowls
+Through which organ do fish get oxygen? Gills
+What type of creature is a 'clouded yellow'? A butterfly
+Cacti are native to which country? Mexico
+In the proverb, imitation is the sincerest form of what? Flattery
+What name is given to an angle greater than 90 degrees but less than 180 degrees? Obtuse
+How many red balls are on the table at the start of a frame of snooker? 15
+What is the only English word anagram of 'wrong'? Grown
+What is a young single Spanish lady called? Senorita
+Which soccer side had a hit with 'I'm forever blowing bubbles'? West Ham United
+What cheese shares its name with an English Gorge? Cheddar
+Sardines and pilchards belong to which family of fish? Herring
+What is the highest mountain in the Alps? Mont Blanc
+Larry Holmes is famous for which sport? Boxing
+Whose catchphrase was 'Ooo you are awful but I like you'? Dick Emery
+In which continent is the world's largest glacier? Antarctica
+What is the name of a whale's breathing organ? Lungs
+Who had a 1970's hit with 'Yellow River'? Christy
+Which poisonous substance is also known as 'Woolly Rock'? Asbestos
+Which word can go before Down, Jumping and Off? Show
+How many times is the word 'Annie' mentioned in the song 'Annie's Song'? 0
+Scientists claim that every minute, about 900 million tons of what hits the earth? Rain
+In Australian slang, what is a 'Thunder Box'? Toilet
+Who played Mary in the Film 'There's Something About Mary'? Cameron Diaz
+What is Thailand's biggest island? Phuket
+Which UK Chancellor of the Exchequer said, "The difference between tax avoidance and tax evasion is the thickness of a prison wall."? Denis Healey
+The Yas Marina Grand Prix circuit is in which country? Abu Dhabi
+Who was the first black man to appear on the cover of American Vogue? LeBron James
+Which English county cricket team play at the Rose Bowl? Hampshire
+On which river is the German town of Wittenburg? Elbe
+Where in the human body is the radius? Forearm
+Who is the voice of baby Mikey in the 1989 film Look Who's Talking? Bruce Willis
+An eyas is what young creature taken from the wild for training? Hawk
+Which singer's epitaph is 'True To His Own Spirit'? Jim Morrison
+What is the spiked stick or prod used for driving cattle called? Goad
+What ice-cream dish is named after an Australian opera singer? Peach Melba
+Lammas Day falls on the first day of which month? August
+What is the name of the platform or stand used to support a coffin? Catafalque
+What type of creature is a canvasback? Duck
+Which country has the international registraion RA? Argentina
+Who was the mother of British monarchs Charles II and James II? Henrietta Maria of France
+Which prehistoric period followed the Stone Age and preceded the Iron Age? Bronze Age
+What is the science of accurate time measurement called? Chronometry
+President Anwar Sadat of Egypt and which prime minister were jointly awarded the Nobel Peace Prize in 1978? Menachen Begin
+Maurice Cole was the real name of which popular funny UK Radio and TV personality? Kenny Everett
+What was Barbara Windsor's first Carry On film? Carry On Spying
+In a game of English draughts how many pieces does each player normally begin with? Twelve
+Jasper National Park is in which country? Canada
+In which century was the Bank of England founded? 17th
+In medicine a Mantoux test is a skin test for diagnosing immunity from which disease? TB
+In which English county is the Dickens World Theme Park? Kent
+Who wrote the one-act comedy play Power Lunch? Alan Ball
+What is the fin on the back of a fish called? Dorsal
+Duma is a legislative body in the ruling asesembly of which country? Russia
+The live album Beauty and the Beat featured pianist George Shearring and which singer? Peggy Lee
+Whose band was the Tijuana Brass? Herb Alpert
+Who were Cliff Richard's backing group through the 60s? The Shadows
+Who were the famous backing singers on most of Elvis Presley's early hits? The Jordanaires
+The Stratocaster is a model of which guitar maker? Fender
+Which piano-playing singer's first hit was The Fat Man? Fats Domino
+Which American rock'n'roll star caused controversy when he married a young teenager? Jerry Lee Lewis
+Who made the highly rated 1959 jazz album Kind of Blue? Miles Davis
+Which iconic British female singer made the highly regarded album titled '(her first name) in Memphis' ? Dusty Springfield
+Whose band was the All Stars? Junior Walker
+Larry Adler played what instrument? Harmonica
+Whose childhood hit was Fingertips? Stevie Wonder
+Which guitar innovator and player has a range of Gibson Guitars named after him? Les Paul
+The founding brother members of the Kinks were Ray and Dave what? Davies
+What was Smokey Robinson's most famous band called? The Miracles
+Kenny Ball and his Jazzmen's 1962 hit was called March of the ... what? Siamese Children
+Who sang the hit theme song Rawhide? Frankie Laine
+John Mayall's band which helped launch Eric Clapton's career was called what? Bluesbreakers
+Rock Around the Clock was a hit for Bill Haley and his ... what? Comets
+Which comedy actor had a novelty hit with My Boomerang Won't Come Back? Charlie Drake
+Who sang with Serge Gainsbourg on the hit Je t'aime? Jane Birkin
+Colin Blunstone fronted which 1960s group? The Zombies
+What Eastenders star sang on the novelty hit Come Outside? Wendy Richard
+Jiles Perry (JP) Richardson Jr, who died in the same plane crash as Ritchie Valens and Buddy Holly was better known by what name? Big Bopper
+Which later-to-be-famous solo singer and guitarist toured as a member of the Beach Boys in the mid 60s? Glen Campbell
+Who had sang the hit song Little Old Wine Drinker Me? Dean Martin
+What famous 'two-fingered' jazz guitarist died in 1953? Django Reinhardt
+What song, released to promote the film The Millionairess, featured its stars Peter Sellers and Sophia Loren? Goodness Gracious Me
+Who managed the Beatles' prior to his early death in 1967? Brian Epstein
+Whose nickname was a derived from the term satchel-mouth? Louis Armstrong
+What's the name of the motorbiker who dies in the Shangri-Las' hit The Leader of the Pack? Jimmy
+Which singing-songwriting founder of the Flying Burrito Brothers died age 26, after which his body was 'stolen' by a friend and burnt in the Joshua Tree National Park? Gram Parsons
+Which American singer and entertainer was nicknamed Schnozzola, because of his large nose? Jimmy Durante
+Who wrote and had a hit with the instrumental Classical Gas? Mason Williams
+Who wrote Patsy Cline's hit Crazy? Willie Nelson
+What city hosted the Beatles as the resident band at the Kaiserkeller and Top Ten Club? Hamburg
+The Isley Brothers' hit was called Behind a ... what? Painted Smile
+1950-60s record turntables commonly offered four speeds: 33, 45, 78, and what other? 16
+American DJ Robert Weston Smith was better known by what stage name? Wolfman Jack
+What ridiculously titled song was a hit in 1954 for Max Bygraves in the UK and the Four Lads in the USA? Gilly Gilly Ossenfeffer Katzenellen Bogen by the Sea
+Who had the 1965 instrumental hit Spanish Flea? Herb Alpert and the Tijuana Brass
+What was Emile Ford and the Checkmates' 1959 hit, supposedly the longest ever question in a UK No1 song title? What Do You Want to Make Those Eyes at Me For?
+Who singer-guitarist's backing band was The Bruvvers? Joe Brown
+Which Rolling Stones guitarist died in a swimming pool in 1969? Brian Jones
+Who founded the Tamla Motown record label? Berry Gordy
+What folksy British singer-songwriting guitarist was famous also for his whistling? Roger Whittaker
+What was Hugo Montenegro's instrumental hit, composed by Ennio Morricone for the film of the same name? The Good, the Bad, and the Ugly
+Tom Parker managed which huge star? Elvis Presley
+Who won (barefoot) the British Eurovision Song Contest in 1967 with Puppet on String? Sandie Shaw
+The 1956 inaugural Eurovision Song Contest featured Belgium, France, Germany, Luxembourg, Netherlands, Italy and which other country? Switzerland
+Who originally fronted (and currently, 2008, still fronts) Herman's Hermits? Peter Noone
+Which jazz singer, whose career actually spanned the 1930s-90s, was known as the First Lady of Song? Ella Fitzgerald
+Which singer played Alfie's girlfriend Siddie in the 1966 film? Millicent Martin
+What name was given to the 1950-60s mainstream country music style of artists including Patsy Cline, Tammy Wynette, Jim Reeves, and Charlie Rich? Nashville Sound
+What Canadian-born teen idol of the 1950s-60s wrote the lyrics to Sinatra's song My Way? Paul Anka
+Which harmonica-paying frontman of Manfred Man sang on their early hits and later became a successful radio presenter? Paul Jones
+Which motor city was the original the base of Tamla Motown? Detroit
+What group became famous in the 1960s for their parody impressions of other hit songs? The Barron Knights
+Peter Potter in the USA and David Jacobs in the UK presented which pop music TV show? Juke Box Jury
+What was the 1962 space-age instrumental hit by the Tornados? Telstar
+Who wrote and sang the novelty hit Hello Muddah, Hello Fadduh, about Camp Granada? Allan Sherman
+Who was the famous rock guitarist in the group Love Sculpture, notably featuring on their breakneck hit version of Khachaturian's classical piece Sabre Dance? Dave Edmunds
+Rolf Harris endorsed what new musical instrument, which supposedly features on David Bowie's hit Space Oddity? Stylophone
+Frank Sinatra, Dean Martin, and Sammy Davis Junior were among several entertainers given what collective nickname? The Rat Pack
+Who originated the 'Wall of Sound' record production technique? Phil Spector
+The Rolling Stones first record label was what? Decca
+Simon and Garfunkel's song Mrs Robinson featured in what 1967 film? The Graduate
+What American DJ was nicknamed Moondog? Alan Freed
+What was Stephane Grappelli's instrument? Violin
+Which gravel-voiced English singer was previously a gas-fitter from Sheffield? Joe Cocker
+Who made the 1962 hit Monster Mash? Bobby
+Who sang the title song of the film The Girl Can't Help It? Little Richard
+What was Gary Glitter's earlier stage name in the 1960s? Paul Raven
+Lulu sang the theme song to which 1967 film about an inner-city school, starring Sidney Poitier? To Sir, With Love
+What Eddie Cochran song, covered by the Who, told of frustrations with his boss and his congressman? Summertime Blues
+Who was the main singing star in the musical Half a Sixpence? Tommy Steele
+Which comedian's recordings featured hilarious telephone routines about King Kong and the introduction of Tobacco? Bob Newhart
+What long-running BBC Radio chart show began on the Light Programme in 1955, and later becoming hugely popular when presented by Alan Freeman? Pick of the Pops
+The Crickets backed which famous singer-songwriter? Buddy Holly
+Dizzy Gillespie played what instrument? Trumpet
+Who made the novelty song Jake the Peg? Rolf Harris
+Which 1960s British rock'n'roll star founded the Official Monster Raving Loony Party? Screaming Lord Sutch
+Who was nicknamed 'The Big O'? Roy Orbison
+Which member of the Hollies went on to join the hugely successful American band commonly known by their initials CSNY? Graham Nash
+What record label did the Beatles establish? Apple
+Who had a 1960s hit with Step Inside Love? Cilla Black
+The record label and music company name HMV stood for what? His Master's Voice
+Who sang the theme song to the film Born Free? Matt Monro
+Congratulations was Cliff Richard's Eurovision Song Contest entry in what year? 1968
+Which singer's Eurovision Song Contest entry was Knock Knock (Who's There?) Mary Hopkin
+Whose big hit was I love You Because? Jim Reeves
+Who wrote the instrumental A Swingin' Safari and led the orchestra which played the original hit version? Bert Kaempfert
+The Copacabana nightclub was in which city? New York
+Which British comedian had the massive-selling 1965 hit Tears? Ken Dodd
+Who sang the 1964 hit My Boy Lollipop? Millie
+Cher's partner was Sonny ... who? Bono
+Who made the hit comedy version of the Banana Boat Song, and other similar spoofs including versions of Presley's Heartbreak Hotel and Johnnie Ray's Cry? Stan Freberg
+Which 1960s easy-listening Irish crooner was famed for his rocking chair and knitted jumpers? Val Doonican
+What was Chuck Berry's first hit record? Maybellene
+What number gives its name to the cultish 'club' celebrating rock stars who died at that age? 27
+Who was the first British monarch to broadcast a Christmas message to the nation? George the Fifth
+Child star Jimmy Boyd sang which hugely popular 1950's Christmas song, which was initially banned by the Catholic Church in Boston because it supposedly mixed sex and Christmas? I saw Mommy kissing Santa Claus
+Who banned Christmas in England between 1647 and 1660? Oliver Cromwell
+On which date is Epiphany celebrated in the traditional Western calendar? 6th January
+Who are the four ghosts in Charles Dickens' A Christmas Carol? Christmas Past, Christmas Present, Christmas Yet to Come, and Jacob Marley
+What liqueur goes into making a 'snowball' cocktail? Advocaat
+What is the English title of the carol written in 1818 by Austrian priest Josef Mohr originally called Stille Nacht? Silent Night
+The Nordic countries (Denmark, Sweden, Norway notably) tend to celebrate Christmas chiefly on which date? 24th December
+Which US state in 1907 was the last to declare Christmas a legal holiday? Oklahoma
+Presepe in Italy refers to what Christmas tradition? Nativity scene
+Christmas Crackers is cockney rhyming slang for which part of the male anatomy? Testicles
+What is the popular name for little baked sausages wrapped in rashers of streaky bacon? Pigs in blankets
+Which of the Wise Men was said to have brought the gift of gold for the baby Jesus? Melchior
+The 1954 movie White Christmas was the first to be made using what new Paramount film format? VistaVision
+Which river did George Washington cross on Christmas night in 1776 in the American Revolutionary War? Delaware
+What changed in 1752 which caused Britain to have a White Christmas less frequently thereafter? The calendar
+Traditional in Germany at Christmas, what sort of food is stollen? Cake
+According to the UK National Meteorological Office what year (prior to 2007) was the last White Christmas in Britain? 2004
+The Christmas period of 1813-14 saw the last what in London? Christmas Fair on a frozen River Thames
+How many gifts are given in total in the song The Twelve Days of Christmas? 364
+The words "Myrrh is mine, its bitter perfume breathes of life, of gathering gloom..." come from which Christmas carol? We Three Kings of Orient Are
+Christmas Island in the Indian Ocean is a territory of which country? Australia
+Which diarist noted on 25th December 1662, "(Christmas Day). Had a pleasant walk to White Hall, where I intended to have received the communion with the family, but I have come too late...? Samuel Pepys
+The USA's official National Christmas Tree is in which National Park? King's Canyon National Park, California
+John Callcott Horsley designed what first commercial Christmas item in 1843? Christmas card
+In Victorian England what people were popularly called robins because of their red uniforms? Postmen
+Which popular poem was alternatively known as A Visit from St Nicholas? 'Twas The Night before Christmas
+Which token vegetable is often included in the ingredients of a Christmas pudding? Carrot
+What animal is Snowball in George Orwell's book Animal Farm? A pig
+Yorkshireman William Strickland is believed to have brought the first what to Britain from North America in 1526? Turkey
+Which missing adventurer's wrecked aircraft and bodily remains were found in California in October 2008? Steve Fossett
+Who resigned as Ireland's Taoiseach (pronounced 'teeshock' - it is the head of government) in May 2008 after more than ten years in the position? Bertie Ahern
+In 2008 billionaire financier Carl Icahn joined the board of what large internet corporation in a deal which saw him cease his fight to oust its leaders? Yahoo
+The South Ossetia war was fought between Russia and which other country? Georgia
+By how many years to the day did OJ Simpson's conviction for robbery and kidnapping follow his acquittal of murder? Thirteen
+The NASA spacecraft Messenger reached what planet destination in 2008? Mercury
+Human Rights Watch announced in October 2008 that what country is the world's most ignored tragedy? Somalia
+Who in 2008 was re-elected Prime Minister of Canada? Stephen Harper
+Who in 2008 was denied parole (again) for the murder of John Lennon? Mark Chapman
+George Tupou V was crowned monarch of which country in August 2008? Tonga
+Chinese Democracy was the long awaited 2008 album release of which band? Guns N' Roses
+Who was Fiona Shackleton representing when she had a jug of water poured over her in February 2008? Paul McCartney
+Architect Rafael Viñoly designed what notable Leicester building which opened in 2008? The Curve Theatre
+For which national team did the cricketer play who was alleged to have called an Australian opponent a monkey, resulting in the suspension of the Australian tour of that country? India
+Which film director, with successes including Cold Mountain and The Talented Mr Ripley, died on 18 March 2008? Anthony Minghella
+Which chain announced the closure of 600 US branches in July 2008? Starbucks
+In which city did the Newseum museum of news and journalism re-open in April 2008? Washington DC
+Who did Portsmouth beat 1-0 to win the FA Cup in May 2008? Cardiff City
+Who wrote the much covered and 2008 hit song Hallelujah? Leonard Cohen
+On Rudy Giuliani's withdrawal from the contest for the Republican 2008 US presidential election nomination who received Giuliani's endorsement? John McCain
+Which original and long lost member of the Manic Street Preachers was declared dead on 24 November 2008? Richey Edwards
+What is the name of Google's web browser, launched in September 2008? Google Chrome
+Who won the 2008 American (celebrity) Apprentice TV show? Piers Morgan
+What 2008 film set in 1880s America starred and was directed by Ed Harris? Appaloosa
+Which country won the most medals in total at the 2008 Summer Olympics? USA
+In October 2008 which country was first to follow Ireland in announcing it would guarantee all bank deposits, in the wake of the global financial crisis? Greece
+Which Eastern guru to the Beatles died on 5 February 2008? Maharishi Mahesh Yogi
+What venue hosted the 2008 Superbowl? University of Phoenix Stadium
+Which American entertainer famously parodied Sarah Palin during the 2008 US presidential elections? Tina Fey
+What hip-hop artist was controversially chosen to headline the 2008 Glastonbury Festival? Jay-Z
+Which American artist noted for his large graffiti-style paintings had a major exhibition at London's Tate Modern in Summer 2008? Cy Twombly
+Who won the UK 2008 Apprentice TV show and the resulting job with Sir Alan Sugar? Lee McQueen
+Who starred as Batman in the film Dark Knight? Christian Bale
+What was Abdel Kechiche's 2008 film about France's North African community? Couscous
+Who ran the fraudulent $50bn investment pyramid scheme, further exposing in December 2008 the stupidity of the world's financial system? Bernard Madoff
+Who released the album Do You Like Rock Music? British Sea Power
+Who threw his shoes at George W Bush in December 2008? Muntadhar al Zeidi
+Which club won the Coca Cola Football League Championship for the 2007-08 season? West Bromwich Albion
+Who won the UK 2008 X-Factor TV talent show? Alexandra Burke
+Which secretive artist's supposed real identity was 'outed' in 2008 as Robert Gunningham by the Mail on Sunday? Banksy
+Which rock group won the 2008 Mercury Prize? Elbow
+What successful 2008 film starring Angelina Jolie did Clint Eastwood direct? Changeling
+Which iconic fashion designer died on 1 June 2008? Yves Saint Laurent
+Ari Folman's acclaimed 2008 film was 'Waltz with...' whom? Bashir
+Nelson Evora won which country's only gold medal at the 2008 Summer Olympics? Portugal
+Which scientist and novelist, and author of '2001: A Space Odyssey' died on 19 March 2008? Arthur C Clarke
+Which actor was the butt of Jonathan Ross and Russell Brand's prank calls which nearly ended civilisation as we know it in October 2008? Andrew Sachs
+Who won 3 gold medals for Great Britain at the 2008 Summer Olympics, and was named 2008 BBC Sports Personality of the Year? Chris Hoy
+Which country won the 2008 Eurovision Song Contest? Russia
+Which country ended its combat role in Iraq on 1 June 2008 with the withdrawal of its 500 troops from Nasiriyah? Australia
+What was Julian Schnabel's acclaimed 2008 film of the book written by a stroke victim's blinking eye? The Diving Bell and the Butterfly
+Who was buried in Donskoy Necropolis on 6 August 2008? Aleksandr Solzhenitsyn
+Which city hosted in 2008 the 65th anniversary of the oldest film festival in the world? Venice
+Who won the 2008 Superbowl? New York Giants
+Who won best actor at the 80th Academy Awards of 2008? Daniel Day-Lewis
+Who resigned as Prime Minister of Pakistan on 18 August 2008? Pervez Musharraf
+In what city did Barack Obama formally accept the Democratic nomination for the US presidential election? Denver, Colorado
+Which driver did Louis Hamilton overtake in the final seconds of the Brazilian Grand Prix to clinch fifth place and thereby win the 2008 F1 Championship? Timo Glock
+What were Bertha, Cristobel and Dolly on 20 July 2008? Storms
+Which country won the 2008 Africa Cup of Nations (the African international soccer championship)? Egypt
+In which country did the world's largest ferris wheel (as at 2008) open for rides in March 2008? Singapore
+Who did the government appoint as executive chairman of Northern Rock after its nationalisation? Ron Sandler
+Rail workers in California were banned from doing what on moving trains after a crash was found to have been caused by the activity in September 2008? Using mobile phones
+From January 2008 people seeking a visa to visit the UK were required to provide what additional form of identity? Fingerprints
+Which company did French president Sarkozy and his then girlfriend Carla Bruni sue in 2008 for unauthorised use of their images in an advert? Ryanair
+G Kennedy Thompson was fired in June 2008 from which US bank and early victim of the credit crunch? Wachovia
+Nepal re-named a remote airport near Mount Everest as what in February 2008? Tenzing-Hillary Airport
+In March 2008 the Shin Bet secret service of what country launched a blog written by four of its agents? Israel
+The Detroit Redwings beat the Pittsburgh Penguins to win the 2008 Stanley Cup in which sport? Ice hockey
+In March 2008 the United Nations Food and Agriculture Organisation announced a photographic competition to mark the International Year of the what? Potato
+What political correspondent voluntarily removed himself from the UK Strictly Come Dancing celebrity talent show for fear of undersevedly winning it? John Sergeant
+Which club won the 2008 Australian Football League Grand Final? Hawthorn
+Who won the 2008 French Women's Singles (tennis) Open Championship? Ana Ivanovic
+Quentin Bryce became the first woman to hold what office in September 2008? Governor-General of Australia
+Which jazz musician and presenter of BBC Radio's I'm Sorry I Haven't a Clue died on 25 April 2008? Humphrey Lyttelton
+Which UK member of parliament resigned in June 2008 to fight the Haltemprice and Howden election on a civil liberties platform? David Davis
+Who won the 2008 American Idol TV talent show? David Cook
+In what city did its kingdom's first women-only hotel and spa, called the Luthan, open in March 2008? Riyadh
+Which Indian city organised 'No Honking Day' to mark World Health Day, 7 April 2008, emphasising noise pollution as a significant health issue. Mumbai
+What candidate for the Democratic presidential nomination for the 2008 US election withdrew from the contest on 10 January 2008? Bill Richardson
+Which country did cyclone Nargis devastate on 2 May 2008? Burma
+What stadium nicknamed 'The House That Ruth Built' closed in November 2008? Yankee Stadium
+Who did Tiger Woods beat in a play-off for the 2008 US Open Championship? Rocco Mediate
+Who led Zimbabwe's Movement for Democratic Change opposition against Robert Mugabe in 2008? Morgan Tsvangirai
+Who was the trader alleged to be responsible for the French Société Générale trading loss of nearly five billion euros in January 2008? Jérôme Kerviel
+Which two companies agreed in February 2008 to pay their customers $200m compensation for price fixing? Virgin Atlantic and British Airways
+How many gold medals did Great Britain win at the 2008 Summer Olympics? 19
+A court in which country was reported in March 2008 to have convicted a bear for stealing honey from a beekeeper? Macedonia
+Which highly regarded British literary agent died on 20 October 2008? Pat Kavanagh
+Put these countries - Mexico, Brazil, India - in order of most gold medals won in the 2008 Summer Olympics. Brazil, Mexico, India
+Which was the only country to win two silver medals and no other medals at the 2008 Summer Olympics? Trinidad and Tobago
+The sales and reputation of what cheese were affected when toxins were believed to have contaminated buffalo milk? Mozzarella
+Name the British Airways chief executive who had to do a lot of apologising for the Heathrow Terminal 5 chaos in March 2008? Willie Walsh
+Which film star (of Brokeback Mountain fame) died on 22 Jan 2008? Heath Ledger
+The European Court of Justice ruled that Marks and Spencer could reclaim £3.5m in 20 years' overpaid vat due to the incorrect categorisation of what product? Teacakes
+Which famous artist and and children's book illustrator died on 28 May 2008? Beryl Cook
+Which notable CEO stepped down on 27 June 2008 to concentrate on his charity work? Bill Gates
+During Prime Minister's Questions at the House of Commons in December 2008 Gordon Brown amusingly and accidentally claimed his government had saved what? The World
+A surprise attack, and collective noun for group of tigers? Ambush
+ACAS is the UK's Advisory, Conciliation and 'what' Service? Arbitration
+A robot, from the Greek word for male? Android
+Capital of the United Arab Emirates? Abu Dhabi
+The letter denoting a link in HTML (webpage) code typically followed by 'href'? A
+The word for the weight on the end of a pendulum? Bob
+Maureen Lipman's onomatopaeic character name in BT's TV adverts? Beattie
+Composer of the Eroica, Pastoral and Choral Symphonies? Beethoven
+The initials BCC on a memo or email stand for a 'what' Carbon Copy? Blind
+The meaning of B in the marketing abbreviation B2B? Business
+The British Queens to Georges II and IV, with respective titles of Ansbach and Brunswick? Caroline
+Addictive product produced in a British factory first by Robert Gloag in 1856? Cigarettes
+Tragically misunderstood daughter of Shakespeare's King Lear? Cordelia
+Sri Lanka's previous name? Ceylon
+The Spanish word for a hundred? Cien
+With what is a 'carpetbag steak' stuffed? Oysters
+In language a paronomasia is more commonly known as what? Pun
+Which early Charles Dickens novel features the characters Wackford and Fanny Squeers, Smike, Newman Noggs and the Cheeryble brothers? Nicholas Nickleby
+How many balls, including the white cue ball, are on a snooker table (before any are potted)? Twenty-two
+In Western ecclesiastical law a diriment impediment invalidates what? Marriage
+Who is generally credited with the invention of the hovercraft in 1955? Christopher Cockerell
+What colour is the letter L in the standard Google logo? Green
+How many stars are on the flag of the European Union? Twelve
+Who wrote the poem beginning, "Stop all the clocks, cut off the telephone.." which featured in the funeral scene of the film Four Weddings and a Funeral? W H Auden
+Tallinn is the capital of which country? Estonia
+What colour is Stephanie's hair in the children's TV series LazyTown? Pink
+Which English playwright and poet was stabbed in uncertain circumstances in 1593 age 29 (he penned the line 'Come live with me and be my love')? Christopher Marlowe
+Who won 'The Battle of the Sexes' tennis match at the Houston Astrodome in 1973? Billie Jean King
+Kenneth Kaunda was the first president of which African country? Zambia
+What is the common word for the monosaccharide substance found in certain fruit, flower nectar and honey, with the chemical formula C6H12O6? Fructose
+The cult TV series Lost which began in 2004 features 'Oceanic Flight ...' what? 815
+The billionnaire Barclay twins' long-running disputes about their private island Brecqhou (or Brechou) are with which Channel Island? Sark
+Which Scottish athlete refused to run on a Sunday at the 1924 Paris Olympic Games? Eric Liddle
+What does K stand for in the CMYK colour model used in printing? Key
+The King and Queen of which European country narrowly escaped assassination on their wedding day in 1906? Spain
+Marsh Fever is another term for which ailment? Malaria
+What is the offspring of a male lion and a tigress called (apart from very dangerous)? Liger
+Jazz musician Miles Davis, 1926-91, whose 1959 album Kind of Blue is generally regarded as the biggest selling jazz album of all time, played what instrument? Trumpet
+What is the capital of Sierra Leone? Freetown
+What is the (traditionally wooden) housing or stand which contains a ship's compass? Binnacle
+Who played Al Capone in the 1987 film, The Untouchables? Robert De Niro
+Which character did James Stewart play in the 1952 film, The Greatest Show On Earth? Buttons the Clown
+Who wrote the novel On Chesil Beach? Ian McEwan
+What is the surname of the family in the UK TV series My Family? Harper
+Which instrument represents the duck in Prokofiev's Peter and the Wolf? Oboe
+Who played Richard Cunningham in the US TV show Happy Days? Ron Howard
+How to Save a Life was which band's debut album? The Fray
+Which UK TV series was based on Eric Chappell's play The Banana Box? Rising Damp
+Jan Morrow and Brad Allen are characters who share a phone line in which 1959 film? Pillow Talk
+How many contestants' boxes feature in the (UK version) TV show Deal of No Deal? Twenty-two
+By what name was rapper Christopher Wallace most famously known? The Notorious B.I.G.
+Daisy Donovan, Iain Lee, and MacKenzie Crook were presenters on which 1990's UK TV show? The 11 O'Clock Show
+What is the number on the roof of the bus in the 1994 film Speed? 2525
+Pixel, Stingy and Stephanie appear in which children's TV programme? LazyTown
+In which year was the UK Comic Relief launched? 1985
+What is the name of the title character in Arthur Miller's play Death of a Salesman? Willy Loman
+In the 1979 film Apocalypse Now which river does Captain Willard (Martin Sheen) travel up to reach Colonel Kurtz (Marlon Brando)? Nung
+What is the first name of Frank Gallagher's legal wife in the UK TV series Shameless? Monica
+In which US state did Buddy Holly's plane crash in 1959? Iowa
+Nicky Hambleton-Jones presents which UK TV make-over show? Ten Years Younger
+What was Humphrey Bogart's last film? The Harder They Fall
+What was mixed with water to make the rain more visible on screen in the 1952 film Singing in the Rain? Milk
+What is the name of the family doctor in The Simpsons cartoon show? Doctor Julius Hibbert
+Who played Domino in the 1983 Bond film Never Say Never Again? Kim Basinger
+Who designed the costumes for the 1997 film The Fifth Element? Jean-Paul Gaultier
+Doctor Moriarty is the arch-enemy of which fictional detective? Sherlock Holmes
+What was the title of George Michael's first solo album? Faith
+Brad Pitt played one of Anthony Hopkins' three sons in which 1994 film? Legends of the Fall
+Tall Dark and Gruesome is the title of whose autobiography? Christopher Lee
+In which month is St David's Day celebrated? March
+New York is on which river? Hudson
+On which planet is the Great Dark Spot? Neptune
+Which famous London sculpture is the work of Sir Alfred Gilbert? Eros
+In which English county is Nunney Castle? Somerset
+An icosahedron is a three-dimensional form with how many faces? Twenty
+What colour are the flowers on the St John's Wort? Yellow
+What is the young of an otter called? Whelp
+What 'colour' was actor Steve Buscemi in the film Reservoir Dogs? Pink
+What chemical element has the symbol Kr? Krypton
+What word is the opposite of zenith? Nadir
+Which character did Dustin Hoffman play in the film Midnight Cowboy? Ratso
+Joan of Arc is also known as the 'Maid of..' where? Orleans
+What type of animal is a Border Leicester? Sheep
+In anatomy what is the technical term for the kneecap? Patella
+Long-winged seabird and golfing term? Albatross
+What is the first name of Paul McCartney's fashion designer daughter? Stella
+What is the first letter of the Greek alphabet? Alpha
+What is the flavour of the liqueur Amaretto? Almond
+Which poet wrote The Divine Comedy? Dante
+Where was the 1986 World Cup held? Mexico
+Who was the last player to captain England before David Beckham? Martin Keown
+What football club did Gordon Banks play for when he won his 1966 World Cup medal? Leicester City
+Fill in the missing name in this sequence of England managers: Ramsey, Mercer, Revie, ? , Robson. Ron Greenwood
+Which of these players never scored a hat-trick for England: Bobby Charlton, Gary Lineker, Paul Scholes, Luther Blissett, Teddy Sheringham, Alan Shearer? Teddy Sheringham
+England coaches Sammy Lee and Ray Clemence played together at which club? Liverpool
+How many places were allocated to African teams for the 2006 World Cup? Five
+What did all these players win between 1989 and 1997: Paul Merson, Matt Le Tissier, Lee Sharpe, Ryan Giggs, Andy Cole, Robbie Fowler and David Beckham? The (PFA) Young Player of the Year award, 1989-97
+Aside from goalkeepers, which two England captains since 1966 never scored their country? Mick Mills and Trevor Cherry.
+Which of these players never captained England's senior team: Peter Beardsley, Paul Ince, David Seaman, Bobby Charlton, Gordon Banks? Gordon Banks
+Who was England's football manager in the 1970 World Cup? Sir Alf Ramsey
+How many players in England's 2006 World Cup squad were also in the 1998 squad? And to ask a tougher question, name them..) Five - Sol Campbell, Gary Neville, David Beckham, Michael Owen and Rio Ferdinand
+Which manager first appointed David Beckham as England captain? Peter Taylor
+Who was the first player to play for England who had not been born when England won the world cup in 1966? Tony Adams
+What was the score after extra time before England lost on penalties to Portugal in the quarter final of the European Championship in June 2004? 2-2
+In what World Cup did the England goals by Mariner, Robson and Francis feature in games against France, Czechoslovakia and Kuwait? Spain 1982
+Who was England's first national team manager? Walter Winterbottom
+Whose injury made way for Geoff Hurst in England's 1966 World Cup team? Jimmy Greaves
+Who was the first defender to captain England after Bobby Moore? Emlyn Hughes
+What football club did Bobby Charlton play for when he won his 1966 World Cup medal? Manchester United
+Who was the first £100,000 football transfer? Dennis Law
+What decade was the white ball legalised in football? 1950's
+What did these players all win between 1963 and 1968: Lev Yashin, Dennis Law, Eusebio, Bobby Charlton, Florian Albert and George Best? European Footballer of the Year award
+Who was the first football transfer over £100,000 between English clubs? Alan Ball (from Blackpool to Everton in 1966)
+Where and when were the three World Cup tournaments that England failed to qualify for after 1966? West Germany 1974, Argentina 1978 and USA 1994
+Where was the 1962 World Cup held? Chile
+Who were England's full backs in the 1966 World Cup Final? Ray Wilson and George Cohen
+Who was the first £1m football transfer between English clubs? Trevor Francis
+What football club did Bobby Moore play for when he won his 1966 World Cup medal? West Ham United
+Bobby Moore and Billy Wright share the record for the number of games as England captain with 90 each. At the start of the 2006 World Cup which player captained England the most times aside from Moore and Wright? Bryan Robson
+Who was the first £2m football transfer between English clubs? Paul Gasgoigne
+What height and width is a football goal? Eight feet high (2.4m) and eight yards wide
+What football club did Jackie Charlton play for when he won his 1966 World Cup medal? Leeds United
+Who, according to FIFA regulations, was responsible for supplying the footballs for the 2006 World Cup qualifying stage games? The host football association, ie., Germany
+In what decade was England's first national team manager appointed? 1940's
+What football club did Roger Hunt play for when he won his 1966 World Cup medal? Liverpool
+In what World Cups did Bryan Robson appear? 1982, 1986 and 1990
+What is the minimum rest period between two games for any team at the 2006 World Cup according to FIFA competition rules? 48 hours
+Which 1970 World Cup England striker retired to run a successful West Midlands window cleaning business? Jeff Astle
+Fill in the missing name in this sequence of England managers: Taylor, Venables, Hoddle, ?  Keegan. Howard Wilkinson
+Who were England's three goalkeepers in the 1982 World Cup? Ray Clemence, Peter Shilton, and .......? Joe Corrigan
+What did all of these players win between 1995 and 1999: Jurgen Klinsmann, Eric Cantona, Gian Franco Zola, Dennis Bergkamp and David Ginola? Winners of the English Football Player of the Year award
+What football club did Nobby Stiles play for when he won his 1966 World Cup medal? Manchester United
+Which past England captain is the only player in English football to have captained an English Football League-winning club in three different decades? Tony Adams
+How many places were allocated to European teams for the 2006 World Cup, including the hosts Germany? Fourteen
+Who appeared most times for England and how many times? Peter Shilton, 125 caps
+Between the 1966 and 2006 World Cups only four England captains have played for three different clubs while captaining their country, who are they? Paul Ince
+What football club did Geoff Hurst play for when he won his 1966 World Cup medal? West Ham United
+What decade was the crossbar introduced in Football? 1870's
+Who broke his neck in the 1956 FA Cup Final? Bert Trautmann of Manchester City
+Who was the first football transfer over £10m between English clubs? Alan Shearer
+Who replaced David Seaman as England's third choice goalkeeper in the 1990 World Cup squad after Seaman injured his thumb in training? Dave Beasant
+Where was the 1978 World Cup held? Argentina
+FIFA's 2006 World Cup rules dictate a squad size of how many players? Twenty-three
+In what World Cup did Mark Hateley and Gary Lineker wear the 9 and 10 shirts? 1986
+What did each of these players win between 1996 and 2000: Matthias Sammer, Ronaldo, Zinedine Zedane, Rivaldo, and Luis Figo? European Footballer of the Year award
+Where was the 1998 World Cup held? France
+Who was the first black footballer to win a full England cap? Viv Anderson, 1978
+What football club did Martin Peters play for when he won his 1966 World Cup medal? West Ham United
+Which manager took England to the semi-final of the world cup in 1990? Bobby Robson
+Whose last game as manager of England was a 0-0 draw away to Portugal in 1974? Sir Alf Ramsey
+It is said that an international football match in 1969 started a war between which two nations in the central Americas? El Salvador v Honduras
+What football club did George Cohen play for when he won his 1966 World Cup medal? Fulham
+How many medals will be awarded to each of the first, second and third placed teams at the 2006 World Cup? Forty-five - that's 45 to each team. Amazing - who gets them all? If you know please tell me..
+Who were England's four successful penalty takers in the winning 4-2 penalty shoot-out against Spain in the Euro-96 Championship quarter-final at Wembley? Shearer, Platt, Pearce, and Gascoigne
+What football club did Ray Wilson play for when he won his 1966 World Cup medal? Everton
+Which team did England beat in the 1990 World Cup when Gary Lineker's second successful penalty of the game gave England victory in extra time? Cameroon
+What football club did Alan Ball play for when he won his 1966 World Cup medal? Blackpool
+In the event of a team failing to fulfil or complete a match at the 2006 World Cup Final tournament, what is the score awarded to the other team by the organising committee? 3-0
+Who scored England's dying seconds winner against Belgium in the 1990 World Cup? David Platt
+How many managers had been in charge of the England football team before Alf Ramsey? Just one
+Who was England's goalkeeper in the losing game against Germany in the 1970 World Cup? Peter Bonetti
+Who was Everton's representative in England's 1966 World Cup winning team? Ray Wilson
+Where are the headquarters of FIFA (Federation Internationale de Football Association)? Zurich, Switzerland.
+How many players in England's 2006 World Cup squad had previously captained their country? 4
+THE ABOVE INPUTS ARE WORKING PERFECTLY!
+One question... Is it possible to have this asking automatic questions?
+Thanks!
+Q)  Which Barbadian singer stayed ten weeks at number 1 with `Umbrella`?
+A)   Rihanna
+Q)   What does the information technology term RAM stand for?
+A)   Random Access Memory
+For the 1st question the answer stated is "Rihanna", if you typed 'rihanna' (lowercase) this would be an incorrect answer as the plugin reads direct off a .txt file.  In effect plurals would be incorrect sadly but all you can do is try to get the correct variation
+INCORRECT
+Q)  Which Barbadian singer stayed ten weeks at number 1 with `Umbrella`?
+A)   rihanna
+Q)   What does the information technology term RAM stand for?
+A)   random access memory
+As you can see the answers in the incorrect section are all lowercase, whereas in the correct version the first letters of abbreviations are capitalized or just even the 1st letter of certain words like "Rihanna"
+Good Luck!
