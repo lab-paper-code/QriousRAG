@@ -1,349 +1,503 @@
 ---
 base_model: sentence-transformers/all-MiniLM-L6-v2
-datasets: []
-language: []
 library_name: sentence-transformers
+metrics:
+- pearson_cosine
+- spearman_cosine
+- pearson_manhattan
+- spearman_manhattan
+- pearson_euclidean
+- spearman_euclidean
+- pearson_dot
+- spearman_dot
+- pearson_max
+- spearman_max
 pipeline_tag: sentence-similarity
 tags:
 - sentence-transformers
 - sentence-similarity
 - feature-extraction
 - generated_from_trainer
-- dataset_size:14088
+- dataset_size:9861
 - loss:MultipleNegativesRankingLoss
 widget:
-- source_sentence: Who is the education reformed that emphasized that education should
-    be a social process?
+- source_sentence: Who owns the rights to masters of the universe?
+  sentences:
+  - '. Browns 10–7. Drive: 12 plays, 87 yards, 5:27.
+
+    * CLE – Isaiah Crowell 1-yard run (Cody Parkey kick), 1:51. Browns 17–7. Drive:
+    9 plays, 70 yards, 4:40
+
+    * CLE – Cody Parkey 27-yard field goal, 0:00. Browns 20–7. Drive: 6 plays, 49
+    yards, 1:25.
+
+    Third quarter
+
+    * NYJ – Quincy Enunwa 24-yard pass from Ryan Fitzpatrick (Nick Folk kick), 8:15.
+    Browns 20–14. Drive: 12 plays, 78 yards, 6:45.
+
+    * NYJ – Matt Forte 4-yard run (Nick Folk kick), 2:11. Jets 21–20. Drive: 8 plays,
+    84 yards, 3:03.
+
+    Fourth quarter
+
+    * NYJ – Matt Forte 2-yard run (Nick Folk kick), 9:38. Jets 28–20. Drive: 13 plays,
+    81 yards, 6:27.
+
+    * NYJ –'
+  - ' men than explosive artillery shells. At 7 p.m. on April 12, a rain shower extinguished
+    the flames and, at the same time, the Union gunners stopped firing for the night.
+    They slept fitfully, concerned about a potential infantry assault against the
+    fort. During the darkness, the Confederates reduced their fire to four shots each
+    hour. The following morning, the full bombardment resumed and the Confederates
+    continued firing hot shot against the wooden buildings. By noon most of the wooden
+    buildings in the fort and the main gate were on fire. The flames moved toward
+    the main ammunition magazine, where 300 barrels of gunpowder were stored. The
+    Union soldiers frantically tried to move the barrels to safety, but two-thirds
+    were left when Anderson judged it was too dangerous and ordered the magazine doors
+    closed. He ordered the remaining barrels thrown into the sea, but the tide kept
+    floating them back together into groups, some of which were ignited by incoming
+    artillery rounds. He also ordered his crews to redouble their efforts at firing,
+    but the Confederates did the same, firing the hot shots almost exclusively. Many
+    of the Confederate soldiers admired the courage and determination of the Yankees.
+    When the fort had to pause its firing,'
+  - '
+
+    * The Flintstones
+
+    * Scooby-Doo
+
+    * Tom and Jerry
+
+    * Wizarding World
+
+
+
+    * Warner Bros. Motion Picture Group
+
+    * Warner Bros. Television Group
+
+    * DC Studios
+
+    * Warner Bros. Pictures Animation
+
+    * Warner Bros. Theatre Ventures
+
+    * Warner Bros. Digital Networks
+
+    * Warner Bros. Studio Facilities
+
+    * Warner Bros. Motion Picture Group
+
+    * Warner Bros. Television Group
+
+    * DC Studios
+
+    * Warner Bros. Pictures Animation
+
+    * Warner Bros. Theatre Ventures
+
+    * Warner Bros. Digital Networks
+
+    * Warner Bros. Studio Facilities
+
+    * Castle Rock Entertainment
+
+    * New Line Cinema
+
+    * Turner Entertainment
+
+    * WaterTower Music
+
+    * Castle Rock Entertainment
+
+    * New Line Cinema
+
+    * Turner Entertainment
+
+    * WaterTower Music
+
+    Warner Bros. Entertainment Inc. (commonly known as Warner Bros.,[a] or abbreviated
+    as WB, or WBEI) is an American film and entertainment studio headquartered at
+    the Warner Bros. Studios complex in Burbank, California, and a subsidiary of Warner
+    Bros. Discovery (WBD). Founded in 1923 by four brothers, Harry, Albert, Sam, and
+    Jack Warner, the company established itself as a leader in the American film industry'
+- source_sentence: When does the new bunk'd come out?
   sentences:
   - '
 
-    ## Background
+    ### Influence on literature
 
-    This song shares inspirational overtones with the song "You''ll Never Walk Alone"
-    from Carousel. They are both sung by the female mentor characters in the shows,
-    and are used to give strength to the protagonists in the story, and both are given
-    powerful reprises at the end of their respective shows. As Oscar Hammerstein II
-    was writing the lyrics, it developed its own inspirational overtones along the
-    lines of an earlier Hammerstein song, "There''s a Hill Beyond a Hill". He felt
-    that the metaphors of climbing mountains and fording streams better fitted Maria''s
-    quest for her spiritual compass.[1] The muse behind the song was Sister Gregory,
-    the head of Drama at Rosary College in Illinois. The letters that she sent to
-    Hammerstein and to Mary Martin, the first Maria von Trapp on Broadway, described
-    the parallels between a nun''s choice for a religious life and the choices that
-    humans must make to find their purpose and direction in life. When she read the
-    manuscript of the lyrics, she confessed that it "drove [her] to the Chapel" because
-    the lyrics conveyed a "yearning that... ordinary souls feel but cannot communicate."[2]
+    Harry Potter transformed children''s literature.[165][166] In the 1970s, children''s
+    books  were generally realistic as opposed to fantastic,[167] while adult fantasy
+    became popular because of the influence of The Lord of the Rings.[168] The next
+    decade saw an increasing interest in grim, realist themes, with an outflow of
+    fantasy readers and writers to adult works.[169][170]
 
-    The song has often been sung by operatically'
-  - ' CB call sign or handle "Lost Sheep".
+    The commercial success of Harry Potter reversed this trend.[171] The scale of
+    its growth had no precedent in the children''s market: within four years of the
+    series'' inception, it occupied 28% of that field by revenue.[172] Children''s
+    literature rose in cultural status,[173] and fantasy became a dominant genre.[174]
+    Older works in the genre, including Diana Wynne Jones''s Chrestomanci series and
+    Diane Duane''s Young Wizards, were reprinted and rose in popularity; some authors
+    re-established their careers.[175] In the following decades, many Harry Potter
+    imitators and subversive responses grew popular.[176][177]
 
-    * Daisy Duke (Catherine Bach) is Bo, Luke, Coy, and Vance''s cousin. She is beautiful,
-    honest, and kind, although she can be slightly over-trusting and naïve, which
-    has led the Duke family into trouble on a number of occasions. She sometimes aspires
-    to be a songwriter and singer, and at other times, a reporter. She races around
-    Hazzard with her cousins, first in a yellow and black 1974 Plymouth Road Runner
-    (later a 1971 Plymouth Satellite was used) and then, from mid-season 2 on, in
-    her trademark white 1980 Jeep CJ-7, christened Dixie with a golden eagle emblem
-    on the hood (and the name "Dixie" on the hood sides). Daisy works as a waitress
-    at the Boar''s Nest, the local bar and pub owned by Boss Hogg, as part of an agreement
-    with Boss Hogg so that he would give Uncle Jesse and the boys a loan for a lower
-    interest rate so the boys could purchase the entry fee for a race in which they
-    wished to race the General Lee. The arrangement was supposed to be for an indefinite
-    time, but'
-  - '6), a critique of a standard psychological concept and the basis of all his further
-    work; Democracy and Education (1916), his celebrated work on progressive education;
-    Human Nature and Conduct (1922), a study of the function of habit in human behavior;[23]
-    The Public and its Problems (1927), a defense of democracy written in response
-    to Walter Lippmann''s The Phantom Public (1925); Experience and Nature (1925),
-    Dewey''s most "metaphysical" statement; Impressions of Soviet Russia and the Revolutionary
-    World (1929), a glowing travelogue from the nascent USSR.[24]
+    Rowling has been compared to Enid Blyton, who also wrote in simple language about
+    groups of children and long held sway'
+  - ' while Lou leads the counselors, with Ravi as the referee. Finn and Destiny are
+    disqualified for cheating and are forced by Ravi to stay in the camp office. Matteo
+    is later sent to the office after throwing a dodgeball at Ravi. Matteo reveals
+    that he intentionally got himself taken out of the game because he believes he
+    is too small to play, but Ravi later agrees to give the three a second chance
+    in the game. Meanwhile, in the forest, Emma is tagged by a camper and must wait
+    for one of her teammates to tag her so she can resume the game, but she is left
+    waiting all night. Lou and Zuri make a bet: if the counselors win, then Lou gets
+    a scarf that Zuri cherishes, and if the campers win, then Zuri gets Lou''s lucky
+    pig foot. Because of his small size and quick moves, Matteo is able to retrieve
+    the counselors'' totem and win the game for the campers. Zuri then disposes of
+    Lou''s pig foot in a fire, as she was tired of its odor smelling up the Woodchuck
+    cabin.;Guest stars: Lily Mae Silverstein as Lydia, Dawson Fletcher as Oscar
 
-    Art as Experience (1934), was Dewey''s major work on aesthetics; A Common Faith
-    (1934), a humanistic study of religion originally delivered as the Dwight H. Terry
-    Lectureship at Yale; Logic: The Theory of Inquiry (1938), a statement of Dewey''s
-    unusual conception of logic; Freedom and Culture (1939), a political work examining
-    the roots of fascism; and Knowing and the Known (1949), a book written in conjunction
-    with Arthur F. Bentley that systematically outlines the concept of trans-action,
-    which is central to his other works (see Transactionalism'
-- source_sentence: Where did the attack on fort sumter take place?
-  sentences:
-  - 'aman of having held back his full power and subsequently destroys one of the
-    Saibamen as incentive to the remaining five to obey the order to use their full
-    strength. Next, Yamcha decides to fight in place of Krillin; the Saibaman latches
-    onto him and self-destructs, killing Yamcha.
-
-    1010"Wait, Chaozu! Tenshinhan''s Screaming Kikōhō" / "Sit Tight, Chiaotzu! Tien''s
-    Screaming Tri-Beam!"[16]Transliteration: "Matte ro Chaozu! Tenshinhan Zekkyō no
-    Kikōhō" (Japanese: 待ってろ餃子! 天津飯絶叫の気功砲)24–25June 7, 2009 (2009-06-07)June 2, 2010
-
-    Nappa faces off against the Z Fighters and proves to be a formidable opponent.
-    During Nappa''s attack, Tien loses his arm. In an act of desperation, Chiaotzu
-    attaches himself to Nappa''s back and sacrifices himself using a kamikaze technique,
-    but Nappa is unharmed by'
-  - ' • City Council;List of Councilmembers;Jim Dodson (also Mayor pro tempore)Sean
-    GleasonWarren Gooch (also Mayor)Derrick HammondCharlie HensleyCharles Hope IIEllen
-    Smith
-
-    Area[5]
-
-     • Total89.95 sq mi (232.98 km2)
-
-     • Land85.25 sq mi (220.80 km2)
-
-     • Water4.70 sq mi (12.18 km2)
-
-     • Rank134th US
-
-    Elevation[6]850 ft (260 m)
-
-    Population (2020)[7]
-
-     • Total31,402
-
-     • Density368.35/sq mi (142.22/km2)
-
-    Time zoneUTC−5 (EST)
-
-     • Summer (DST)UTC−4 (EDT)
-
-    ZIP codes37830-37831
-
-    Area code865
-
-    FIPS code47-55120[8]
-
-    Websitewww.oakridgetn.gov
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    * Jim Dodson (also Mayor pro tempore)
-
-    * Sean Gleason
-
-    * Warren Gooch (also Mayor)
-
-    * Derrick Hammond
-
-    * Charlie'
+    5412"Toilets'
   - '
 
-    * Pennsylvania
+    ### Origins and concept
 
-    * Rhode Island
+    Attempts were made as early as 1937 by Walt Disney to adapt Hans Christian Andersen''s
+    fairy tale, "The Snow Queen", into a film. The tale focuses on two children, one
+    named Gerda, who served as the basis for Princess Anna, and the other named Kai,
+    who is "cursed with negativity" after his eyes are pierced with shards of glass
+    from an enchanted mirror and is later kidnapped by the Snow Queen.[9][10] However,
+    Disney struggled with creating a believable, multi-dimensional adaption of the
+    fairy tale''s title character,[11] who was intended to be a villain.[12] In the
+    story, she is described as "a woman, dressed in garments of white gauze, which
+    looked like millions of starry snow-flakes linked together. She was fair and beautiful,
+    but made of ice—shining and glittering ice. Still she was alive and her eyes sparkled
+    like bright stars, but there was neither peace nor rest in their glance."[11]
+    Disney was unable to find a way to make the Snow Queen more real and eventually
+    abandoned film plans.[11]
 
-    * South Carolina
+    Several film executives later made efforts towards the project, including Paul
+    and Gaëtan'
+- source_sentence: When is the last time the cleveland browns made the playoffs?
+  sentences:
+  - '–152, followed by Marie Severin through #160 and Dan Adkins through #168, the
+    final issue before the Nick Fury feature moved to its own title and Strange Tales
+    was renamed Doctor Strange.[15] Expanded to 20 pages per issue, the Doctor Strange
+    solo series ran 15 issues, #169–183 (June 1968 – November 1969), continuing the
+    numbering of Strange Tales.[15][16] Thomas wrote the run of new stories, joined
+    after the first three issues by the art team of penciler Gene Colan and inker
+    Tom Palmer through the end.
 
-    * Tennessee
+    After plans were announced for a never-released split book series featuring Doctor
+    Strange and Iceman, each in solo adventures.[17] Strange next appeared in the
+    first three issues (December 1971 – June 1972) of the quarterly showcase title
+    Marvel Feature. He appeared in both the main story detailing the formation of
+    superhero team the Defenders,[18] and the related back-up story. The character
+    then starred in a revival solo series in Marvel Premiere #3–14 (July 1972 – March
+    1974).[19] This arc marked the debut of another recurring foe, the entity Shuma-Gorath,'
+  - ' – 21 rushes, 163 yards, TD;Top receivers;JAX – Leonard Fournette – 4 receptions,
+    59 yards, TD;NYJ – Robby Anderson – 3 receptions, 59 yards
 
-    * Texas
+    First quarter
 
-    * Utah
+    * JAX – Leonard Fournette 10-yard pass from Blake Bortles (Jason Myers kick),
+    8:08. Jaguars 7–0. Drive: 10 plays, 61 yards, 5:15.
 
-    * Vermont
+    * NYJ – Bilal Powell 75-yard run (Chandler Catanzaro kick), 8:02. Tied 7–7. Drive:
+    1 play, 75 yards, 0:13.
 
-    * Virginia
+    Second quarter
 
-    * Washington
+    * JAX – Jason Myers 30-yard field goal, 5:13. Jaguars 10–7. Drive: 13 plays, 75
+    yards, 7:15.
 
-    * West Virginia
+    * NYJ – Chandler Catanzaro 45-yard field goal, 1:14. Tied 10–10. Drive: 9 plays,
+    42 yards, 3:59.
 
-    * Wisconsin
+    Third quarter
 
-    * Atlanta
+    * NYJ – Elijah McGuire 69-yard run (Chandler Catanzaro'
+  - '
 
-    * Charleston
+    #### Table: 0Team0;Last appearance in post-season;Seasons
 
-    * Chattanooga
+    New York Jets ^;2010 AFC Championship;13
 
-    * New Orleans
+    Denver Broncos;Super Bowl  50;8
 
-    * Richmond
+    Carolina Panthers;2017 NFC Wild Card;6
 
-    * Washington, D.C.
+    Atlanta Falcons;2017 NFC Divisional;6
 
-    * Winchester
+    Washington Commanders;2020 NFC Wild Card;3
 
-    * Atlanta
+    Indianapolis Colts;2020 AFC Wild Card;3
 
-    * Charleston
+    Chicago Bears;2020 NFC Wild Card;3
 
-    * Chattanooga
+    New Orleans Saints;2020 NFC Divisional;3
 
-    * New Orleans
+    New England Patriots;2021 AFC Wild Card;2
 
-    * Richmond
+    Arizona Cardinals;2021 NFC Wild Card;2
 
-    * Washington, D.C.
+    Tennessee Titans;2021 AFC Divisional;2
 
-    * Winchester
+    Las Vegas Raiders;2021 AFC Wild Card;2
 
+    Los Angeles Chargers;2022 AFC Wild Card;1
 
+    Minnesota Vikings;2022 NFC Wild Card;1
 
+    Seattle Seahawks;2022 NFC Wild Card;1
 
+    Jacksonville Jaguars;2022 AFC Divisional;1
+
+    New York Giants;2022 NFC Divisional;1
+
+    Cincinnati Bengals;2022 AFC Championship;1
+
+    2023 playoff teams
+
+    Pittsburgh Steelers;2023 AFC Wild Card;0
+
+    C'
+- source_sentence: New zealand was a part of what supercontinent until the Jurassic
+    period?
+  sentences:
+  - disturbing looking CG-rendered characters" and complained that "most of the game
+    involves running errands" for characters. Thompson wrote that "for a game made
+    this late in the system's life, it sure does look ugly. It's grainy, the famous
+    PlayStation distortion is in full effect, and the only two colors that seem to
+    be in the developer's palate are brown and green. It's another reason that one
+    gets lost so easily; everything looks the same. And if you're big into banjo music...
+    you won't like the sound here one bit. True connoisseurs of good, old-fashioned
+    bluegrass will hate the generic chase music that blares here, as will most anyone
+    else." Thompson said, "The two-player modes are fine for a couple of plays but
+    fail to sustain their excitement beyond that," and concluded that "there just
+    isn't enough of a hook here unless you're a tremendous fan of the show."[4]
+  - '
+
+    ## Terminology
+
+    The continent of Australia is sometimes known by the names Sahul, Australinea,
+    or Meganesia to differentiate it from the country of Australia, and consists of
+    the landmasses which sit on Australia''s continental plate. This includes mainland
+    Australia, Tasmania, and the island of New Guinea, which comprises Papua New Guinea
+    and  Western New Guinea (Papua and West Papua, provinces of Indonesia).[15][16][17][18]
+    The name "Sahul" takes its name from the Sahul Shelf, which is part of the continental
+    shelf of the Australian continent.The term Oceania, originally a "great division"
+    of the world in the 1810s, was replaced in English language countries by the concept
+    of Australia as one of the world''s continents in the 1950s.[19]
+
+    Prior to the 1950s, before the popularization of the theory of plate tectonics,
+    Antarctica, Australia and Greenland were sometimes described as island continents,
+    but none were usually taught as one of the world''s continents in English-speaking
+    countries.[20][21][19] Scottish cartographer John Bartholomew wrote in 1873 that,
+    "the New World consists'
+  - '
+
+    #### Table: Game information
+
+    First quarter;CLE – Andrew Hawkins 5-yard pass from Josh McCown (Cody Parkey kick),
+    11:45. Browns 7–0. Drive: 8 plays, 75 yards, 3:15.;CLE – Cody Parkey 41-yard field
+    goal, 3:11. Browns 10–0. Drive: 8 plays, 59 yards, 3:42.;Second quarter;NYJ –
+    Bilal Powell 35-yard run (Nick Folk kick), 12:44. Browns 10–7. Drive: 12 plays,
+    87 yards, 5:27.;CLE – Isaiah Crowell 1-yard run (Cody Parkey kick), 1:51. Browns
+    17–7. Drive: 9 plays, 70 yards, 4:40;CLE – Cody Parkey 27-yard field goal, 0:00.
+    Browns 20–7. Drive: 6 plays, 49 yards, 1:25.;Third quarter;NYJ – Quincy Enunwa
+    24-yard pass from Ryan Fitzpatrick (Nick Folk kick), 8:15. Browns 20'
+- source_sentence: Who sings counterpoint on i can't tell you why by the eagles?
+  sentences:
+  - ' systemic perfusion such as dizziness, confusion, and cool extremities at rest.
+    Loss of consciousness may also occur due to loss of blood supply to the brain.[34]
 
     '
-- source_sentence: How many episodes does the dragonball z series have?
-  sentences:
   - '
 
-    #### New York Giants
+    ## Covers
 
+    * In 1989, former lead singer of The Manhattans, Gerald Alston covered I Can''t
+    Tell You Why  for Motown records. It reached number 52 on the Billboard Hot R&B/Hip-Hop
+    Singles & Tracks.[16]
 
-    The New York Jets previously maintained a high tension rivalry against their in-town
-    counterparts, the New York Giants, that has since diminished due to the infrequency
-    of the teams meeting in the regular season.[120] The pinnacle of the rivalry came
-    on August 17, 1969, when the Jets and Giants met for the first time, in a preseason
-    game which was viewed as a "turf war" by both sides.[120] The Giants, considered
-    a mediocre team at the time, were regarded as underdogs and faced considerable
-    scrutiny from their fans and the media.[120]  The Jets 37–14 win resulted in the
-    firing of Giants coach Allie Sherman.[120]
+    * In 1990, R&B singer Howard Hewett covered "I Can''t Tell You Why" which is on
+    his Very Best of Howard Hewett album. It peaked at number 24 on the Billboard
+    Hot R&B/Hip-Hop Singles & Tracks.[17]
 
-    The Jets met the Giants in 1988 for the final game of the regular season.[121]
-    The Jets, with a 7–7–1 record, had little to lose as their hopes for playoff contention
-    had vanished.[121] The 10–5 Giants were fighting for a playoff spot, and a victory
-    would have clinched a division title and playoff berth.[121] Although the six
-    point favorites,[121] the Giants were unable to overcome a Jets defense that sacked
-    their quarterback Phil Simms eight times'
-  - ' several months before the translations were available. This led to more and
-    more copies of the English editions being sold to impatient fans in non-English
-    speaking countries; for example, such was the clamour to read Harry Potter and
-    the Order of the Phoenix that its English language edition became the first English-language
-    book ever to top the best-seller list in France.[84]
+    * In 1993, "I Can''t Tell You Why" was covered by American country music artist
+    Vince Gill for the Eagles tribute album Common Thread: The Songs of the Eagles.
+    Schmit sang backing vocals on the recording.[18] This version went to number 42
+    on the Hot Country Songs chart.[19]
 
-    The United States editions were adapted into American English to make them more
-    understandable to a young American audience.[85]
+    * In 1995, R&B group Brownstone covered the song on their debut album, From the
+    Bottom Up. Their version reached number 54 on the Billboard Hot 100, number 22
+    on the Hot R&B chart and number 27 in the UK top 75.[20]
 
-    '
-  - '. As the tyrant stares in awe at his more-powerful opponent, he realizes that
-    his worst nightmare has come true - a Super Saiyan, which Frieza had long secretly
-    feared, has finally been born. In a desperate attempt to defeat Goku, Frieza hurls
-    an attack down upon Namek itself, in an effort to destroy the planet and everyone
-    on it.
-
-    4931"Exact Vengeance, Son Goku! Countdown to the Planet''s Collapse" / "Avenge
-    the Fallen, Goku! Countdown to the Planet''s Destruction!"[15]Transliteration:
-    "Kataki o Ute Son Gokū! Wakusei Hōkai no Kauntodaun" (Japanese: 仇を討て孫悟空! 惑星崩壊のカウントダウン)97B–98March 21, 2010 (2010-03-21)December
-    16, 2010
-
-    Frieza''s attack on Namek detonates the planet''s core, and he says that Namek
-    will explode in five minutes. Super Saiyan Goku is confident that he can defeat
-    Frieza within that time; however, Frie'
-- source_sentence: In what stadium was the Rose Bowl played this year?
-  sentences:
-  - '
-
-    #### Table: 7-inch single[23];"Bette Davis Eyes" – 3:45;"Miss You Tonite" – 5:11;US
-    12-inch maxi-single[24];"Bette Davis Eyes" – 3:45;"Miss You Tonite" – 5:11
-
-    * 7-inch single[23]
-
-    1 "Bette Davis Eyes" – 3:45
-
-    2 "Miss You Tonite" – 5:11
-
-    * US 12-inch maxi-single[24]
-
-    1 "Bette Davis Eyes" – 3:45
-
-    2 "Miss You Tonite" – 5:11
-
-
-    ## Charts'
-  - ' wizards are the offspring of unions between humans and magical creatures. Examples
-    include Fleur Delacour and her sister Gabrielle, who are both a quarter Veela;
-    Rubeus Hagrid, who is half-giant; and Filius Flitwick, who has goblin ancestry.[7]
-    Prejudiced wizards sometimes use the derogatory term "half-breed" to refer to
-    mixed-species individuals.
-
-
-    ## Magical creatures
-
-
-    The Harry Potter universe is home to many magical creatures. Some are derived
-    from real-world folklore and mythology, while others were created by Rowling.
-    Some are modified versions of creatures from real-world lore. Below are a few
-    of the more notable creatures described in the series.
-
-    '
-  - "3\nOregon State;Pac;3;1;2;1965\nWashington State†;Pac;3;0;3;2003\nArizona State;Pac;2;1;1;1997\n\
-    Minnesota;B1G;2;1;1;1962\nNorthwestern;B1G;2;1;1;1996\nPurdue;B1G;2;1;1;2001\n\
-    Utah;Pac;2;0;2;2023\nIndiana;B1G;1;0;1;1968\nBig Ten Conference;B1G;74;35;39;0;2024\n\
-    Pac-12 Conference;Pac;101;52;46;3;2023\nCurrent Big Ten teams Maryland and Rutgers\
-    \ have never appeared in the Rose Bowl. Nebraska has appeared twice but never\
-    \ as a member of the Big Ten. In 2024, as part of a dissolution of the Pac-12,\
-    \ the Big Ten gained four teams that have represented the Pac-12 and its predecessors\
-    \ in the Rose Bowl numerous times: Oregon, UCLA, USC, and Washington. \n"
-- source_sentence: What place are the new york jets in?
-  sentences:
-  - ' of Queen Victoria was selected to be transformed into a public holiday, as it
-    was a date that appealed to both English  and French Canadians. At the time, loyalty
-    to the Crown was seen as a key trait that distinguished Canada from the United
-    States and the monarchy was viewed as a "guarantor of minority rights" in the
-    colony.[5] The Queen''s birthday was officially designated as a public holiday
-    by legislation passed in 1845, transforming the date from a military event to
-    a civilian holiday[1][2][6] and making it Canada''s now-oldest official holiday.[7]
-
-    On Victoria''s 35th birthday, in 1854, some 5,000 residents of Canada West gathered
-    in front of Government House (near present-day King and Simcoe Streets in Toronto)
-    to "give cheers to their queen".[8] An example of a typical 19th-century celebration
-    of the Queen''s birthday took place on May 24, 1866, in Omemee, also in Canada
-    West: The town mounted a day-long fête, including pre-dawn serenades, picnics,
-    athletic competitions, a display of illuminations, a torch-light procession, and
-    a gun'
-  - ' is kidnapped by Hordak (vampire/demon-faced sorcerer with a cowl of bones, who
-    can transform his body into various mechanical devices) and Skeletor (Hordak''s
-    apprentice at the time) and taken to the world of Etheria (a planet ruled by the
-    Horde, and the main setting of the She-Ra series).[30][170] Adora is raised and
-    brainwashed by Hordak and his confidant Shadow Weaver (a red-robed witch with
-    a hidden face, powerful in dark magic), to eventually become Force Captain of
-    the Horde.[29][40] After encountering her brother He-Man (who is on a mission
-    from the Sorceress to find her on Etheria), she eventually acquires the Sword
-    of Protection and seeks to learn the true evil of the Horde. After first transforming
-    into She-Ra and seeing the error of her ways, she becomes a member of the Great
-    Rebellion; a secret small band of rebels, living in the Whispering Woods and fighting
-    to free Etheria from the tyrannical rule of Hordak.[5][29] Just as Prince Adam
-    transforms into He-Man with the use of his Sword of Power, Adora transforms into'
-  - ' (Chandler Catanzaro kick), 8:47. Raiders 42–20. Drive: 10 plays, 75 yards, 3:45.;OAK
-    – Giorgio Tavecchio 29-yard field goal, 0:29. Raiders 45–20. Drive: 12 plays,
-    37 yards, 8:17.;Top passers;NYJ – Josh McCown – 17/25, 166 yards, 2 TD;OAK – Derek
-    Carr – 23/28, 230 yards, 3 TD;Top rushers;NYJ – Matt Forte – 9 rushes, 53 yards;OAK
-    – Jalen Richard – 6 rushes, 58 yards, TD;Top receivers;NYJ – Jermaine Kearse –
-    4 receptions, 64 yards, 2 TD;OAK – Michael Crabtree – 6 receptions, 80 yards,
-    3 TD'
+    * Alternative rock band Lazlo Bane covered the song for'
+  - ''
+model-index:
+- name: SentenceTransformer based on sentence-transformers/all-MiniLM-L6-v2
+  results:
+  - task:
+      type: semantic-similarity
+      name: Semantic Similarity
+    dataset:
+      name: validation
+      type: validation
+    metrics:
+    - type: pearson_cosine
+      value: .nan
+      name: Pearson Cosine
+    - type: spearman_cosine
+      value: .nan
+      name: Spearman Cosine
+    - type: pearson_manhattan
+      value: .nan
+      name: Pearson Manhattan
+    - type: spearman_manhattan
+      value: .nan
+      name: Spearman Manhattan
+    - type: pearson_euclidean
+      value: .nan
+      name: Pearson Euclidean
+    - type: spearman_euclidean
+      value: .nan
+      name: Spearman Euclidean
+    - type: pearson_dot
+      value: .nan
+      name: Pearson Dot
+    - type: spearman_dot
+      value: .nan
+      name: Spearman Dot
+    - type: pearson_max
+      value: .nan
+      name: Pearson Max
+    - type: spearman_max
+      value: .nan
+      name: Spearman Max
+    - type: pearson_cosine
+      value: .nan
+      name: Pearson Cosine
+    - type: spearman_cosine
+      value: .nan
+      name: Spearman Cosine
+    - type: pearson_manhattan
+      value: .nan
+      name: Pearson Manhattan
+    - type: spearman_manhattan
+      value: .nan
+      name: Spearman Manhattan
+    - type: pearson_euclidean
+      value: .nan
+      name: Pearson Euclidean
+    - type: spearman_euclidean
+      value: .nan
+      name: Spearman Euclidean
+    - type: pearson_dot
+      value: .nan
+      name: Pearson Dot
+    - type: spearman_dot
+      value: .nan
+      name: Spearman Dot
+    - type: pearson_max
+      value: .nan
+      name: Pearson Max
+    - type: spearman_max
+      value: .nan
+      name: Spearman Max
+    - type: pearson_cosine
+      value: .nan
+      name: Pearson Cosine
+    - type: spearman_cosine
+      value: .nan
+      name: Spearman Cosine
+    - type: pearson_manhattan
+      value: .nan
+      name: Pearson Manhattan
+    - type: spearman_manhattan
+      value: .nan
+      name: Spearman Manhattan
+    - type: pearson_euclidean
+      value: .nan
+      name: Pearson Euclidean
+    - type: spearman_euclidean
+      value: .nan
+      name: Spearman Euclidean
+    - type: pearson_dot
+      value: .nan
+      name: Pearson Dot
+    - type: spearman_dot
+      value: .nan
+      name: Spearman Dot
+    - type: pearson_max
+      value: .nan
+      name: Pearson Max
+    - type: spearman_max
+      value: .nan
+      name: Spearman Max
+    - type: pearson_cosine
+      value: .nan
+      name: Pearson Cosine
+    - type: spearman_cosine
+      value: .nan
+      name: Spearman Cosine
+    - type: pearson_manhattan
+      value: .nan
+      name: Pearson Manhattan
+    - type: spearman_manhattan
+      value: .nan
+      name: Spearman Manhattan
+    - type: pearson_euclidean
+      value: .nan
+      name: Pearson Euclidean
+    - type: spearman_euclidean
+      value: .nan
+      name: Spearman Euclidean
+    - type: pearson_dot
+      value: .nan
+      name: Pearson Dot
+    - type: spearman_dot
+      value: .nan
+      name: Spearman Dot
+    - type: pearson_max
+      value: .nan
+      name: Pearson Max
+    - type: spearman_max
+      value: .nan
+      name: Spearman Max
+    - type: pearson_cosine
+      value: .nan
+      name: Pearson Cosine
+    - type: spearman_cosine
+      value: .nan
+      name: Spearman Cosine
+    - type: pearson_manhattan
+      value: .nan
+      name: Pearson Manhattan
+    - type: spearman_manhattan
+      value: .nan
+      name: Spearman Manhattan
+    - type: pearson_euclidean
+      value: .nan
+      name: Pearson Euclidean
+    - type: spearman_euclidean
+      value: .nan
+      name: Spearman Euclidean
+    - type: pearson_dot
+      value: .nan
+      name: Pearson Dot
+    - type: spearman_dot
+      value: .nan
+      name: Spearman Dot
+    - type: pearson_max
+      value: .nan
+      name: Pearson Max
+    - type: spearman_max
+      value: .nan
+      name: Spearman Max
 ---
 
 # SentenceTransformer based on sentence-transformers/all-MiniLM-L6-v2
@@ -396,9 +550,9 @@ from sentence_transformers import SentenceTransformer
 model = SentenceTransformer("sentence_transformers_model_id")
 # Run inference
 sentences = [
-    'What place are the new york jets in?',
-    ' (Chandler Catanzaro kick), 8:47. Raiders 42–20. Drive: 10 plays, 75 yards, 3:45.;OAK – Giorgio Tavecchio 29-yard field goal, 0:29. Raiders 45–20. Drive: 12 plays, 37 yards, 8:17.;Top passers;NYJ – Josh McCown – 17/25, 166 yards, 2 TD;OAK – Derek Carr – 23/28, 230 yards, 3 TD;Top rushers;NYJ – Matt Forte – 9 rushes, 53 yards;OAK – Jalen Richard – 6 rushes, 58 yards, TD;Top receivers;NYJ – Jermaine Kearse – 4 receptions, 64 yards, 2 TD;OAK – Michael Crabtree – 6 receptions, 80 yards, 3 TD',
-    ' of Queen Victoria was selected to be transformed into a public holiday, as it was a date that appealed to both English  and French Canadians. At the time, loyalty to the Crown was seen as a key trait that distinguished Canada from the United States and the monarchy was viewed as a "guarantor of minority rights" in the colony.[5] The Queen\'s birthday was officially designated as a public holiday by legislation passed in 1845, transforming the date from a military event to a civilian holiday[1][2][6] and making it Canada\'s now-oldest official holiday.[7]\nOn Victoria\'s 35th birthday, in 1854, some 5,000 residents of Canada West gathered in front of Government House (near present-day King and Simcoe Streets in Toronto) to "give cheers to their queen".[8] An example of a typical 19th-century celebration of the Queen\'s birthday took place on May 24, 1866, in Omemee, also in Canada West: The town mounted a day-long fête, including pre-dawn serenades, picnics, athletic competitions, a display of illuminations, a torch-light procession, and a gun',
+    "Who sings counterpoint on i can't tell you why by the eagles?",
+    '\n## Covers\n* In 1989, former lead singer of The Manhattans, Gerald Alston covered I Can\'t Tell You Why  for Motown records. It reached number 52 on the Billboard Hot R&B/Hip-Hop Singles & Tracks.[16]\n* In 1990, R&B singer Howard Hewett covered "I Can\'t Tell You Why" which is on his Very Best of Howard Hewett album. It peaked at number 24 on the Billboard Hot R&B/Hip-Hop Singles & Tracks.[17]\n* In 1993, "I Can\'t Tell You Why" was covered by American country music artist Vince Gill for the Eagles tribute album Common Thread: The Songs of the Eagles. Schmit sang backing vocals on the recording.[18] This version went to number 42 on the Hot Country Songs chart.[19]\n* In 1995, R&B group Brownstone covered the song on their debut album, From the Bottom Up. Their version reached number 54 on the Billboard Hot 100, number 22 on the Hot R&B chart and number 27 in the UK top 75.[20]\n* Alternative rock band Lazlo Bane covered the song for',
+    ' systemic perfusion such as dizziness, confusion, and cool extremities at rest. Loss of consciousness may also occur due to loss of blood supply to the brain.[34]\n',
 ]
 embeddings = model.encode(sentences)
 print(embeddings.shape)
@@ -434,6 +588,95 @@ You can finetune this model on your own dataset.
 *List how the model may foreseeably be misused and address what users ought not to do with the model.*
 -->
 
+## Evaluation
+
+### Metrics
+
+#### Semantic Similarity
+* Dataset: `validation`
+* Evaluated with [<code>EmbeddingSimilarityEvaluator</code>](https://sbert.net/docs/package_reference/sentence_transformer/evaluation.html#sentence_transformers.evaluation.EmbeddingSimilarityEvaluator)
+
+| Metric             | Value   |
+|:-------------------|:--------|
+| pearson_cosine     | nan     |
+| spearman_cosine    | nan     |
+| pearson_manhattan  | nan     |
+| spearman_manhattan | nan     |
+| pearson_euclidean  | nan     |
+| spearman_euclidean | nan     |
+| pearson_dot        | nan     |
+| spearman_dot       | nan     |
+| pearson_max        | nan     |
+| **spearman_max**   | **nan** |
+
+#### Semantic Similarity
+* Dataset: `validation`
+* Evaluated with [<code>EmbeddingSimilarityEvaluator</code>](https://sbert.net/docs/package_reference/sentence_transformer/evaluation.html#sentence_transformers.evaluation.EmbeddingSimilarityEvaluator)
+
+| Metric             | Value   |
+|:-------------------|:--------|
+| pearson_cosine     | nan     |
+| spearman_cosine    | nan     |
+| pearson_manhattan  | nan     |
+| spearman_manhattan | nan     |
+| pearson_euclidean  | nan     |
+| spearman_euclidean | nan     |
+| pearson_dot        | nan     |
+| spearman_dot       | nan     |
+| pearson_max        | nan     |
+| **spearman_max**   | **nan** |
+
+#### Semantic Similarity
+* Dataset: `validation`
+* Evaluated with [<code>EmbeddingSimilarityEvaluator</code>](https://sbert.net/docs/package_reference/sentence_transformer/evaluation.html#sentence_transformers.evaluation.EmbeddingSimilarityEvaluator)
+
+| Metric             | Value   |
+|:-------------------|:--------|
+| pearson_cosine     | nan     |
+| spearman_cosine    | nan     |
+| pearson_manhattan  | nan     |
+| spearman_manhattan | nan     |
+| pearson_euclidean  | nan     |
+| spearman_euclidean | nan     |
+| pearson_dot        | nan     |
+| spearman_dot       | nan     |
+| pearson_max        | nan     |
+| **spearman_max**   | **nan** |
+
+#### Semantic Similarity
+* Dataset: `validation`
+* Evaluated with [<code>EmbeddingSimilarityEvaluator</code>](https://sbert.net/docs/package_reference/sentence_transformer/evaluation.html#sentence_transformers.evaluation.EmbeddingSimilarityEvaluator)
+
+| Metric             | Value   |
+|:-------------------|:--------|
+| pearson_cosine     | nan     |
+| spearman_cosine    | nan     |
+| pearson_manhattan  | nan     |
+| spearman_manhattan | nan     |
+| pearson_euclidean  | nan     |
+| spearman_euclidean | nan     |
+| pearson_dot        | nan     |
+| spearman_dot       | nan     |
+| pearson_max        | nan     |
+| **spearman_max**   | **nan** |
+
+#### Semantic Similarity
+* Dataset: `validation`
+* Evaluated with [<code>EmbeddingSimilarityEvaluator</code>](https://sbert.net/docs/package_reference/sentence_transformer/evaluation.html#sentence_transformers.evaluation.EmbeddingSimilarityEvaluator)
+
+| Metric             | Value   |
+|:-------------------|:--------|
+| pearson_cosine     | nan     |
+| spearman_cosine    | nan     |
+| pearson_manhattan  | nan     |
+| spearman_manhattan | nan     |
+| pearson_euclidean  | nan     |
+| spearman_euclidean | nan     |
+| pearson_dot        | nan     |
+| spearman_dot       | nan     |
+| pearson_max        | nan     |
+| **spearman_max**   | **nan** |
+
 <!--
 ## Bias, Risks and Limitations
 
@@ -453,19 +696,19 @@ You can finetune this model on your own dataset.
 #### Unnamed Dataset
 
 
-* Size: 14,088 training samples
+* Size: 9,861 training samples
 * Columns: <code>sentence_0</code> and <code>sentence_1</code>
 * Approximate statistics based on the first 1000 samples:
   |         | sentence_0                                                                         | sentence_1                                                                          |
   |:--------|:-----------------------------------------------------------------------------------|:------------------------------------------------------------------------------------|
   | type    | string                                                                             | string                                                                              |
-  | details | <ul><li>min: 11 tokens</li><li>mean: 13.31 tokens</li><li>max: 36 tokens</li></ul> | <ul><li>min: 2 tokens</li><li>mean: 203.68 tokens</li><li>max: 256 tokens</li></ul> |
+  | details | <ul><li>min: 11 tokens</li><li>mean: 13.32 tokens</li><li>max: 36 tokens</li></ul> | <ul><li>min: 2 tokens</li><li>mean: 202.57 tokens</li><li>max: 256 tokens</li></ul> |
 * Samples:
-  | sentence_0                                                               | sentence_1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-  |:-------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | <code>What is the name of the pirate in spongebob?</code>                | <code><br>## Soundtrack<br><br>Gregor Narholz composed the score for the film,[47][48][49] conducting the recording sessions (in 5.1 surround sound) with the London Metropolitan Orchestra at Abbey Road Studios in London.[50][51] Narholz was signed when series music editor Nick Carr recommended him to Hillenburg after they worked together at the Associated Production Music library.[9] Narholz was honored at the 2005 ASCAP Film and Television Music Awards for his work on the film,[52] and received a nomination for Music in an Animated Feature Production at the 32nd Annie Awards.[53][54]<br>American rock band The Flaming Lips recorded "SpongeBob And Patrick Confront the Psychic Wall of Energy".[55][56] They shot the song's music video, directed by band member Wayne Coyne and filmmaker Bradley Beesley, in Austin, Texas.[55] Coyne said, "Stephen Hillenburg seems to be a fan of the weirder music of the late '80s and early '90s. He wanted to evoke the music he got turned onto back then."[55] Coyne suggested a duet with Justin Timberlake, but Hillenburg</code> |
-  | <code>What place are the new york jets in?</code>                        | <code> – Julian Edelman – 8 receptions, 83 yards<br>* NYJ – Quincy Enunwa – 5 receptions, 109 yards, TD<br>With the heartbreaking loss, the Jets fell to 3-8.<br><br>### Week 13: vs. Indianapolis Colts<br>#### Table: Quarter;1;2;34Total<br>Colts;14;10;10741<br>Jets;0;3;0710<br>at MetLife Stadium, East Rutherford, New Jersey<br>* Date: December 5<br>* Game time: 8:30 p.m. EST<br>* Game weather: 45 °F (7 °C), clear<br>* Game attendance: 78,160<br>* Referee: Ronald Torbert<br>* TV announcers (ESPN): Sean McDonough, Jon Gruden and Lisa Salters<br>* Recap, Gamebook<br><br></code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-  | <code>When did the first electrified underground metro line open?</code> | <code>308]<br>Seoul; South Korea;Seoul Metropolitan Subway[Nb 57][Nb 58];1974[309];2022[310];337[311];11[311];358.46 km (222.74 mi)[311][Nb 58];2,403 (2022)[R 75][R Nb 20][R Nb 21]<br>Shinbundang Line[Nb 58] (Neo Trans);2011;2022[312];16;1;33.4 km (20.8 mi)[313];122.5 (2019)[R 76][R Nb 22]<br>Kuala Lumpur; Malaysia ;Rapid KL[Nb 59];1996;2023[314];138[Nb 60];6;204.8 km (127.3 mi);238.5 (2023)[R 77]<br>Guadalajara; Mexico;Guadalajara Electric Rail System[Nb 61];1994[Nb 62];2020;48;3;46.5 km (28.9 mi);139.5 (2022)[R 78]<br>Mexico City</code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+  | sentence_0                                                                                   | sentence_1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+  |:---------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | <code>What was the name of South Vietnamese currency from 1954 to September 22, 1975?</code> | <code> prompted laws requiring private and municipal banks to transact and offer services for coins and the full discontinuation of small denomination and cotton-based notes. Also, the coins did not gain popularity from the Vietnamese people.[19] Eventually, State Bank of Vietnam withdrew its distribution in April 2011.[20][21]<br></code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+  | <code>When is the last season the cleveland browns made the playoffs?</code>                 | <code>ed in brown (orange on the home brown and white on the orange alternate jerseys) in a custom sans-serif font type. <br>The Browns brought back the all-brown look for the NFL Color Rush program in 2016, minus the white elements. In 2018, despite the Color Rush program being discontinued, the uniform was worn at home three times. For the 2019 season, the Browns promoted this uniform to their primary home uniform and donned it for six home games as well as any away game in which the home team wore white.[100]<br>The club unveiled a new uniform design for the 2020 season. The new uniform design pays homage to the Browns' classic uniform design from years past.[101][102]<br>In 2023, the Browns introduced new "White Out" uniforms, an all-white uniform, featuring a white helmet, that will be worn during select home games.  This will mark the first time since 1950 the Browns will have non-orange helmets.  The white helmets, which will feature an orange stripe down the middle flanked by two brown stripes (basically inverting the regular helmet's colors), are an homage to the early years of the franchise.[103][</code> |
+  | <code>Where did the attack on fort sumter take place?</code>                                 | <code> Lee Day;Confederate Memorial Hall;Disenfranchisement;Black Codes;Jim Crow;Historiographic issues;Lost Cause mythology;Modern display of the Confederate flag;Red Shirts;Sons of Confederate Veterans;Sons of Union Veterans of the Civil War;Southern Historical Society;United Confederate Veterans;United Daughters of the Confederacy;Children of the Confederacy;Wilmington insurrection of 1898;Monumentsand memorialsUnion;List;Grand Army of the Republic;memorials to Lincoln;Confederate;List;artworks in Capitol;memorials to Davis;memorials to Lee;Removal;Cemeteries;Ladies' Memorial Associations;U.S. national cemeteries;Veterans;1913 Gettysburg reunion;1938 Gettysburg reunion;Confederate Memorial Hall;Confederate Veteran;Grand Army of the Republic;Military Order of the Loyal Legion of the U.S.;Old soldiers' homes;Southern Cross of Honor;United Confederate Veterans<br>Related topicsMilitary;Arms;Campaign Medal;Cavalry;Confederate Home Guard;Confederate railroads;Confeder</code>                                                                                                                                                 |
 * Loss: [<code>MultipleNegativesRankingLoss</code>](https://sbert.net/docs/package_reference/sentence_transformer/losses.html#multiplenegativesrankingloss) with these parameters:
   ```json
   {
@@ -477,7 +720,9 @@ You can finetune this model on your own dataset.
 ### Training Hyperparameters
 #### Non-Default Hyperparameters
 
-- `num_train_epochs`: 10
+- `per_device_train_batch_size`: 32
+- `per_device_eval_batch_size`: 32
+- `num_train_epochs`: 5
 - `fp16`: True
 - `multi_dataset_batch_sampler`: round_robin
 
@@ -488,8 +733,8 @@ You can finetune this model on your own dataset.
 - `do_predict`: False
 - `eval_strategy`: no
 - `prediction_loss_only`: True
-- `per_device_train_batch_size`: 8
-- `per_device_eval_batch_size`: 8
+- `per_device_train_batch_size`: 32
+- `per_device_eval_batch_size`: 32
 - `per_gpu_train_batch_size`: None
 - `per_gpu_eval_batch_size`: None
 - `gradient_accumulation_steps`: 1
@@ -501,7 +746,7 @@ You can finetune this model on your own dataset.
 - `adam_beta2`: 0.999
 - `adam_epsilon`: 1e-08
 - `max_grad_norm`: 1
-- `num_train_epochs`: 10
+- `num_train_epochs`: 5
 - `max_steps`: -1
 - `lr_scheduler_type`: linear
 - `lr_scheduler_kwargs`: {}
@@ -592,6 +837,7 @@ You can finetune this model on your own dataset.
 - `optim_target_modules`: None
 - `batch_eval_metrics`: False
 - `eval_on_start`: False
+- `use_liger_kernel`: False
 - `eval_use_gather_object`: False
 - `batch_sampler`: batch_sampler
 - `multi_dataset_batch_sampler`: round_robin
@@ -599,53 +845,24 @@ You can finetune this model on your own dataset.
 </details>
 
 ### Training Logs
-| Epoch  | Step  | Training Loss |
-|:------:|:-----:|:-------------:|
-| 0.2839 | 500   | 0.6157        |
-| 0.5679 | 1000  | 0.4395        |
-| 0.8518 | 1500  | 0.3725        |
-| 1.1357 | 2000  | 0.3036        |
-| 1.4196 | 2500  | 0.2813        |
-| 1.7036 | 3000  | 0.2488        |
-| 1.9875 | 3500  | 0.24          |
-| 2.2714 | 4000  | 0.2304        |
-| 2.5554 | 4500  | 0.2103        |
-| 2.8393 | 5000  | 0.1994        |
-| 3.1232 | 5500  | 0.1951        |
-| 3.4072 | 6000  | 0.2011        |
-| 3.6911 | 6500  | 0.1822        |
-| 3.9750 | 7000  | 0.1889        |
-| 4.2589 | 7500  | 0.1785        |
-| 4.5429 | 8000  | 0.1748        |
-| 4.8268 | 8500  | 0.1785        |
-| 5.1107 | 9000  | 0.1667        |
-| 5.3947 | 9500  | 0.1826        |
-| 5.6786 | 10000 | 0.1609        |
-| 5.9625 | 10500 | 0.173         |
-| 6.2465 | 11000 | 0.1632        |
-| 6.5304 | 11500 | 0.1526        |
-| 6.8143 | 12000 | 0.1659        |
-| 7.0982 | 12500 | 0.1473        |
-| 7.3822 | 13000 | 0.1578        |
-| 7.6661 | 13500 | 0.1383        |
-| 7.9500 | 14000 | 0.1549        |
-| 8.2340 | 14500 | 0.1419        |
-| 8.5179 | 15000 | 0.1322        |
-| 8.8018 | 15500 | 0.1429        |
-| 9.0857 | 16000 | 0.1345        |
-| 9.3697 | 16500 | 0.139         |
-| 9.6536 | 17000 | 0.1266        |
-| 9.9375 | 17500 | 0.1383        |
+| Epoch | Step | validation_spearman_max |
+|:-----:|:----:|:-----------------------:|
+| 1.0   | 247  | nan                     |
+| 1.0   | 62   | nan                     |
+| 2.0   | 124  | nan                     |
+| 3.0   | 186  | nan                     |
+| 4.0   | 248  | nan                     |
+| 5.0   | 310  | nan                     |
 
 
 ### Framework Versions
-- Python: 3.11.9
-- Sentence Transformers: 3.0.1
-- Transformers: 4.44.2
-- PyTorch: 2.4.0+cu121
-- Accelerate: 0.33.0
-- Datasets: 2.20.0
-- Tokenizers: 0.19.1
+- Python: 3.11.0
+- Sentence Transformers: 3.1.1
+- Transformers: 4.45.2
+- PyTorch: 2.4.1+cu121
+- Accelerate: 1.0.0
+- Datasets: 3.0.1
+- Tokenizers: 0.20.0
 
 ## Citation
 
@@ -667,7 +884,7 @@ You can finetune this model on your own dataset.
 #### MultipleNegativesRankingLoss
 ```bibtex
 @misc{henderson2017efficient,
-    title={Efficient Natural Language Response Suggestion for Smart Reply}, 
+    title={Efficient Natural Language Response Suggestion for Smart Reply},
     author={Matthew Henderson and Rami Al-Rfou and Brian Strope and Yun-hsuan Sung and Laszlo Lukacs and Ruiqi Guo and Sanjiv Kumar and Balint Miklos and Ray Kurzweil},
     year={2017},
     eprint={1705.00652},

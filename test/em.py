@@ -1,8 +1,10 @@
 import torch
 from sentence_transformers import SentenceTransformer, InputExample, losses
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
 from torch.utils.data import DataLoader
 from datasets import load_dataset
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 # Load the pre-trained SentenceTransformer model
 # GPU가 가능하면 자동으로 GPU로 모델을 이동
@@ -38,20 +40,39 @@ data=dataset[['question','text']]
 question=data['question'].tolist()
 context=data['text'].tolist()
 
-# Prepare the dataset for SentenceTransformer
-train_dataloader = DataLoader(train_data, shuffle=True, batch_size=8)
+train_batch_size = 32
+# 데이터 전처리
+train_data = prepare_data(dataset, 'question', 'text')
 
-# MultipleNegativesRankingLoss 는 유사한 텍스트의 쌍, 예를 들어 의역 쌍, 중복된 질문 쌍, (쿼리, 응답) 쌍, (소스 언어, 대상 언어) 쌍 등 긍정적인 쌍만 있는 경우 훌륭한 손실 함수입니다.
+# Train/Val split
+train_df, val_df = train_test_split(dataset[['question', 'text']], test_size=0.3, random_state=42)
+
+# 학습용 데이터셋 준비
+train_examples = prepare_data(train_df, 'question', 'text')
+train_dataloader = DataLoader(train_examples, shuffle=True, batch_size=train_batch_size)
+
+# 검증용 데이터셋 준비
+val_examples = prepare_data(val_df, 'question', 'text')
+
+# Loss 설정 (MultipleNegativesRankingLoss)
 train_loss = losses.MultipleNegativesRankingLoss(model)
+
+# Early Stopping을 위한 설정
+patience = 3
+best_val_loss = float('inf')
+patience_counter = 0
+
+# 검증을 위한 evaluator 설정 (EmbeddingSimilarityEvaluator 사용)
+val_evaluator = EmbeddingSimilarityEvaluator.from_input_examples(val_examples, name='validation')
 
 # Train the model with GPU support
 model.fit(
     train_objectives=[(train_dataloader, train_loss)],
-    epochs=30,  # 조정 가능
+    epochs=5,  # 조정 가능
+    evaluator=val_evaluator,
     show_progress_bar=True,
     use_amp=True  # 혼합 정밀도(FP16) 사용, 필요에 따라 생략 가능
 )
-
 # 학습된 모델 저장
 model.save("fine_tuned_model")
 

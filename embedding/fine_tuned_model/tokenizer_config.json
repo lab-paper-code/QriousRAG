@@ -41,7 +41,7 @@
       "special": true
     }
   },
-  "clean_up_tokenization_spaces": true,
+  "clean_up_tokenization_spaces": false,
   "cls_token": "[CLS]",
   "do_basic_tokenize": true,
   "do_lower_case": true,
