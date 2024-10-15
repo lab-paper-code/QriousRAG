@@ -1,6 +1,6 @@
 import torch
-from sentence_transformers import SentenceTransformer, InputExample, losses
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+from sentence_transformers import SentenceTransformer, InputExample, losses, SentenceTransformerTrainer
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator, SimilarityFunction
 from torch.utils.data import DataLoader
 from datasets import load_dataset
 import pandas as pd
@@ -15,13 +15,6 @@ model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", device=dev
 dataset=pd.read_csv('/raid/deallab/SF_RAG_Data/ASQA/embedding_train.csv')
 # Convert the dataset to the SentenceTransformer input format
 def prepare_data(data, text_column1, text_column2):
-    """
-    CSV 파일에서 두 개의 텍스트 열을 `SentenceTransformer`의 InputExample 형식으로 변환
-    :param data: 데이터프레임
-    :param text_column1: 첫 번째 텍스트 열 (예: 질문)
-    :param text_column2: 두 번째 텍스트 열 (예: 문서/컨텍스트)
-    :return: InputExample 리스트
-    """
     # 데이터에서 NaN 값을 빈 문자열로 대체하고, 비문자열을 제거
     data[text_column1] = data[text_column1].fillna('').astype(str)
     data[text_column2] = data[text_column2].fillna('').astype(str)
@@ -33,7 +26,6 @@ def prepare_data(data, text_column1, text_column2):
         input_examples.append(InputExample(texts=[text1, text2]))
 
     return input_examples
-
 train_data = prepare_data(dataset, 'question', 'text')
 
 data=dataset[['question','text']]
@@ -53,28 +45,19 @@ train_dataloader = DataLoader(train_examples, shuffle=True, batch_size=train_bat
 
 # 검증용 데이터셋 준비
 val_examples = prepare_data(val_df, 'question', 'text')
+val_dataloader = DataLoader(val_examples, shuffle=True, batch_size=train_batch_size)
 
 # Loss 설정 (MultipleNegativesRankingLoss)
 train_loss = losses.MultipleNegativesRankingLoss(model)
 
-# Early Stopping을 위한 설정
-patience = 3
-best_val_loss = float('inf')
-patience_counter = 0
-
-# 검증을 위한 evaluator 설정 (EmbeddingSimilarityEvaluator 사용)
-val_evaluator = EmbeddingSimilarityEvaluator.from_input_examples(val_examples, name='validation')
-
-# Train the model with GPU support
-model.fit(
-    train_objectives=[(train_dataloader, train_loss)],
-    epochs=5,  # 조정 가능
-    evaluator=val_evaluator,
-    show_progress_bar=True,
-    use_amp=True  # 혼합 정밀도(FP16) 사용, 필요에 따라 생략 가능
+trainer = SentenceTransformerTrainer(
+    model=model,
+    train_dataset=train_df,
+    eval_dataset=val_df,
+    loss=train_loss
 )
-# 학습된 모델 저장
-model.save("fine_tuned_model")
+
+trainer.train()
 
 def search_documents(query, documents, model, device="cuda"):
     # 질문 임베딩 생성 (GPU로 이동)
