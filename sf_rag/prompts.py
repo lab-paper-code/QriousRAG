@@ -44,3 +44,19 @@ PROMPT['refine_query_answ1'] = '''
     '### Who holds the record for most consecutive matches scored with goals in international football?',
     '### Who broke the record of Ferenc Puskas and became the new highest international goalscorer and how many goals did he score?']
     '''
+
+PROMPT['new_answer_instr']='''
+    Instruction: You are given an query and an exerpt of a document. 
+    Make a sentence of answer with original query using context information.
+    Strictly follow this instructions.
+    
+    Query: Who currently holds the record for the most international goals in world football?'
+    Context information: ['25 players scored 500 goals or more in both club and international football. Nine players achieved this feat at a single club, with Lionel Messi scoring the most with 672 goals.',
+    'Cristiano Ronaldo holds the all-time record with 133 international goals.',
+    'The document contains information about the highest goals in world football, but it does not provide a direct answer to the question. However, it mentions that Just Fontaine holds the record for most consecutive matches scored with 6 goals.',
+    'Ferenc Puskas, who scored 84 goals in his international career and remained the highest international goalscorer for 24 years. He was later surpassed by Mokhtar Dahari of Malaysia, who scored 89 goals, and then Ali Daiei of Iran, who broke the record with 108 goals.']
+'''
+
+PROMPT['new_answer_answ1']='''
+    Cristiano Ronaldo currently holds the record for the most international goals in world football, with 133 goals.
+'''
