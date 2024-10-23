@@ -9,7 +9,6 @@ if the document is irrelevant do not provide a summary. Strictly follow this ins
 
 Query: Who has the highest goals in world football?
 Doc: in top - level association football competitions, 25 players have scored 500 or more goals in both club and international football, according to research by the iffhs, [ 1 ] first published in 2007. [ 2 ] taking into account competitions of all levels, 77 players have reached the milestone, according to research by the rsssf, [ 3 ] an organisation described by german newspaper der spiegel as a " wikipedia of football statistics ". [ 4 ] hungarian imre schlosser was the first to reach the 500 - goal mark, doing so in 1927 shortly before his retirement. [ 5 ] nine players have accomplished the feat at a single club : josef bican ( slavia prague ), jimmy jones ( glenavon ), jimmy mcgrory ( celtic ), joe bambrick ( linfield ), lionel messi ( barcelona ), gerd muller ( bayern munich ), pele ( santos ), fernando peyroteo ( sporting cp ), and uwe seeler ( hamburg ). [ 6 ] of these nine, messi scored the most, with 672 goals between his debut in 2004 and his departure in 2021. [ 7 ] fifa, the international governing body of football,
-The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
 '''
 
 PROMPT['eval_doc_answ1'] = '''#relevant\n 25 players scored 500 goals or more in both club and international football. Nine players achieved this feat at a single club, with Lionel Messi scoring the most with 672 goals.'''
@@ -39,24 +38,53 @@ PROMPT['refine_query_instr'] = '''
     '''
 
 PROMPT['refine_query_answ1'] = '''
-    ['### Who are the 25 players who have scored 500 goals or more in world football and how many goals did Lionel Messi score for a single club?',
+    ['### Who are the 25 players who have scored 500 goals or more in world football?',
     '### Who currently holds the record for the most international goals in world football?',
     '### Who holds the record for most consecutive matches scored with goals in international football?',
-    '### Who broke the record of Ferenc Puskas and became the new highest international goalscorer and how many goals did he score?']
+    '### Who is the new highest international goalscorer and how many goals did he score?']
     '''
+
+PROMPT['refine_query_ex2'] = '''
+    Original Query: Who won the ncaa football national championship played in 2016?
+    Context information: ['Alabama won the 2016 NCAA Football National Championship, defeating Georgia. The game was tied at the end of regulation and went into overtime, where Alabama scored a touchdown on second down to win the game.', 
+    'The 2016 NCAA Football National Championship was played between Alabama and Clemson, with Alabama winning 24-7 in the semifinals and 31-0 in the championship game.']
+    '''
+
+PROMPT['refine_query_answ2'] = '''
+    ['### Who were the teams that made it to the semifinals of the 2016 NCAA Football National Championship?',
+    '### Which team won the championship game of the 2016 NCAA Football National Championship?',
+    '### Which team won the semifinals of the 2016 NCAA Football National Championship?',
+    '### Which team won the 2016 NCAA Football National Championship and how did they win?',
+    '### Which team won the championship game in overtime in the 2016 NCAA Football National Championship?']
+    '''
+
 
 PROMPT['new_answer_instr']='''
     Instruction: You are given an query and an exerpt of a document. 
-    Make a sentence of answer with original query using context information.
+    Answer the query using context information.
     Strictly follow this instructions.
     
-    Query: Who currently holds the record for the most international goals in world football?'
-    Context information: ['25 players scored 500 goals or more in both club and international football. Nine players achieved this feat at a single club, with Lionel Messi scoring the most with 672 goals.',
-    'Cristiano Ronaldo holds the all-time record with 133 international goals.',
-    'The document contains information about the highest goals in world football, but it does not provide a direct answer to the question. However, it mentions that Just Fontaine holds the record for most consecutive matches scored with 6 goals.',
-    'Ferenc Puskas, who scored 84 goals in his international career and remained the highest international goalscorer for 24 years. He was later surpassed by Mokhtar Dahari of Malaysia, who scored 89 goals, and then Ali Daiei of Iran, who broke the record with 108 goals.']
+    Query: what place did the New York Jets finish in 2015?
+    Context information: ['The New York Jets finished in 2nd place in the AFC East in the 2015 season, with a record of 10-6.', 
+    'The New York Jets finished 1st in their 2015 season opener, winning against the Cleveland Browns with a score of 31-10.', 
+    'The New York Jets finished 2nd in the AFC East in the 2015 season with a 10-6 record.']
 '''
 
 PROMPT['new_answer_answ1']='''
-    Cristiano Ronaldo currently holds the record for the most international goals in world football, with 133 goals.
+    The New York Jets finished in 2nd place in the AFC East during the 2015 season, with a record of 10-6. They maintained solid performance throughout the season, starting strong with a 31-10 victory against the Cleveland Browns in their season opener. However, despite their efforts, they ultimately ended up in 2nd place in the AFC East.
+'''
+
+    # Instruction: You are given an question and answers. 
+    # Answer the query using context information.
+    # Strictly follow this instructions.
+
+PROMPT['new_answer_ex2']='''
+    Query: Who won the ncaa football national championship played in 2016?
+    Context information: ['Clemson won the NCAA Football National Championship in overtime in 2016, defeating Alabama.',
+  'The score of the 2016 NCAA Football National Championship game between Alabama and Georgia was 35-31.',
+  'The opposing teams for Alabama in the 2016 NCAA Football National Championship and the semifinals were Washington and Clemson.']
+'''
+
+PROMPT['new_answer_answ2']='''
+    Clemson won the NCAA Football National Championship in 2016 by defeating Alabama in a thrilling overtime match. The game was highly competitive, with both teams putting up a strong fight, but Clemson ultimately came out on top. This victory marked a significant achievement for Clemson as they overcame a tough opponent, Alabama, in the championship game.
 '''
