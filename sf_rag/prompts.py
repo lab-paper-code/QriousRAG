@@ -45,6 +45,7 @@ PROMPT['refine_query_answ1'] = '''
     '### Who broke the record of Ferenc Puskas and became the new highest international goalscorer and how many goals did he score?']
     '''
 
+
 PROMPT['new_answer_instr']='''
     Instruction: You are given an query and an exerpt of a document. 
     Make a sentence of answer with original query using context information.
