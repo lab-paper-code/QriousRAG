@@ -1,5 +1,6 @@
 PROMPT = {}
 
+## eval docs
 PROMPT['eval_doc_instr'] = '''
 Instruction: You are given an query and an exerpt of a document. If the document contains relevant information output:
 #relevant\n “summary of the important information of the document"
@@ -25,6 +26,7 @@ Doc:  matches considered official internationals by the opposing sides, which wo
 
 PROMPT['eval_doc_answ3'] = '''#relevant\n Imre Schlosser, Ferenc Puskas, Mokhtar Dahari, Ali Daei, who all hold the record for most international goals. \n Ferenc Puskas was the first footballer to score 50 or more international goals. \n Ali Daei became the first player to score over 100 goals in international football.'''
 
+# refine query
 PROMPT['refine_query_instr'] = '''
     Instruction: You are given an query and an exerpt of a document. 
     Make new questions with original query using context information.
@@ -58,7 +60,7 @@ PROMPT['refine_query_answ2'] = '''
     '### Which team won the championship game in overtime in the 2016 NCAA Football National Championship?']
     '''
 
-
+# make new answer
 PROMPT['new_answer_instr']='''
     Instruction: You are given an query and an exerpt of a document. 
     Answer the query using context information.
@@ -73,10 +75,6 @@ PROMPT['new_answer_instr']='''
 PROMPT['new_answer_answ1']='''
     The New York Jets finished in 2nd place in the AFC East during the 2015 season, with a record of 10-6. They maintained solid performance throughout the season, starting strong with a 31-10 victory against the Cleveland Browns in their season opener. However, despite their efforts, they ultimately ended up in 2nd place in the AFC East.
 '''
-
-    # Instruction: You are given an question and answers. 
-    # Answer the query using context information.
-    # Strictly follow this instructions.
 
 PROMPT['new_answer_ex2']='''
     Query: Who won the ncaa football national championship played in 2016?
