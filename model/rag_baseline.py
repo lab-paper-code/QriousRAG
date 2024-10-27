@@ -135,6 +135,6 @@ for idx, row in tqdm(qa_df.iterrows(), total=min([stop_iteration, len(qa_df)])):
     scores_list.append(scores)
     
 scores_df=pd.DataFrame(scores_list)
-scores_df.mean()
+print(scores_df.mean())
 
 scores_df.to_csv(f'./results/baseline_results_{time.strftime("%Y%m%d-%H%M%S")}.csv', index=False)
