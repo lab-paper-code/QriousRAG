@@ -2,62 +2,77 @@ PROMPT = {}
 
 ## eval docs
 PROMPT['eval_doc_instr'] = '''
-Instruction: You are given an query and an exerpt of a document. If the document contains relevant information output:
-#relevant\n “summary of the important information of the document"
+Instruction: You are given an query and an exerpt of a document. 
+If the document contains relevant information output:
+#relevant\n
 If the document is not relevant output:
 #irrelevant\n 
-if the document is irrelevant do not provide a summary. Strictly follow this instructions.
+if the document is irrelevant do not provide a summary. 
+Strictly follow this instructions.
 
-Query: Who has the highest goals in world football?
-Doc: in top - level association football competitions, 25 players have scored 500 or more goals in both club and international football, according to research by the iffhs, [ 1 ] first published in 2007. [ 2 ] taking into account competitions of all levels, 77 players have reached the milestone, according to research by the rsssf, [ 3 ] an organisation described by german newspaper der spiegel as a " wikipedia of football statistics ". [ 4 ] hungarian imre schlosser was the first to reach the 500 - goal mark, doing so in 1927 shortly before his retirement. [ 5 ] nine players have accomplished the feat at a single club : josef bican ( slavia prague ), jimmy jones ( glenavon ), jimmy mcgrory ( celtic ), joe bambrick ( linfield ), lionel messi ( barcelona ), gerd muller ( bayern munich ), pele ( santos ), fernando peyroteo ( sporting cp ), and uwe seeler ( hamburg ). [ 6 ] of these nine, messi scored the most, with 672 goals between his debut in 2004 and his departure in 2021. [ 7 ] fifa, the international governing body of football,
+Query: Who won the ncaa football national championship played in 2016?
+Doc: The 2016 NCAA football national championship was won by the University of Alabama. In a thrilling game held on January 11, 2016, Alabama defeated Clemson University with a final score of 45-40. This victory marked Alabama’s 16th national title, solidifying their reputation as one of college football’s most successful programs.
 '''
 
-PROMPT['eval_doc_answ1'] = '''#relevant\n 25 players scored 500 goals or more in both club and international football. Nine players achieved this feat at a single club, with Lionel Messi scoring the most with 672 goals.'''
+PROMPT['eval_doc_answ1'] = '''#relevant\n'''
 
-PROMPT['eval_doc_ex2'] = '''Query: Who has the highest goals in world football?
-Doc:  # table : sounds of silence studio album by simon & garfunkel releasedjanuary 17, 1966 ( 1966 - 01 - 17 ) recorded ; april 5 – december 22, 1965 ; ( 
+PROMPT['eval_doc_ex2'] = '''Query: Who won the ncaa football national championship played in 2016?
+Doc:  Jeju Island is significant due to its unique volcanic landscapes, including Hallasan Mountain and its lava tubes, which are UNESCO World Heritage sites.
 '''
 
 PROMPT['eval_doc_answ2'] = '''#irrelevant\n'''
 
-PROMPT['eval_doc_ex3'] = '''Query: Who has the highest goals in world football?
-Doc:  matches considered official internationals by the opposing sides, which would make him the first footballer to score 50 or more international goals, ahead of imre schlosser, and was the fastest to achieve the feat, scoring his 50th goal in his 32nd official international match, with a four - goal haul against hungary on 31 may 1909. [ 17 ] puskas overall scored 84 goals in his international career, [ 11 ] and remained the highest international goalscorer for 24 years following his 84th goal in 1956 against austria, until mokhtar dahari of malaysia broke the record in the merdeka tournament after scoring his 85th goal on 27 october 1980 against kuwait and he went on to score 89 goals for his country in 142 international appearances. [ 18 ] [ 19 ] [ 20 ] in 2004, ali daei of iran broke the record after scoring his 90th goal against lebanon. [ 21 ] [ 22 ] daei also became the first player to score over 100 goals in international football, ending his career with 108 in total. [ 23 ] [ 24 ] his 100th goal came on 17 november 2004, when he scored a four - goal haul against laos in a 2006 fifa world cup qualification match. [ 25 ] however,
+PROMPT['eval_doc_ex3'] = '''Query: Why is Jeju Island significant?
+Doc: Jeju Island holds great significance due to its unique volcanic landscapes, including the UNESCO World Heritage site, Hallasan Mountain, and its lava tubes. As the largest island in South Korea, it is a top tourist destination known for its natural beauty, traditional culture, and historical landmarks. Jeju is also an important ecological site, home to a diverse range of flora and fauna, making it both culturally and environmentally valuable.
 '''
 
-PROMPT['eval_doc_answ3'] = '''#relevant\n Imre Schlosser, Ferenc Puskas, Mokhtar Dahari, Ali Daei, who all hold the record for most international goals. \n Ferenc Puskas was the first footballer to score 50 or more international goals. \n Ali Daei became the first player to score over 100 goals in international football.'''
+PROMPT['eval_doc_answ3'] = '''#relevant\n'''
 
 # refine query
 PROMPT['refine_query_instr'] = '''
     Instruction: You are given an query and an exerpt of a document. 
-    Make new questions with original query using context information.
+    Use contextual information to create just 10 new questions that are specific to the original query.
     Strictly follow this instructions.
 
-    Original Query: Who has the highest goals in world football?
-    Context information: ['25 players scored 500 goals or more in both club and international football. Nine players achieved this feat at a single club, with Lionel Messi scoring the most with 672 goals.',
-    'Cristiano Ronaldo holds the all-time record with 133 international goals.',
-    'The document contains information about the highest goals in world football, but it does not provide a direct answer to the question. However, it mentions that Just Fontaine holds the record for most consecutive matches scored with 6 goals.',
-    'Ferenc Puskas, who scored 84 goals in his international career and remained the highest international goalscorer for 24 years. He was later surpassed by Mokhtar Dahari of Malaysia, who scored 89 goals, and then Ali Daei of Iran, who broke the record with 108 goals.']
+    Original Query: Why is Jeju Island significant?
+    Context information: ['Jeju Island is significant due to its unique volcanic landscapes, including Hallasan Mountain and its lava tubes, which are UNESCO World Heritage sites.',
+    'It is the largest island in South Korea and is a popular destination for tourists seeking natural beauty and cultural experiences.',
+    'The island is also home to a rich biodiversity, featuring various plant and animal species that make it an ecological treasure.',
+    'Additionally, Jeju has cultural landmarks and traditions, which add to its historical and cultural importance.']
     '''
 
 PROMPT['refine_query_answ1'] = '''
-    ['### Who are the 25 players who have scored 500 goals or more in world football?',
-    '### Who currently holds the record for the most international goals in world football?',
-    '### Who holds the record for most consecutive matches scored with goals in international football?',
-    '### Who is the new highest international goalscorer and how many goals did he score?']
+    ['### Why are Jeju Island’s volcanic landscapes considered significant?',
+    '### How does Hallasan Mountain contribute to Jeju Island's significance?',
+    '### What makes Jeju’s lava tubes noteworthy in terms of cultural or natural heritage?',
+    '### How does Jeju Island's status as the largest island in South Korea add to its importance?',
+    '### Why is Jeju Island a popular destination for tourists seeking natural beauty?',
+    '### How does Jeju Island’s biodiversity make it an ecological treasure?',
+    '### What types of unique plant and animal species are found on Jeju Island?',
+    '### In what ways do Jeju Island’s cultural landmarks add to its historical importance?',
+    '### How do Jeju’s traditions contribute to its cultural significance?',
+    '### Why is Jeju Island’s UNESCO World Heritage status important to its overall significance?']
     '''
 
 PROMPT['refine_query_ex2'] = '''
     Original Query: Who won the ncaa football national championship played in 2016?
-    Context information: ['Alabama won the 2016 NCAA Football National Championship, defeating Georgia. The game was tied at the end of regulation and went into overtime, where Alabama scored a touchdown on second down to win the game.', 
-    'The 2016 NCAA Football National Championship was played between Alabama and Clemson, with Alabama winning 24-7 in the semifinals and 31-0 in the championship game.']
+    Context information: ['The NCAA football national championship game in 2016 was held on January 11 and featured a matchup between the University of Alabama and Clemson University.', 
+    'In a close and thrilling game, the University of Alabama emerged victorious with a final score of 45-40.',
+    'This win marked Alabama’s 16th national title, further solidifying its status as a dominant program in college football.',
+    'The game was memorable for its intensity and high level of competition, captivating fans across the country.']
     '''
 
 PROMPT['refine_query_answ2'] = '''
-    ['### Who were the teams that made it to the semifinals of the 2016 NCAA Football National Championship?',
-    '### Which team won the championship game of the 2016 NCAA Football National Championship?',
-    '### Which team won the semifinals of the 2016 NCAA Football National Championship?',
-    '### Which team won the 2016 NCAA Football National Championship and how did they win?',
-    '### Which team won the championship game in overtime in the 2016 NCAA Football National Championship?']
+    ['### On what date was the 2016 NCAA football national championship game held?',
+    '### Which two teams competed in the 2016 NCAA football national championship?',
+    '### What was the final score of the 2016 NCAA football national championship game?',
+    '### How did the University of Alabama’s victory impact its record in college football?',
+    '### Why was the 2016 NCAA football national championship game considered thrilling?',
+    '### How many national titles had Alabama won with this 2016 victory?',
+    '### What made the 2016 championship game memorable for football fans?',
+    '### How did Clemson perform against Alabama in the 2016 championship game?',
+    '### What elements of the game highlighted the high level of competition?',
+    '### In what ways did Alabama’s victory solidify its dominance in college football?']
     '''
 
 # make new answer
@@ -67,22 +82,39 @@ PROMPT['new_answer_instr']='''
     Strictly follow this instructions.
     
     Query: what place did the New York Jets finish in 2015?
-    Context information: ['The New York Jets finished in 2nd place in the AFC East in the 2015 season, with a record of 10-6.', 
-    'The New York Jets finished 1st in their 2015 season opener, winning against the Cleveland Browns with a score of 31-10.', 
-    'The New York Jets finished 2nd in the AFC East in the 2015 season with a 10-6 record.']
+    Context information: ['In the 2015 NFL season, the New York Jets finished with a record of 10 wins and 6 losses.', 
+    'Despite their strong record, the Jets narrowly missed the playoffs, finishing in second place in the AFC East division.', 
+    'The team showed significant improvement from the previous season, with a notable performance by their defense and an improved offense.',
+    'Although the Jets were close to securing a playoff spot, they ultimately fell short, marking the end of their 2015 season.']
 '''
 
 PROMPT['new_answer_answ1']='''
-    The New York Jets finished in 2nd place in the AFC East during the 2015 season, with a record of 10-6. They maintained solid performance throughout the season, starting strong with a 31-10 victory against the Cleveland Browns in their season opener. However, despite their efforts, they ultimately ended up in 2nd place in the AFC East.
+    The New York Jets finished in second place in the AFC East division in the 2015 NFL season.
 '''
 
 PROMPT['new_answer_ex2']='''
     Query: Who won the ncaa football national championship played in 2016?
-    Context information: ['Clemson won the NCAA Football National Championship in overtime in 2016, defeating Alabama.',
-  'The score of the 2016 NCAA Football National Championship game between Alabama and Georgia was 35-31.',
-  'The opposing teams for Alabama in the 2016 NCAA Football National Championship and the semifinals were Washington and Clemson.']
+    Context information: ['The 2016 NCAA football national championship game took place on January 11 and featured a competitive matchup between the University of Alabama and Clemson University.',
+    'This victory marked Alabama's 16th national title, adding to their legacy as one of the most successful programs in college football history.',
+    'The game was widely remembered for its high level of play and thrilling conclusion, captivating football fans across the nation.']
 '''
 
 PROMPT['new_answer_answ2']='''
-    Clemson won the NCAA Football National Championship in 2016 by defeating Alabama in a thrilling overtime match. The game was highly competitive, with both teams putting up a strong fight, but Clemson ultimately came out on top. This victory marked a significant achievement for Clemson as they overcame a tough opponent, Alabama, in the championship game.
+    The University of Alabama won the NCAA football national championship played in 2016.
+'''
+
+PROMPT['final_answer_instr']='''
+    Given the context information and not prior knowledge, 
+    Generate an answer with multiple correct answers that satisfy an ambiguous question where the correct answer can vary depending on multiple interpretations
+    Strictly follow this instructions.
+    
+    Query: Why is Jeju Island significant?
+    Context information: ['Jeju Island is significant due to its unique volcanic landscapes, including Hallasan Mountain and its lava tubes, which are UNESCO World Heritage sites.',
+    'It is the largest island in South Korea and is a popular destination for tourists seeking natural beauty and cultural experiences.',
+    'The island is also home to a rich biodiversity, featuring various plant and animal species that make it an ecological treasure.',
+    'Additionally, Jeju has cultural landmarks and traditions, which add to its historical and cultural importance.']
+'''
+
+PROMPT['final_answer_answ1']='''
+    Jeju Island is significant for several reasons: its unique volcanic landscapes, including Hallasan Mountain and lava tubes, have earned it UNESCO World Heritage status. As the largest island in South Korea, it attracts tourists for its natural beauty and cultural experiences. The island is also an ecological treasure, home to a rich biodiversity of plant and animal species. Additionally, Jeju’s historical and cultural landmarks and traditions contribute to its cultural heritage, making it a place of both natural and cultural importance.
 '''
