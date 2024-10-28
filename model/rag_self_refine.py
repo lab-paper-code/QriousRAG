@@ -9,7 +9,6 @@ import torch
 from torch.utils.data import DataLoader
 from datasets import Dataset
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from collections import defaultdict
 import re
 import numpy as np
@@ -20,6 +19,15 @@ data_dir = '../data'
 
 device1 = 'cuda:0'
 device2 = 'cuda:1'
+
+gen_model_id = 'meta-llama/Meta-Llama-3.1-8B-Instruct'
+# gen_model_id = 'mistralai/Mistral-7B-Instruct-v0.3'
+
+split_token = '<|end_header_id|>'
+end_token = '<|eot_id|>'
+
+# split_token = '[/INST]'
+# end_token = '</s>'
 
 from evaluation import evaluate
 import prompts
@@ -59,7 +67,7 @@ model = AutoModel.from_pretrained(
 model.eval()
 
 #load tokenizer
-tokenizer_gen = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3.1-8B-Instruct")
+tokenizer_gen = AutoTokenizer.from_pretrained(gen_model_id)
 tokenizer_gen.pad_token = tokenizer_gen.eos_token
 
 bnb_config = BitsAndBytesConfig(
@@ -71,7 +79,7 @@ bnb_config = BitsAndBytesConfig(
 )
 
 model_gen = AutoModelForCausalLM.from_pretrained(
-    "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    gen_model_id,
     quantization_config=bnb_config,
     torch_dtype=torch.bfloat16,
     device_map= 'auto'
@@ -150,18 +158,20 @@ def make_new_query(query,context):
     
     attention_mask = (inputs != tokenizer_gen.pad_token_id).long().to(device1)
     
-    outputs = model_gen.generate(inputs, attention_mask=attention_mask, pad_token_id=tokenizer_gen.pad_token_id, max_new_tokens=256)
-    generated_text = tokenizer_gen.decode(outputs[0]).split('<|end_header_id|>')[-1].replace('<|eot_id|>', '').strip('\n')
-    generated_text  = generated_text.strip('[]').split(',\n')
+    outputs = model_gen.generate(inputs, attention_mask=attention_mask, pad_token_id=tokenizer_gen.pad_token_id, max_new_tokens=512)
+    generated_text = tokenizer_gen.decode(outputs[0]).split(split_token)[-1].replace(end_token, '').strip('\n')
+    generated_text  = generated_text.strip('[]').split('\n')
     
     print(generated_text)
     return generated_text
 
 def make_new_answer(query,context):
     
+    context_str = '\n'.join(context)
+    
     input= f'''
     Original Query: {query}
-    Context information: {context}
+    Context information: {context_str}
     '''
     
     messages = [
@@ -174,11 +184,11 @@ def make_new_answer(query,context):
     inputs = tokenizer_gen.apply_chat_template(messages, return_tensors="pt", truncation=True).to(device1)
     
     attention_mask = (inputs != tokenizer_gen.pad_token_id).long().to(device1)
-    
+    print(len(inputs[0]))
     outputs = model_gen.generate(inputs, attention_mask=attention_mask, pad_token_id=tokenizer_gen.pad_token_id, max_new_tokens=256)
-    generated_text = tokenizer_gen.decode(outputs[0]).split('<|end_header_id|>')[-1].replace('<|eot_id|>', '').strip('\n')
+    generated_text = tokenizer_gen.decode(outputs[0]).split(split_token)[-1].replace(end_token, '').strip('\n')
     
-    # print(f'New Answer: {generated_text}')
+    print(f'New Answer: {generated_text}')
     return generated_text
 
 def final_ans(query,answer, qa_pairs):
@@ -214,11 +224,11 @@ def final_ans(query,answer, qa_pairs):
     #tokenizer prompt
     input_ids = tokenizer_gen.apply_chat_template(messages, return_tensors="pt", truncation=True).to(device2)
 
-    attention_mask = (input_ids != tokenizer_gen.pad_token_id).long().to(device1)
+    attention_mask = (input_ids != tokenizer_gen.pad_token_id).long().to(device2)
 
     out = model_gen.generate(input_ids, attention_mask=attention_mask, pad_token_id=tokenizer_gen.pad_token_id, max_new_tokens = 512)
-    res = tokenizer_gen.decode(out[0]).split('<|end_header_id|>')[-1] 
-    candidate = [re.sub('\n|<\|eot_id\|>', '', res)]
+    res = tokenizer_gen.decode(out[0]).split(split_token)[-1] 
+    candidate = re.sub(end_token, '', res)
     #print(candidate)
     return candidate
 
@@ -228,7 +238,7 @@ from collections import defaultdict
 # sf_rag=dict()
 # perplexity_df=pd.DataFrame()
 scores_list=[]
-stop_iteration = 5
+stop_iteration = 120
 new_answers_dic=defaultdict(list)
 
 for idx, row in tqdm(qa_df.iterrows(), total=min(len(qa_df), stop_iteration)):
@@ -247,11 +257,12 @@ for idx, row in tqdm(qa_df.iterrows(), total=min(len(qa_df), stop_iteration)):
     #iterate over new docs
     qa_pairs = []
     for i, new_query in tqdm(enumerate(new_queries)):
-        if i == 5: break #brak after x follow-up question 
+        if i == 8: break #brak after x follow-up question 
         
         # retrieve relevant docs
         ids, new_docs=retrieve_documents(new_query)
         new_rel_docs=evaluate_docs(new_query, new_docs)
+        if not new_rel_docs: continue
         new_answer = make_new_answer(new_query, new_rel_docs)
         qa_pairs.append((new_query, new_answer))
 
@@ -259,9 +270,11 @@ for idx, row in tqdm(qa_df.iterrows(), total=min(len(qa_df), stop_iteration)):
     candidate=final_ans(query, answer, qa_pairs)
     print(f'candidate: {candidate}')
     # print(references[i])
-    scores=evaluate(candidate,[row.to_dict()])
+    scores=evaluate([candidate],[row.to_dict()])
     print(scores)
     scores_list.append(scores)
+    scores_df=pd.DataFrame(scores_list)
+    scores_df.to_csv('./results/self-refine_results.csv', index=False)
     
 scores_df=pd.DataFrame(scores_list)
 print(scores_df.mean())
