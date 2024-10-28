@@ -112,6 +112,8 @@ PROMPT['new_answer_answ2']='''
 PROMPT['final_answer_instr']='''
 You are provided an initial ambiguous query and several non-ambiguous follow-up queries each with context information to answer it. 
 Generate an answer by considering all provided information, and answer the initial ambiguous question holisticaly.
+Do not comment your answer and Do not include the input text, only generate the answer.
+Strictly follow this instructions.
 
 Initial Query: Who won the 2016 ncaa football national championship?
 context: The 13–1 Alabama Crimson Tide won the game, holding off the undefeated Clemson Tigers 45–40 in the fourth quarter. It was played at University of Phoenix Stadium in Glendale, Arizona on January 11, 2016, and was the culminating game of the 2015–16 bowl season.
