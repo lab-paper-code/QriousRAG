@@ -1,26 +1,29 @@
 import os
 import importlib
+# os.environ["CUDA_VISIBLE_DEVICES"]="2,3"
 from transformers import AutoTokenizer, BitsAndBytesConfig, AutoModelForCausalLM, AutoModel
 from datasets import load_dataset
 import torch
+#from sentence_transformers import SentenceTransformer, InputExample, losses
+#from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator, SimilarityFunction
+from torch.utils.data import DataLoader
 from datasets import Dataset
 import pandas as pd
+from sklearn.model_selection import train_test_split
 from collections import defaultdict
 import re
 import numpy as np
-import time
-from evaluation import evaluate
-import prompts
-importlib.reload(prompts)
+from tqdm import tqdm
 
-'''
-nohup python3 rag_self_refine.py > out.txt
-'''
+data_dir = '/raid/deallab/SF_RAG_Data/ASQA'
+data_dir = '../data'
 
 device1 = 'cuda:0'
 device2 = 'cuda:1'
 
-data_dir = '../data'
+from evaluation import evaluate
+import prompts
+importlib.reload(prompts)
 
 #load embeddings
 embedd_test_path = f'{data_dir}/test/embedd_test.npy'
@@ -35,11 +38,6 @@ evidence_df = pd.read_csv(evidence_test_path)
 #load qa data
 qa_df=pd.read_csv(f'{data_dir}/test/qa_test.csv') #data=df[['question','long_answers']] # questions=data['question'] #references = [row.to_dict() for i, row in df.iterrows() if i < len(questions)]
 qa_df.head()
-
-data=qa_df[['question','long_answers']]
-questions=data['question']
-
-references = [row.to_dict() for i, row in qa_df.iterrows() if i < len(questions)]
 
 #load quantized model
 bnb_config = BitsAndBytesConfig(
@@ -98,11 +96,11 @@ def retrieve_documents(query):
     #print(top_results)
     res=[evidence_df.loc[idx, 'text'] for idx in top_results if idx < len(evidence_df)]
         
-    return res
+    return top_results, res
 
 def evaluate_docs(query, docs):
-    print(f"Query : {query}")
-    print("-"*100)
+    # print(f"Query : {query}")
+    # print("-"*100)
     outs = []
     for idx, doc in enumerate(docs):
         #print(f"Rank {idx} : {doc}")
@@ -129,10 +127,8 @@ def evaluate_docs(query, docs):
         outputs = model_gen.generate(inputs, attention_mask=attention_mask, pad_token_id=tokenizer_gen.pad_token_id, max_new_tokens=128)
         generated_text = tokenizer_gen.decode(outputs[0]).split('<|end_header_id|>')[-1].replace('<|eot_id|>', '').strip('\n')
         
-        filter=(generated_text.split('\n')[0])
-        print(filter)
-        if '#relevant' in filter:
-            outs.append((generated_text.split('\n')[1]).strip())
+        if '#relevant' in generated_text:
+            outs.append(doc)
     
     return outs
 
@@ -148,7 +144,7 @@ def make_new_query(query,context):
         {"role":"assistant", 'content':prompts.PROMPT['refine_query_answ1']},
         {"role":"user", 'content':prompts.PROMPT['refine_query_ex2']},
         {"role":"assistant", 'content':prompts.PROMPT['refine_query_answ2']},
-        {"role":"user", 'content':{input}},
+        {"role":"user", 'content':input},
     ]
     inputs = tokenizer_gen.apply_chat_template(messages, return_tensors="pt", truncation=True).to(device1)
     
@@ -156,11 +152,10 @@ def make_new_query(query,context):
     
     outputs = model_gen.generate(inputs, attention_mask=attention_mask, pad_token_id=tokenizer_gen.pad_token_id, max_new_tokens=256)
     generated_text = tokenizer_gen.decode(outputs[0]).split('<|end_header_id|>')[-1].replace('<|eot_id|>', '').strip('\n')
+    generated_text  = generated_text.strip('[]').split(',\n')
     
+    print(generated_text)
     return generated_text
-
-def preprocessing(new_questions):
-    return list(((new_questions.split("['")[1]).split("']")[0]).split("',\n    '"))
 
 def make_new_answer(query,context):
     
@@ -174,7 +169,7 @@ def make_new_answer(query,context):
         {"role":"assistant", 'content':prompts.PROMPT['new_answer_answ1']},
         {"role":"user", 'content':prompts.PROMPT['new_answer_ex2']},
         {"role":"assistant", 'content':prompts.PROMPT['new_answer_answ2']},
-        {"role":"user", 'content':{input}},
+        {"role":"user", 'content':input},
     ]
     inputs = tokenizer_gen.apply_chat_template(messages, return_tensors="pt", truncation=True).to(device1)
     
@@ -183,61 +178,91 @@ def make_new_answer(query,context):
     outputs = model_gen.generate(inputs, attention_mask=attention_mask, pad_token_id=tokenizer_gen.pad_token_id, max_new_tokens=256)
     generated_text = tokenizer_gen.decode(outputs[0]).split('<|end_header_id|>')[-1].replace('<|eot_id|>', '').strip('\n')
     
+    # print(f'New Answer: {generated_text}')
     return generated_text
 
-def final_ans(query,answers):
-    prompt = f"""
-    Context information is below.
-    ---------------------
-    {answers}
-    ---------------------
-    Given the context information and not prior knowledge, 
-    Answer the question that have multiple correct answers based on multiple interpretations, including multiple answers.
-    Query: {query}
-    Answer:
-    """
+def final_ans(query,answer, qa_pairs):
+    # prompt = f"""
+    # Context information is below.
+    # ---------------------
+    # {answers}
+    # ---------------------
+    # Given the context information and not prior knowledge, 
+    # Answer questions that have multiple correct answers based on multiple interpretations, including multiple answers.
+    # Query: {query}
+    # Answer:
+    # """
     
-    input_ids = tokenizer_gen.apply_chat_template([{"role":'user', "content":prompt}], return_tensors='pt').to(device1)
+    # input_ids = tokenizer_gen.apply_chat_template([{"role":'user', "content":prompt}], return_tensors='pt').to(device1)
+    qa_sample = '''Follow-up Query{i}: {q}
+    Context: {context}
+    '''
+    qa_string = '\n'.join([qa_sample.format(i=i, q=q, context=a) for i, (q, a) in enumerate(qa_pairs)])
+    
+    input= f'''
+    Initial Query: {query}
+    Context: {answer}
+    {qa_string}
+    '''
+    print(f'Final Answ Input:{input}')
+    messages = [
+        {"role":"user", 'content':prompts.PROMPT['final_answer_instr']},
+        {"role":"assistant", 'content':prompts.PROMPT['final_answer_answ1']},
+        {"role":"user", 'content':input},
+    ]
+
+    #tokenizer prompt
+    input_ids = tokenizer_gen.apply_chat_template(messages, return_tensors="pt", truncation=True).to(device2)
 
     attention_mask = (input_ids != tokenizer_gen.pad_token_id).long().to(device1)
 
     out = model_gen.generate(input_ids, attention_mask=attention_mask, pad_token_id=tokenizer_gen.pad_token_id, max_new_tokens = 512)
     res = tokenizer_gen.decode(out[0]).split('<|end_header_id|>')[-1] 
     candidate = [re.sub('\n|<\|eot_id\|>', '', res)]
+    #print(candidate)
     return candidate
 
-sf_rag=dict()
-perplexity_df=pd.DataFrame()
-scores_list=[]
-new_answers_dic=dict()
+from evaluation import evaluate
+from collections import defaultdict
 
-for i in range(300):
-    print(f"Query {i+1} : {questions[i]}")
-    print("-"*100)
-    query = questions[i]
-    new_answers_dic[query]=list()
-    rel_docs = retrieve_documents(query)
-    if rel_docs:
-        new_questions=preprocessing(make_new_query(query, rel_docs))
-    else:
-        print("Pass to the next query")
-        continue
-    print(new_questions)
-    for new_question in new_questions:
-        new_docs=retrieve_documents(new_question)
-        new_rel_docs=evaluate_docs(new_question, new_docs)
-        if new_rel_docs:
-            new_answers=make_new_answer(new_question, new_rel_docs)
-            print(new_answers)
-            new_answers_dic[query].append(new_answers)
-        else:
-            print('All irrelevant docs')
-    candidate=final_ans(query,new_answers_dic[query])
-    print(candidate)
-    print(references[i])
-    scores=evaluate(candidate,[references[i]])
+# sf_rag=dict()
+# perplexity_df=pd.DataFrame()
+scores_list=[]
+stop_iteration = 5
+new_answers_dic=defaultdict(list)
+
+for idx, row in tqdm(qa_df.iterrows(), total=min(len(qa_df), stop_iteration)):
+    if idx == stop_iteration: break
+    query = row['question']
+    
+    #retrieve relevant docs
+    ids, docs = retrieve_documents(query)
+    rel_docs = evaluate_docs(query, docs)
+    answer = make_new_answer(query, rel_docs)
+    print(f'Initial Answer: {answer}')
+    
+    # generate new queries
+    new_queries=make_new_query(query, rel_docs)
+    
+    #iterate over new docs
+    qa_pairs = []
+    for i, new_query in tqdm(enumerate(new_queries)):
+        if i == 5: break #brak after x follow-up question 
+        
+        # retrieve relevant docs
+        ids, new_docs=retrieve_documents(new_query)
+        new_rel_docs=evaluate_docs(new_query, new_docs)
+        new_answer = make_new_answer(new_query, new_rel_docs)
+        qa_pairs.append((new_query, new_answer))
+
+    # generate final answer
+    candidate=final_ans(query, answer, qa_pairs)
+    print(f'candidate: {candidate}')
+    # print(references[i])
+    scores=evaluate(candidate,[row.to_dict()])
     print(scores)
     scores_list.append(scores)
-    scores_df=pd.DataFrame(scores_list)
-    scores_df.mean()
-    scores_df.to_csv(f'./results/QRiousRAG_results.csv', index=False)
+    
+scores_df=pd.DataFrame(scores_list)
+print(scores_df.mean())
+scores_df.to_csv('./results/self-refine_results.csv', index=False)
