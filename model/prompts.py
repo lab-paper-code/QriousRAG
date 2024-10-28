@@ -84,7 +84,7 @@ PROMPT['refine_query_answ2'] = '''
 # make new answer
 PROMPT['new_answer_instr']='''
 Instruction: You are given one or multiple queries and several exerpts of relevant documents to answer those queries. 
-Please summarize the provided information so all relevant information regarding all the provided queries in represented in your answer.
+Please summarize the provided information in 1-3 sentences so all relevant information regarding all the provided queries in represented in your answer.
 Do not comment your answer and strictly follow this instructions.
 
 Query: what place did the New York Jets finish in 2015?
@@ -94,26 +94,23 @@ Context information: ['In the 2015 NFL season, the New York Jets finished with a
 'Although the Jets were close to securing a playoff spot, they ultimately fell short, marking the end of their 2015 season.']
 '''
 
-PROMPT['new_answer_answ1']='''
-    The New York Jets finished in second place in the AFC East division in the 2015 NFL season.
+PROMPT['new_answer_answ1']='''The New York Jets finished in second place in the AFC East division in the 2015 NFL season.
 '''
 
 PROMPT['new_answer_ex2']='''
-    Query: Who won the ncaa football national championship played in 2016?
-    Context information: ['The 2016 NCAA football national championship game took place on January 11 and featured a competitive matchup between the University of Alabama and Clemson University.',
-    'This victory marked Alabama's 16th national title, adding to their legacy as one of the most successful programs in college football history.',
-    'The game was widely remembered for its high level of play and thrilling conclusion, captivating football fans across the nation.']
+Query: Who won the ncaa football national championship played in 2016?
+Context information: ['The 2016 NCAA football national championship game took place on January 11 and featured a competitive matchup between the University of Alabama and Clemson University.',
+'This victory marked Alabama's 16th national title, adding to their legacy as one of the most successful programs in college football history.',
+'The game was widely remembered for its high level of play and thrilling conclusion, captivating football fans across the nation.']
 '''
 
-PROMPT['new_answer_answ2']='''
-    The University of Alabama won the NCAA football national championship played in 2016.
+PROMPT['new_answer_answ2']='''The University of Alabama won the NCAA football national championship played in 2016.
 '''
 
 PROMPT['final_answer_instr']='''
 You are provided an initial ambiguous query and several non-ambiguous follow-up queries each with context information to answer it. 
-Generate an answer by considering all provided information, and answer the initial ambiguous question holisticaly.
-Do not comment your answer and Do not include the input text, only generate the answer.
-Strictly follow this instructions.
+From all of this information generate an answer of 2-3 sentences which answers the initial ambiguous question holisticaly by considering all provided information.
+Do not comment your answer and Do not include the input text. Strictly follow this instructions.
 
 Initial Query: Who won the 2016 ncaa football national championship?
 context: The 13–1 Alabama Crimson Tide won the game, holding off the undefeated Clemson Tigers 45–40 in the fourth quarter. It was played at University of Phoenix Stadium in Glendale, Arizona on January 11, 2016, and was the culminating game of the 2015–16 bowl season.
@@ -123,7 +120,6 @@ Context: The 13-1 Alabama Crimson Tide won the game, holding off the undefeated 
 
 Follow-up Query2: ### Who won the ncaa football national championship played in 2016?
 Context: The game was played between the winners of two pre-designated bowl games played on December 31, 2016: the Clemson Tigers, who defeated the Ohio State Buckeyes in the Fiesta Bowl, and the Alabama Crimson Tide, who defeated the Washington Huskies in the Peach Bowl. Having met in the previous year's championship game, the resulting title game between Clemson and Alabama became college football's first rematch between #1 and #2 in national championship game history.
-
 ''' 
 #     Query: Why is Jeju Island significant?
 #     Context information: ['Jeju Island is significant due to its unique volcanic landscapes, including Hallasan Mountain and its lava tubes, which are UNESCO World Heritage sites.',
@@ -132,8 +128,7 @@ Context: The game was played between the winners of two pre-designated bowl game
 #     'Additionally, Jeju has cultural landmarks and traditions, which add to its historical and cultural importance.']
 # '''
 
-PROMPT['final_answer_answ1']='''
-The 2015 - 2016 season's ncaa national football championship game was played between the Clemson Tigers and the Alabama Crimson Tide on January 11, 2016. The Alabama Crimson Tide won the game by holding off the undefeated Clemson Tigers 45–40 in the fourth quarter.
+PROMPT['final_answer_answ1']='''The 2015 - 2016 season's ncaa national football championship game was played between the Clemson Tigers and the Alabama Crimson Tide on January 11, 2016. The Alabama Crimson Tide won the game by holding off the undefeated Clemson Tigers 45–40 in the fourth quarter.
 '''
 # PROMPT['final_answer_answ1']='''
 #     Jeju Island is significant for several reasons: its unique volcanic landscapes, including Hallasan Mountain and lava tubes, have earned it UNESCO World Heritage status. As the largest island in South Korea, it attracts tourists for its natural beauty and cultural experiences. The island is also an ecological treasure, home to a rich biodiversity of plant and animal species. Additionally, Jeju’s historical and cultural landmarks and traditions contribute to its cultural heritage, making it a place of both natural and cultural importance.
