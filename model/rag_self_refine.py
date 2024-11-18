@@ -188,7 +188,6 @@ def make_new_answer(query,context):
     outputs = model_gen.generate(inputs, attention_mask=attention_mask, pad_token_id=tokenizer_gen.pad_token_id, max_new_tokens=256)
     generated_text = tokenizer_gen.decode(outputs[0]).split(split_token)[-1].replace(end_token, '').strip('\n')
     
-    print(f'New Answer: {generated_text}')
     return generated_text
 
 def final_ans(query,answer, qa_pairs):
@@ -232,24 +231,48 @@ def final_ans(query,answer, qa_pairs):
     #print(candidate)
     return candidate
 
+
+def initial_answer(query, docs):
+    prompt = """
+    Context information is below.
+    ---------------------
+    {0}
+    ---------------------
+    Given the context information and not prior knowledge, answer the query.
+    Query: {1}
+    Answer:
+    """.format('\n'.join(docs), query)
+    input_ids = tokenizer_gen.apply_chat_template([{"role":'user', "content":prompt}], return_tensors='pt').to(device2)
+
+    attention_mask = (input_ids != tokenizer_gen.pad_token_id).long().to(device2)
+
+    out = model_gen.generate(input_ids, attention_mask=attention_mask, pad_token_id=tokenizer_gen.pad_token_id, max_new_tokens = 512)
+    res = tokenizer_gen.decode(out[0]).split('<|end_header_id|>')[-1] 
+    text = re.sub('\n|<\|eot_id\|>', '', res)
+    return text
+
 from evaluation import evaluate
 from collections import defaultdict
 
-# sf_rag=dict()
-# perplexity_df=pd.DataFrame()
 scores_list=[]
-stop_iteration = 120
+stop_iteration=2
+start=118
+test_df=qa_df.iloc[start:start+stop_iteration]
+
 new_answers_dic=defaultdict(list)
 
-for idx, row in tqdm(qa_df.iterrows(), total=min(len(qa_df), stop_iteration)):
-    if idx == stop_iteration: break
+for idx, row in tqdm(test_df.iterrows(), total=min(len(test_df), stop_iteration)):
+    # if idx == stop_iteration: break
     query = row['question']
     
     #retrieve relevant docs
     ids, docs = retrieve_documents(query)
+    init_answer=initial_answer(query, docs)
+    print(f'Initial Answer: {init_answer}')
+    
     rel_docs = evaluate_docs(query, docs)
-    answer = make_new_answer(query, rel_docs)
-    print(f'Initial Answer: {answer}')
+    rel_answer = make_new_answer(query, rel_docs)
+    print(f'Relevant Answer: {rel_answer}')
     
     # generate new queries
     new_queries=make_new_query(query, rel_docs)
@@ -267,15 +290,15 @@ for idx, row in tqdm(qa_df.iterrows(), total=min(len(qa_df), stop_iteration)):
         qa_pairs.append((new_query, new_answer))
 
     # generate final answer
-    candidate=final_ans(query, answer, qa_pairs)
-    print(f'candidate: {candidate}')
+    add_answer=final_ans(query, rel_answer, qa_pairs)
+    print(f'candidate: {init_answer+rel_answer+add_answer}')
     # print(references[i])
-    scores=evaluate([candidate],[row.to_dict()])
+    scores=evaluate([init_answer+rel_answer+add_answer],[row.to_dict()])
     print(scores)
     scores_list.append(scores)
     scores_df=pd.DataFrame(scores_list)
-    scores_df.to_csv('./results/self-refine_results.csv', index=False)
+    scores_df.to_csv('./results/self-refine-10-30_results.csv', index=False)
     
 scores_df=pd.DataFrame(scores_list)
 print(scores_df.mean())
-scores_df.to_csv('./results/self-refine_results.csv', index=False)
+scores_df.to_csv('./results/self-refine-10-30_results.csv', index=False)

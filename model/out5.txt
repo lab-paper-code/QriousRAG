@@ -1,0 +1,117 @@
+(11645, 4096)
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:06<00:18,  6.32s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:12<00:12,  6.34s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:19<00:06,  6.36s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:20<00:00,  4.30s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:20<00:00,  5.05s/it]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:08,  2.78s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:04,  2.45s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:07<00:02,  2.30s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.66s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.95s/it]
+  0%|          | 0/2 [00:00<?, ?it/s]/home/explorer/.cache/huggingface/modules/transformers_modules/nvidia/NV-Embed-v2/0783263f3c009f67bd0e177040cfecad4b1171d6/modeling_nvembed.py:349: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  'input_ids': torch.tensor(batch_dict.get('input_ids').to(batch_dict.get('input_ids')).long()),
+/home/explorer/anaconda3/envs/djk_sf/lib/python3.11/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+Initial Answer: The document does not specify who was the president of the Indian National Congress when India became free. However, it mentions that Jivatram Bhagwandas Kripalani was the president of the Indian National Congress during the transfer of power in 1947.
+388
+Relevant Answer: There is no context information provided for this query.
+["'### Who was the president of the Indian National Congress when India gained independence?',", "'### Who was the president of the Indian National Congress when India became free?',", "'### What was the name of the Indian National Congress president who led the country to freedom?',", "'### What was the name of the person who led the Indian National Congress to freedom?',", "'### Who was the leader of the Indian National Congress when India achieved independence?',", "'### Who was the Indian National Congress president during India's struggle for freedom?',", "'### Who was the Indian National Congress president when India got freedom?',", "'### Who was the president of the Indian National Congress party when India was free?',", "'### Who was the leader of the Indian National Congress party when India gained freedom?',", "'### What was the name of the Indian National Congress president who played a key role in India's freedom struggle?',", "'### Who was the Indian National Congress president when India was declared free?',", "'### Who was the Indian National Congress president when India became an independent nation?',", "'### What was the name of the Indian National Congress president who led the country to independence?',", "'### Who was the Indian National Congress president when India was freed?',", "'### Who was the president of the Indian National Congress party when India was independent?',", "'### Who was the leader of the Indian National Congress party when India was free?',", "'### Who was the Indian National Congress president when India was liberated?',", "'### Who was the Indian National Congress president when India was declared an independent nation?',", "'### Who was the Indian National Congress president when India was declared free from British rule?']", '', "Note: The original query is ambiguous because it does not specify whether the question is asking about the president of the Indian National Congress at the time of India's independence or the person who led the country to freedom. The follow-up questions are designed to clarify this ambiguity."]
+
+0it [00:00, ?it/s][A
+1it [00:11, 11.72s/it][A
+2it [00:22, 10.97s/it][A
+3it [00:34, 11.63s/it][A
+4it [00:43, 10.47s/it][A
+5it [00:57, 11.72s/it][A
+6it [01:14, 13.54s/it][A
+7it [01:32, 14.97s/it][A
+8it [01:46, 14.70s/it][A8it [01:46, 13.29s/it]
+ 50%|█████     | 1/2 [02:24<02:24, 144.94s/it]1950
+2721
+1953
+3862
+3811
+1554
+2242
+Final Answ Input:
+    Initial Query: Who was the president of indian national congress when india became free?
+    Context: There is no context information provided for this query.
+    Follow-up Query0: '### Who was the president of the Indian National Congress when India gained independence?',
+    Context: The Indian National Congress, under the leadership of Mahatma Gandhi, led India to independence from the United Kingdom in 1947. The party's first prime minister, Jawaharlal Nehru, played a key role in India's independence movement and led the country as its first prime minister.
+    
+Follow-up Query1: '### Who was the president of the Indian National Congress when India became free?',
+    Context: Jivatram Bhagwandas Kripalani was the president of the Indian National Congress when India became free in 1947.
+    
+Follow-up Query2: '### What was the name of the Indian National Congress president who led the country to freedom?',
+    Context: The Indian National Congress, led by Mahatma Gandhi, played a key role in India's independence from the United Kingdom in 1947. The party's first prime minister, Jawaharlal Nehru, led the country to independence and became the first prime minister of India, delivering the famous "Tryst with Destiny" speech on August 14, 1947.
+    
+Follow-up Query3: '### Who was the leader of the Indian National Congress when India achieved independence?',
+    Context: The Indian National Congress, led by Mahatma Gandhi, played a significant role in India's struggle for independence from the United Kingdom. The party's efforts, including civil disobedience and non-violent resistance, ultimately led to India's independence on August 15, 1947.
+    
+Follow-up Query4: '### Who was the Indian National Congress president during India's struggle for freedom?',
+    Context: The Indian National Congress was founded on December 28, 1885, by Womesh Chandra Banerjee as its first president. The party has had 61 presidents since its formation, with Sonia Gandhi being the longest-serving president, holding the office for over twenty years. The party has been dominated by the Nehru-Gandhi family, with six members of the family holding the presidency, including Jawaharlal Nehru, Indira Gandhi, Rajiv Gandhi, and Sonia Gandhi.
+    
+Follow-up Query5: '### Who was the Indian National Congress president when India got freedom?',
+    Context: The Indian National Congress, formed in 1885, played a significant role in India's struggle for independence. The party's demands for complete independence were first made by Hasrat Mohani in 1929, and the Purna Swaraj declaration, or "Declaration of the Independence of India", was promulgated in 1930. The party observed 26 January as the Independence Day between 1930 and 1946. The actual independence was granted in 1947, and the Constitution of India came into effect on 26 January 1950, since when 26 January is celebrated as Republic Day.
+    
+Follow-up Query6: '### Who was the president of the Indian National Congress party when India was free?',
+    Context: Jivatram Bhagwandas Kripalani was the president of the Indian National Congress party when India was free, specifically in 1947.
+    
+    
+candidate: The document does not specify who was the president of the Indian National Congress when India became free. However, it mentions that Jivatram Bhagwandas Kripalani was the president of the Indian National Congress during the transfer of power in 1947.There is no context information provided for this query.
+
+The Indian National Congress, led by Mahatma Gandhi, played a key role in India's independence from the United Kingdom in 1947. Jivatram Bhagwandas Kripalani was the president of the Indian National Congress when India became free in 1947, marking the culmination of the party's efforts to achieve independence.||
+{'rougeLsum': 47.61904761904763, 'length': 96.0, 'str_em': 50.0, 'ovscore': 48.79500364742666}
+Initial Answer: Sir Thomas Malory wrote a romance called "Le Morte d'Arthur" about the death of King Arthur.
+5987
+Relevant Answer: The author of the romance "Le Morte d'Arthur" is Sir Thomas Malory, a knight who was imprisoned during the late 15th century. Malory's work is a compilation and interpretation of various French and English sources about King Arthur and his knights, compiled to tell a complete story of Arthur from his conception to his death.
+["'### Who were the other authors that contributed to the Arthurian legend besides Sir Thomas Malory?", "### What were the main sources of inspiration for Sir Thomas Malory when writing Le Morte d\\'Arthur?", "### How did Sir Thomas Malory\\'s experiences in prison influence his writing of Le Morte d\\'Arthur?", "### What was the significance of the Round Table fellowship in the story of Le Morte d\\'Arthur?", '### How did Sir Thomas Malory portray the character of King Arthur and what qualities did he attribute to him?', "### What was the role of Merlin in the story of Le Morte d\\'Arthur and how did he influence the plot?", "### How did Sir Thomas Malory\\'s use of the concept of chivalry reflect the values of his time?", "### What was the impact of the Grail Quest on the story of Le Morte d\\'Arthur?", '### How did Sir Thomas Malory portray the character of Sir Lancelot and his relationship with Queen Guinevere?', "### What was the significance of the character of Mordred in the story of Le Morte d\\'Arthur?", "### How did Sir Thomas Malory use the theme of the decline of Arthur\\'s kingdom to reflect the anxieties of his time?", "### What was the role of the character of Sir Gawain in the story of Le Morte d\\'Arthur?", '### How did Sir Thomas Malory\\\'s use of the concept of the "Dark Ages" reflect his understanding of history?', "### What was the significance of the character of the Lady of the Lake in the story of Le Morte d\\'Arthur?", '### How did Sir Thomas Malory use the theme of the struggle between good and evil to reflect the values of his time?', "### What was the impact of the character of King Arthur\\'s nemesis, King Claudas, on the story of Le Morte d\\'Arthur?", '### How did Sir Thomas Malory portray the character of Queen Guinevere and her role in the story?', "### What was the significance of the character of Sir Percival in the story of Le Morte d\\'Arthur?", "### How did Sir Thomas Malory use the theme of the importance of honor and loyalty in the story of Le Morte d\\'Arthur?", "### What was the role of the character of the sorceress Morgan le Fay in the story of Le Morte d\\'Arthur?", '### How did Sir Thomas Malory use the concept of the "Questing Beast" to reflect the values of his time?', '###']
+
+0it [00:00, ?it/s][A
+1it [00:21, 21.12s/it][A
+2it [00:45, 23.33s/it][A
+3it [01:12, 24.84s/it][A
+4it [01:41, 26.41s/it][A
+5it [02:16, 29.54s/it][A
+6it [02:41, 28.02s/it][A
+7it [03:21, 31.74s/it][A
+8it [03:54, 32.21s/it][A8it [03:54, 29.28s/it]
+100%|██████████| 2/2 [08:07<00:00, 260.90s/it]100%|██████████| 2/2 [08:07<00:00, 243.51s/it]
+1655
+2523
+2904
+3157
+6412
+1408
+5286
+3018
+Final Answ Input:
+    Initial Query: Who wrote a romance called le morte d'arthur about the death of king arthur?
+    Context: The author of the romance "Le Morte d'Arthur" is Sir Thomas Malory, a knight who was imprisoned during the late 15th century. Malory's work is a compilation and interpretation of various French and English sources about King Arthur and his knights, compiled to tell a complete story of Arthur from his conception to his death.
+    Follow-up Query0: '### Who were the other authors that contributed to the Arthurian legend besides Sir Thomas Malory?
+    Context: Besides Sir Thomas Malory, the other authors that contributed to the Arthurian legend include French authors who wrote the Old French Vulgate romances, such as Chrétien de Troyes, and other French standalone chivalric romances, including Érec et Énide, L'âtre périlleux, Perlesvaus, and Yvain ou le Chevalier au Lion. In addition, other English authors contributed, including John Hardyng, the author of the English Chronicle, and the anonymous authors of the Middle English poems Morte Arthur and Morte Arthure.
+    
+Follow-up Query1: ### What were the main sources of inspiration for Sir Thomas Malory when writing Le Morte d\'Arthur?
+    Context: Sir Thomas Malory's primary sources of inspiration for Le Morte d'Arthur were the Old French Vulgate romances, Middle English sources such as the Alliterative Morte Arthure and the Stanzaic Morte Arthur, and several French standalone chivalric romances, including Érec et Énide, L'âtre périlleux, Perlesvaus, and Yvain ou le Chevalier au Lion. He also drew from a 5th-century Roman military manual, De re militari, and possibly John Hardyng's English Chronicle.
+    
+Follow-up Query2: ### How did Sir Thomas Malory\'s experiences in prison influence his writing of Le Morte d\'Arthur?
+    Context: Sir Thomas Malory's experiences in prison had a significant influence on his writing of Le Morte d'Arthur, with some scholars proposing that he wrote the work while incarcerated, including a final stint at Newgate Prison in London. The exact identity of the author was long a subject of speculation, with at least six historical figures bearing the name "Sir Thomas Malory" during the late 15th century. The most widely accepted candidate is Thomas Malory of Newbold Revel, Warwickshire, who was born around 1393 and was involved in a life of crime, including theft, attempted murder, and robbery, before being imprisoned and eventually releasing in 1470.
+    
+Follow-up Query3: ### What was the significance of the Round Table fellowship in the story of Le Morte d\'Arthur?
+    Context: The Round Table fellowship was established by King Arthur as a gathering of his chief knights, where they swore to the Pentecostal Oath as a guide for knightly conduct. The fellowship was initially a model of order and chivalry, but it ultimately fell apart due to the flaws of its members, particularly the adulterous relationship between Lancelot and Guinevere, and the rise of Mordred's treachery. The Round Table fellowship played a significant role in the story of Le Morte d'Arthur, as it represented the ideals of chivalry and knighthood, but ultimately failed to uphold those ideals, leading to the downfall of Camelot.
+    
+Follow-up Query4: ### How did Sir Thomas Malory portray the character of King Arthur and what qualities did he attribute to him?
+    Context: Sir Thomas Malory portrayed King Arthur as a strong and noble leader, who establishes the Round Table fellowship and gathers his knights to swear to the Pentecostal Oath as a guide for knightly conduct. He attributed to Arthur qualities of military prowess, wisdom, and a sense of justice, but also acknowledged his flaws and weaknesses, particularly in his relationship with Guinevere. Malory's portrayal of Arthur is complex and multifaceted, reflecting the societal and historical context in which he lived, with themes of legitimacy, power, and the decline of an almost perfect earthy civilization.
+    
+Follow-up Query5: ### What was the role of Merlin in the story of Le Morte d\'Arthur and how did he influence the plot?
+    Context: Merlin played a crucial role in the story of Le Morte d'Arthur as the wizard who helps shape the plot by advising King Arthur and facilitating key events, such as the removal of the sword from the stone, which proves Arthur's birthright. Merlin's counsel and magical abilities further helped Arthur secure his throne and establish the Round Table fellowship, but also contributed to the downfall of Arthur's kingdom by eliminating the prophetic and magical counsel of Nimue, replacing it with the sorceress Nimue.
+    
+Follow-up Query6: ### How did Sir Thomas Malory\'s use of the concept of chivalry reflect the values of his time?
+    Context: Malory's use of the concept of chivalry in Le Morte d'Arthur reflects the values of his time by portraying an idealized world of knighthood, with a focus on honor, loyalty, and chivalric conduct. However, this idealized world is contrasted with the reality of human flaws and weaknesses, particularly in the character of Lancelot, whose adulterous love for Guinevere serves as a catalyst for the downfall of Camelot. Malory's work also explores the tension between secular chivalry and Christian morality, as the knights' adherence to the Pentecostal Oath is tested by their own weaknesses and the failures of others. Ultimately, the work presents a complex and nuanced view of chivalry, one that acknowledges the flaws and weaknesses of human nature while still striving for an ideal of honor and loyalty.
+    
+Follow-up Query7: ### What was the impact of the Grail Quest on the story of Le Morte d\'Arthur?
+    Context: The Grail Quest in Le Morte d'Arthur had a significant impact on the story, emphasizing the importance of religion and the pursuit of spiritual perfection. The quest was a transformative experience for the knights, particularly Galahad, who achieved perfection and became a model of a holy knight. This contrasted with the flawed Lancelot, who struggled with his own morality and ultimately failed to achieve the same level of spiritual perfection. The Grail Quest also served as a commentary on the limitations of secular chivalry and the importance of living a virtuous life, highlighting the tension between the ideals of courtly love and the harsh realities of the world.
+    
+    
+candidate: Sir Thomas Malory wrote a romance called "Le Morte d'Arthur" about the death of King Arthur.The author of the romance "Le Morte d'Arthur" is Sir Thomas Malory, a knight who was imprisoned during the late 15th century. Malory's work is a compilation and interpretation of various French and English sources about King Arthur and his knights, compiled to tell a complete story of Arthur from his conception to his death.
+
+Sir Thomas Malory's Le Morte d'Arthur is a masterpiece of Arthurian legend, drawing inspiration from various French and English sources to create a comprehensive and poignant tale of King Arthur's rise and fall. As a prisoner, Malory's experiences and emotions likely influenced his writing, shaping the narrative into a cautionary tale of the flaws of human nature and the decline of an idealized world of chivalry. Through King Arthur's character, Malory explores the complexities of leadership, power, and the human condition, while the Round Table fellowship serves as a symbol of the ideals of chivalry and knighthood, ultimately failing to uphold those ideals and leading to the downfall of Camelot.||
+{'rougeLsum': 33.79310344827586, 'length': 180.0, 'str_em': 33.33333333333333, 'ovscore': 33.562431103976884}
+rougeLsum     40.706076
+length       138.000000
+str_em        41.666667
+ovscore       41.178717
+dtype: float64
