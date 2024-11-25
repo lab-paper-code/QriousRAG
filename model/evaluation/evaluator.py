@@ -324,6 +324,7 @@ def disambig(context,asqa):
   nlp = pipeline('question-answering', model=model_name, tokenizer=model_name, device=device)
   cnt=0
   loc_f1=0
+  print(len(follow))
   for i in range(len(follow)):
       QA_input = {
           'question': follow[i],
@@ -334,13 +335,13 @@ def disambig(context,asqa):
       prediction=[]
       prediction.append(res['answer'])
       print(res)
-      for answers in short:
-          ans=[]
-          for a in answers:
-              for p in prediction:
-                  res=_compute_f1(a, p)
-                  ans.append(res)
-          loc_f1+=max(ans)
+      print(len(short))
+      ans=[]
+      for a in short[i]:
+          for p in prediction:
+              res=_compute_f1(a, p)
+              ans.append(res)
+      loc_f1+=max(ans)
       cnt+=1
   f1=loc_f1/cnt
   return 100 * f1
