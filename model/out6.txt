@@ -1,66 +1,77 @@
 (11657, 4096)
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:11,  3.72s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.51s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:07<00:02,  2.15s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.47s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.88s/it]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:11,  3.72s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.51s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:07<00:02,  2.14s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.45s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.87s/it]
 `low_cpu_mem_usage` was None, now default to True since model is quantized.
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:03,  1.08s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.12s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.12s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.24it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.09it/s]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:03,  1.08s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.17s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.14s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.22it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.07it/s]
   0%|          | 0/120 [00:00<?, ?it/s]/home/dataconv/.cache/huggingface/modules/transformers_modules/nvidia/NV-Embed-v2/7604d305b621f14095a1aa23d351674c2859553a/modeling_nvembed.py:349: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
   'input_ids': torch.tensor(batch_dict.get('input_ids').to(batch_dict.get('input_ids')).long()),
 /home/dataconv/anaconda3/envs/sf_rag_djk/lib/python3.10/contextlib.py:103: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
   self.gen = func(*args, **kwds)
-Initial Answer: According to the provided context information, Miroslav Klose of Germany holds the record for the most goals scored in the FIFA World Cup with 16 goals. However, if we consider the overall goals scored in top-level professional football competitions, it is difficult to determine the highest goalscorer due to the varying methodologies used by different organizations to calculate goals.The RSSSF credits Josef Bican with 948 goals, while the IFFHS lists 25 players with 500 or more goals. However, the Guinness World Records credits Pelé as the scorer of the "most career goals" with 1,279.It is worth noting that the context information highlights the difficulties in quantifying goals due to the inclusion or exclusion of certain types of matches, such as friendlies or reserve team matches.
+Initial Answer: Miroslav Klose of Germany has the highest goals in the World Cup with 16 goals, but the highest goals in world football overall is not clearly stated in the provided context. However, based on the information given, the top all-time goalscorers are:* Josef Bican (Austria/Czech Republic) with an estimated 805 goals* Cristiano Ronaldo (Portugal) with 133 international goals* Miroslav Klose (Germany) with 16 goals in the World Cup* Gerd Müller (Germany) with 14 goals in the World CupIt is worth noting that the highest goalscorer in world football overall is not clearly stated in the provided context, but Josef Bican is estimated to have scored 805 goals, which is the highest number mentioned.
 5449
-Relevant Answer: Cristiano Ronaldo is the highest goalscorer in men's international football, having scored 133 goals in 216 appearances for Portugal. He holds the record for most goals in European qualification matches, scoring 36 goals in FIFA World Cup qualifiers and 41 goals in UEFA Euro qualifiers. Ronaldo has scored in all major international tournaments, including the World Cup, UEFA European Championships, and UEFA Nations League, with a record 14 goals at the European Championships.
-["'### What is the current world record for most goals scored in football?',", "'### How many goals does the player with the highest number of goals scored in football have?',", "'### What is the highest number of goals scored by a player in a single season?',", "'### Which player holds the record for most goals scored in a single tournament?',", "'### What is the average number of goals scored per match by the top 101 goalscorers in the World Cup?',", "'### How many players have scored 50 or more international goals?',", "'### What is the highest number of goals scored by a player in a single international tournament?',", "'### Who holds the record for most goals scored in a single season in the Champions League?',", "'### What is the most goals scored by a player in a single season in the European Cup?',", "'### Which player holds the record for most goals scored in a single season in the UEFA Nations League?',", "'### How many goals does the player with the highest number of goals scored in football have scored in friendly matches?',", "'### What is the highest number of goals scored by a player in a single tournament in the European Championships?',", "'### Who holds the record for most goals scored in a single tournament in the World Cup?',", "'### What is the average number of goals scored per match by the top 101 goalscorers in the Champions League?',", "'### How many players have scored 50 or more goals in a single season in the European Cup?',", "'### Which player holds the record for most goals scored in a single season in the UEFA Champions League?',", "'### What is the highest number of goals scored by a player in a single season in the top five European leagues?',", "'### How many goals does the player with the highest number of goals scored in football have scored in the top five European leagues?',", "'### What is the highest number of goals scored by a player in a single season in the top five European leagues and international tournaments?',", "'### Who holds the record for most goals scored in a single season in the top five European leagues and international tournaments?',", "'### Which player holds the record for most goals scored in a single season in the European Cup and UEFA Champions League?',", "'### What is the highest number of goals scored by a player in a single season in the European Cup and UEFA Champions League?',", "'### How many goals does the player with the highest number of goals scored in football have scored in the European Cup and UEFA Champions League?',", "'### What is the highest number of goals scored by"]
+Relevant Answer: Cristiano Ronaldo is the highest overall men's international goalscorer in history, having scored 133 goals in 216 appearances for the Portugal national team. He surpassed the record for most goals in international football held by Iran's Ali Daei, and is also the first European player to reach 100 international goals.
+["'### What is the total number of goals scored by Cristiano Ronaldo in his international career?',", "'### What is the total number of goals scored by Cristiano Ronaldo in his club career?',", "'### Who is the second-highest goalscorer in men's international football?',", "'### What is the record for the most goals scored in a single season in international football?',", "'### What is the record for the most goals scored in a single season in club football?',", "'### Which team has the most players to have scored 50 or more international goals?',", "'### Which team has the most players to have scored 50 or more international goals in a single tournament?',", "'### What is the average number of goals scored per match by the top 101 goalscorers in the World Cup?',", "'### Which players have achieved an average of two goals or more per match played in the World Cup?',", "'### What is the record for the most goals scored in a single World Cup tournament?',", "'### Which players have scored the most goals in a single World Cup tournament?',", "'### What is the record for the most goals scored in a single season in international football?',", "'### Which players have scored the most goals in a single season in international football?',", "'### What is the record for the most goals scored in a single season in club football?',", "'### Which players have scored the most goals in a single season in club football?',", "'### What is the total number of goals scored by Cristiano Ronaldo in the World Cup?',", "'### What is the total number of goals scored by Cristiano Ronaldo in the European Championship?',", "'### What is the total number of goals scored by Cristiano Ronaldo in the UEFA Nations League?',", "'### What is the total number of goals scored by Cristiano Ronaldo in friendly matches?',", "'### Which team has the most goals scored against them by Cristiano Ronaldo?',", "'### Which ground has the most goals scored by Cristiano Ronaldo in international matches?',", "'### What is the total number of goals scored by Cristiano Ronaldo in his career?',", "'### What is the total number of goals scored by Cristiano Ronaldo in his career in all competitions?',", "'### Who is the highest goalscorer in the European Championship?',", "'### Who is the highest goalscorer in the World Cup?',", "'### Who is the highest goalscorer in international football?',", "'### Who is the second-highest goalscorer in international football?',", "'### Who is the third-highest goalscorer in international football?',", "'### What is the record for the most goals scored by a"]
 
 0it [00:00, ?it/s][A
-1it [00:10, 10.62s/it][A
-2it [00:21, 11.05s/it][A
-3it [00:33, 11.17s/it][A
-4it [00:44, 11.10s/it][A
-5it [00:53, 10.40s/it][A
-6it [01:03, 10.39s/it][A
-7it [01:17, 11.33s/it][A
-8it [01:24, 10.09s/it][A8it [01:24, 10.56s/it]
-  0%|          | 0/120 [02:45<?, ?it/s]
-2877
-3195
-5133
-4239
+1it [00:10, 10.25s/it][A
+2it [00:22, 11.46s/it][A
+3it [00:32, 10.62s/it][A
+4it [00:42, 10.42s/it][A
+5it [00:52, 10.51s/it][A
+6it [01:02, 10.19s/it][A
+7it [01:11,  9.92s/it][A
+8it [01:21,  9.68s/it][A8it [01:21, 10.13s/it]
+/home/dataconv/anaconda3/envs/sf_rag_djk/lib/python3.10/site-packages/transformers/pipelines/question_answering.py:391: FutureWarning: Passing a list of SQuAD examples to the pipeline is deprecated and will be removed in v5. Inputs should be passed using the `question` and `context` keyword arguments instead.
+  warnings.warn(
+  1%|          | 1/120 [02:43<5:24:43, 163.72s/it]4438
+3166
+2448
+2447
+3723
+2459
+1691
 960
-2455
-5191
 Final Answ Input:
     Initial Query: Who has the highest goals in world football?
-    Context: Cristiano Ronaldo is the highest goalscorer in men's international football, having scored 133 goals in 216 appearances for Portugal. He holds the record for most goals in European qualification matches, scoring 36 goals in FIFA World Cup qualifiers and 41 goals in UEFA Euro qualifiers. Ronaldo has scored in all major international tournaments, including the World Cup, UEFA European Championships, and UEFA Nations League, with a record 14 goals at the European Championships.
-    Follow-up Query0: '### What is the current world record for most goals scored in football?',
-    Context: The current world record for most goals scored in football is held by Cristiano Ronaldo with 133 international goals. The record for most goals scored in top-level professional football competitions is 948 goals, credited to Josef Bican.
+    Context: Cristiano Ronaldo is the highest overall men's international goalscorer in history, having scored 133 goals in 216 appearances for the Portugal national team. He surpassed the record for most goals in international football held by Iran's Ali Daei, and is also the first European player to reach 100 international goals.
+    Follow-up Query0: '### What is the total number of goals scored by Cristiano Ronaldo in his international career?',
+    Context: Cristiano Ronaldo has scored a total of 133 international goals in 216 appearances for the Portugal national team.
     
-Follow-up Query1: '### How many goals does the player with the highest number of goals scored in football have?',
-    Context: The player with the highest number of goals scored in football is Josef Bican, who is estimated to have scored 805 goals, according to FIFA, although other sources and organisations have different tallies, including 948 goals by RSSSF and 821 goals by the Football Association of the Czech Republic.
+Follow-up Query1: '### What is the total number of goals scored by Cristiano Ronaldo in his club career?',
+    Context: Cristiano Ronaldo has scored a total of 907 senior career goals for club and country, with the majority of these goals being scored in top-level professional football competitions. He is the all-time top scorer in the UEFA Champions League with 140 goals, and has finished as the competition's top scorer for six consecutive seasons between 2012 and 2018.
     
-Follow-up Query2: '### What is the highest number of goals scored by a player in a single season?',
-    Context: The highest number of goals scored by a player in a single season is 36, achieved by Erling Haaland (Manchester City, 2022-23).
+Follow-up Query2: '### Who is the second-highest goalscorer in men's international football?',
+    Context: The second-highest goalscorer in men's international football is Cristiano Ronaldo, with 122 international goals as of 15 October 2024.
     
-Follow-up Query3: '### Which player holds the record for most goals scored in a single tournament?',
-    Context: The player who holds the record for most goals scored in a single tournament is Just Fontaine, who scored 13 goals in the 1958 World Cup.
+Follow-up Query3: '### What is the record for the most goals scored in a single season in international football?',
+    Context: The record for the most goals scored in a single season in international football is not provided in the given context. However, the all-time record holder for most international goals is Cristiano Ronaldo with 133 goals.
     
-Follow-up Query4: '### What is the average number of goals scored per match by the top 101 goalscorers in the World Cup?',
-    Context: The top 101 goalscorers in the World Cup had an average of 0.79 goals scored per match.
+Follow-up Query4: '### What is the record for the most goals scored in a single season in club football?',
+    Context: The record for the most goals scored in a single season in club football is held by Manchester City, who scored 106 goals in the 2017-18 season.
     
-Follow-up Query5: '### How many players have scored 50 or more international goals?',
-    Context: 81 male footballers have scored at least 50 goals with their national team at senior level. Cristiano Ronaldo holds the all-time record with 133 international goals, becoming the first European player to reach 100 international goals.
+Follow-up Query5: '### Which team has the most players to have scored 50 or more international goals?',
+    Context: Brazil, Hungary, Iran, and Kuwait hold the record of having the most players to have scored 50 or more international goals, with four each.
     
-Follow-up Query6: '### What is the highest number of goals scored by a player in a single international tournament?',
-    Context: Cristiano Ronaldo is the current all-time record goalscorer for the Portugal national team and the highest overall men's international goalscorer in history, having scored 133 goals in 216 appearances. He has participated in thirteen major international tournaments, scoring in all of them bar Euro 2024.
+Follow-up Query6: '### Which team has the most players to have scored 50 or more international goals in a single tournament?',
+    Context: Brazil, Hungary, Iran, and Kuwait hold the record of having the most players to have scored 50 or more international goals with four each.
+    
+Follow-up Query7: '### What is the average number of goals scored per match by the top 101 goalscorers in the World Cup?',
+    Context: The top 101 goalscorers in the World Cup had an average of 0.79 goals per match.
     
     
-candidate: According to the provided context information, Miroslav Klose of Germany holds the record for the most goals scored in the FIFA World Cup with 16 goals. However, if we consider the overall goals scored in top-level professional football competitions, it is difficult to determine the highest goalscorer due to the varying methodologies used by different organizations to calculate goals.The RSSSF credits Josef Bican with 948 goals, while the IFFHS lists 25 players with 500 or more goals. However, the Guinness World Records credits Pelé as the scorer of the "most career goals" with 1,279.It is worth noting that the context information highlights the difficulties in quantifying goals due to the inclusion or exclusion of certain types of matches, such as friendlies or reserve team matches.Cristiano Ronaldo is the highest goalscorer in men's international football, having scored 133 goals in 216 appearances for Portugal. He holds the record for most goals in European qualification matches, scoring 36 goals in FIFA World Cup qualifiers and 41 goals in UEFA Euro qualifiers. Ronaldo has scored in all major international tournaments, including the World Cup, UEFA European Championships, and UEFA Nations League, with a record 14 goals at the European Championships.
+candidate: Miroslav Klose of Germany has the highest goals in the World Cup with 16 goals, but the highest goals in world football overall is not clearly stated in the provided context. However, based on the information given, the top all-time goalscorers are:* Josef Bican (Austria/Czech Republic) with an estimated 805 goals* Cristiano Ronaldo (Portugal) with 133 international goals* Miroslav Klose (Germany) with 16 goals in the World Cup* Gerd Müller (Germany) with 14 goals in the World CupIt is worth noting that the highest goalscorer in world football overall is not clearly stated in the provided context, but Josef Bican is estimated to have scored 805 goals, which is the highest number mentioned.Cristiano Ronaldo is the highest overall men's international goalscorer in history, having scored 133 goals in 216 appearances for the Portugal national team. He surpassed the record for most goals in international football held by Iran's Ali Daei, and is also the first European player to reach 100 international goals.
 
-Cristiano Ronaldo holds the record for most goals in world football, having scored 133 goals in 216 appearances for Portugal. However, the record for most goals scored in top-level professional football competitions is held by Josef Bican, who is estimated to have scored 805 goals, although other sources have different tallies.||
-Traceback (most recent call last):
-  File "/home/dataconv/deallab/djk/sf_rag/sf_rag/model/rag_self_refine.py", line 296, in <module>
-    scores=evaluate([init_answer+rel_answer+add_answer],[row.to_dict()])
-  File "/home/dataconv/deallab/djk/sf_rag/sf_rag/model/evaluation/evaluator.py", line 374, in evaluate
-    scores['Disamig-F1']=disambig(candidates,asqa)
-  File "/home/dataconv/deallab/djk/sf_rag/sf_rag/model/evaluation/evaluator.py", line 313, in disambig
-    question=asqa['question']
-TypeError: list indices must be integers or slices, not str
+Cristiano Ronaldo holds the record for the highest goals in world football, having scored 133 goals in 216 appearances for the Portugal national team, surpassing the previous record held by Iran's Ali Daei. His impressive goal-scoring record also extends to his club career, where he has scored a total of 907 senior career goals. As the all-time top scorer in the UEFA Champions League, Cristiano Ronaldo is widely regarded as one of the greatest goal-scorers in football history.||
+{'id': 'f743f676-48f8-42c6-ab8e-e4cd0a0542ce', 'sample_id': -7013890438520559398, 'question': 'Who has the highest goals in world football?', 'follow_up_questions': '["Who has the highest goals in men\'s world international football?", "Who has the highest goals all-time in men\'s football?", "Who has the highest goals in women\'s world international football?"]', 'long_answers': '["Ali Dael has the highest goals in men\'s world international football with 109 goals. Josef Bican has the highest goals all-time in men\'s football and Christine Sinclair has the highest goals in women\'s world international football.", "The players with the highest all-time goals and highest men\'s and women\'s international football goals differ. The player with the highest all-time men\'s football goals is Josef Bican, who in 2020 was recognized by FIFA, the international governing body of football, as the record scorer with an estimated 805 goals. Christine Sinclair has the highest goals in women\'s international football with 187 and is the all-time leader for international goals scored for men or women. Cristiano Ronaldo and Ali Daei are currently tied for leading goalscorer in the history of men\'s international football with 109."]', 'short_answers': "[['Daei', 'Ali Daei'], ['Bican', 'Josef Bican'], ['Sinclair', 'Christine Sinclair']]"}
+Miroslav Klose of Germany has the highest goals in the World Cup with 16 goals, but the highest goals in world football overall is not clearly stated in the provided context. However, based on the information given, the top all-time goalscorers are:* Josef Bican (Austria/Czech Republic) with an estimated 805 goals* Cristiano Ronaldo (Portugal) with 133 international goals* Miroslav Klose (Germany) with 16 goals in the World Cup* Gerd Müller (Germany) with 14 goals in the World CupIt is worth noting that the highest goalscorer in world football overall is not clearly stated in the provided context, but Josef Bican is estimated to have scored 805 goals, which is the highest number mentioned.Cristiano Ronaldo is the highest overall men's international goalscorer in history, having scored 133 goals in 216 appearances for the Portugal national team. He surpassed the record for most goals in international football held by Iran's Ali Daei, and is also the first European player to reach 100 international goals.
+
+Cristiano Ronaldo holds the record for the highest goals in world football, having scored 133 goals in 216 appearances for the Portugal national team, surpassing the previous record held by Iran's Ali Daei. His impressive goal-scoring record also extends to his club career, where he has scored a total of 907 senior career goals. As the all-time top scorer in the UEFA Champions League, Cristiano Ronaldo is widely regarded as one of the greatest goal-scorers in football history.||
+Who has the highest goals in world football?
+["Who has the highest goals in men's world international football?", "Who has the highest goals all-time in men's football?", "Who has the highest goals in women's world international football?"]
+[['Daei', 'Ali Daei'], ['Bican', 'Josef Bican'], ['Sinclair', 'Christine Sinclair']]
+Who has the highest goals in men's world international football?
+{'score': 0.1648217737674713, 'start': 698, 'end': 715, 'answer': 'Cristiano Ronaldo'}
+Who has the highest goals all-time in men's football?
+{'score': 0.09529183804988861, 'start': 698, 'end': 715, 'answer': 'Cristiano Ronaldo'}
+Who has the highest goals in women's world international football?
+{'score': 1.3024905456404667e-06, 'start': 0, 'end': 14, 'answer': 'Miroslav Klose'}
+{'rougeLsum': 35.12747875354108, 'length': 240.0, 'str_em': 66.66666666666666, 'Disambig-F1': 0.0, 'ovscore': 0.0}
