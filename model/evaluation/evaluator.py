@@ -25,7 +25,9 @@ from rouge_score import rouge_scorer
 from rouge_score import scoring
 
 # nltk.download('punkt')
-
+from transformers import pipeline
+import torch
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # answer normalization
 def normalize_answer(s):
@@ -306,6 +308,43 @@ def score_qa_accuracy(predictions, asqa, target_keys=None):
       'QA-Hit': 100 * np.mean(bins)
   }
 
+def disambig(context,asqa):
+  print(asqa)
+  context=context[0]
+  question=asqa['question']
+  follow=eval(asqa['follow_up_questions'])
+  short=eval(asqa['short_answers'])
+
+  print(context)
+  print(question)
+  print(follow)
+  print(short)
+  
+  model_name = "deepset/roberta-base-squad2"
+  nlp = pipeline('question-answering', model=model_name, tokenizer=model_name, device=device)
+  cnt=0
+  loc_f1=0
+  for i in range(len(follow)):
+      QA_input = {
+          'question': follow[i],
+          'context': context
+      }
+      print(follow[i])
+      res = nlp(QA_input)
+      prediction=[]
+      prediction.append(res['answer'])
+      print(res)
+      for answers in short:
+          ans=[]
+          for a in answers:
+              for p in prediction:
+                  res=_compute_f1(a, p)
+                  ans.append(res)
+          loc_f1+=max(ans)
+      cnt+=1
+  f1=loc_f1/cnt
+  return 100 * f1
+
 
 def evaluate(candidates, asqa,
                        rouge_metrics=['rougeLsum']):
@@ -321,10 +360,10 @@ def evaluate(candidates, asqa,
     """
     references = []
     short_answers =  []
+    follow=[]
     for sample in asqa:
         references.append(eval(sample['long_answers']))
         short_answers.append(eval(sample['short_answers']))
-        
     # calculate rouge score       
     scores = rouge(
         candidates,
@@ -332,7 +371,7 @@ def evaluate(candidates, asqa,
         metrics=rouge_metrics)
     scores['length'] = compute_len(candidates)
     scores['str_em'] = str_em(candidates, short_answers)
-
+    scores['Disambig-F1']=disambig(candidates,asqa[0])
     # if 'qa' in hypotheses:
     #     qa_scores = score_qa_accuracy(hypotheses['qa'], asqa, target_keys)
 
@@ -342,7 +381,7 @@ def evaluate(candidates, asqa,
     #     if 'rougeLsum' not in scores:
     #     scores['ovscore'] = 'Undefined'
     #     else:
-    scores['ovscore'] = np.sqrt(scores['str_em'] * scores['rougeLsum'])
+    scores['ovscore'] = np.sqrt(scores['Disambig-F1'] * scores['rougeLsum'])
 
     return scores
 

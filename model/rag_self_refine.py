@@ -15,10 +15,10 @@ import numpy as np
 from tqdm import tqdm
 
 data_dir = '/raid/deallab/SF_RAG_Data/ASQA'
-data_dir = '../data'
+# data_dir = '../data'
 
-device1 = 'cuda:0'
-device2 = 'cuda:1'
+device1 = 'cuda:2'
+device2 = 'cuda:3'
 
 gen_model_id = 'meta-llama/Meta-Llama-3.1-8B-Instruct'
 # gen_model_id = 'mistralai/Mistral-7B-Instruct-v0.3'
@@ -82,7 +82,7 @@ model_gen = AutoModelForCausalLM.from_pretrained(
     gen_model_id,
     quantization_config=bnb_config,
     torch_dtype=torch.bfloat16,
-    device_map= 'auto'
+    # device_map= 'auto'
 )
 model_gen.eval()
 
@@ -255,8 +255,8 @@ from evaluation import evaluate
 from collections import defaultdict
 
 scores_list=[]
-stop_iteration=2
-start=118
+stop_iteration=120
+start=0
 test_df=qa_df.iloc[start:start+stop_iteration]
 
 new_answers_dic=defaultdict(list)
