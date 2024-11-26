@@ -14,11 +14,11 @@ import re
 import numpy as np
 from tqdm import tqdm
 
-data_dir = '/raid/deallab/SF_RAG_Data/ASQA'
-# data_dir = '../data'
+# data_dir = '/raid/deallab/SF_RAG_Data/ASQA'
+data_dir = '../data'
 
-device1 = 'cuda:2'
-device2 = 'cuda:3'
+device1 = 'cuda:0'
+device2 = 'cuda:1'
 
 gen_model_id = 'meta-llama/Meta-Llama-3.1-8B-Instruct'
 # gen_model_id = 'mistralai/Mistral-7B-Instruct-v0.3'

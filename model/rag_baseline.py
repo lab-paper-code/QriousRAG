@@ -92,7 +92,7 @@ def retrieve_documents(query):
     #print(query_embedding)
     similarities = torch.nn.functional.cosine_similarity(query_embedding, evidence_embeddings)
 
-    top_results = similarities.argsort(descending=True)[:20].cpu().detach().numpy()
+    top_results = similarities.argsort(descending=True)[:10].cpu().detach().numpy()
     #print(top_results)
     res=[evidence_df.loc[idx, 'text'] for idx in top_results if idx < len(evidence_df)]
         
@@ -132,9 +132,11 @@ for idx, row in tqdm(qa_df.iterrows(), total=min([stop_iteration, len(qa_df)])):
     candidate = [re.sub('\n|<\|eot_id\|>', '', res)]
 
     scores=evaluate(candidate, [row.to_dict()])
+    print(scores)
     scores_list.append(scores)
+    scores_df=pd.DataFrame(scores_list)
+    scores_df.to_csv(f'./results/baseline-11-25_results.csv', index=False)
     
 scores_df=pd.DataFrame(scores_list)
 print(scores_df.mean())
-
-scores_df.to_csv(f'./results/baseline20_results_{time.strftime("%Y%m%d-%H%M%S")}.csv', index=False)
+scores_df.to_csv(f'./results/baseline-11-25_results.csv', index=False)
