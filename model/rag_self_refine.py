@@ -100,7 +100,7 @@ def retrieve_documents(query):
     #print(query_embedding)
     similarities = torch.nn.functional.cosine_similarity(query_embedding, evidence_embeddings)
 
-    top_results = similarities.argsort(descending=True)[:10].cpu().detach().numpy()
+    top_results = similarities.argsort(descending=True)[:5].cpu().detach().numpy()
     #print(top_results)
     res=[evidence_df.loc[idx, 'text'] for idx in top_results if idx < len(evidence_df)]
         
@@ -268,11 +268,11 @@ for idx, row in tqdm(test_df.iterrows(), total=min(len(test_df), stop_iteration)
     #retrieve relevant docs
     ids, docs = retrieve_documents(query)
     init_answer=initial_answer(query, docs)
-    print(f'Initial Answer: {init_answer}')
+    # print(f'Initial Answer: {init_answer}')
     
     rel_docs = evaluate_docs(query, docs)
     rel_answer = make_new_answer(query, rel_docs)
-    print(f'Relevant Answer: {rel_answer}')
+    # print(f'Relevant Answer: {rel_answer}')
     
     # generate new queries
     new_queries=make_new_query(query, rel_docs)
@@ -291,14 +291,14 @@ for idx, row in tqdm(test_df.iterrows(), total=min(len(test_df), stop_iteration)
 
     # generate final answer
     add_answer=final_ans(query, rel_answer, qa_pairs)
-    print(f'candidate: {init_answer+rel_answer+add_answer}')
+    # print(f'candidate: {init_answer+rel_answer+add_answer}')
     # print(references[i])
-    scores=evaluate([init_answer+rel_answer+add_answer],[row.to_dict()])
+    scores=evaluate([init_answer+add_answer],[row.to_dict()])
     print(scores)
     scores_list.append(scores)
     scores_df=pd.DataFrame(scores_list)
-    scores_df.to_csv('./results/self-refine-11-27_results.csv', index=False)
+    scores_df.to_csv('./results/self-refine-11-27-2_results.csv', index=False)
     
 scores_df=pd.DataFrame(scores_list)
 print(scores_df.mean())
-scores_df.to_csv('./results/self-refine-11-27_results.csv', index=False)
+scores_df.to_csv('./results/self-refine-11-27-2_results.csv', index=False)
