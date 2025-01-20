@@ -382,7 +382,7 @@ def evaluate(candidates, asqa,
     #     if 'rougeLsum' not in scores:
     #     scores['ovscore'] = 'Undefined'
     #     else:
-    scores['ovscore'] = np.sqrt(scores['Disambig-F1'] * scores['rougeLsum'])
+    # scores['ovscore'] = np.sqrt(scores['Disambig-F1'] * scores['rougeLsum'])
 
     return scores
 

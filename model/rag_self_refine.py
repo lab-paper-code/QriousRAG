@@ -14,8 +14,8 @@ import re
 import numpy as np
 from tqdm import tqdm
 
-# data_dir = '/raid/deallab/SF_RAG_Data/ASQA'
-data_dir = '../data'
+data_dir = '/raid/deallab/SF_RAG_Data/ASQA'
+# data_dir = '../data'
 
 device1 = 'cuda:0'
 device2 = 'cuda:1'
@@ -297,8 +297,8 @@ for idx, row in tqdm(test_df.iterrows(), total=min(len(test_df), stop_iteration)
     print(scores)
     scores_list.append(scores)
     scores_df=pd.DataFrame(scores_list)
-    scores_df.to_csv('./results/self-refine-11-25_results.csv', index=False)
+    scores_df.to_csv('./results/self-refine-11-27_results.csv', index=False)
     
 scores_df=pd.DataFrame(scores_list)
 print(scores_df.mean())
-scores_df.to_csv('./results/self-refine-11-25_results.csv', index=False)
+scores_df.to_csv('./results/self-refine-11-27_results.csv', index=False)
