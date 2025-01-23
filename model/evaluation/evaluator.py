@@ -309,7 +309,6 @@ def score_qa_accuracy(predictions, asqa, target_keys=None):
   }
 
 def disambig(context,asqa):
-  print(asqa)
   context=context[0]
   question=asqa['question']
   follow=eval(asqa['follow_up_questions'])
@@ -324,18 +323,17 @@ def disambig(context,asqa):
   nlp = pipeline('question-answering', model=model_name, tokenizer=model_name, device=device)
   cnt=0
   loc_f1=0
-  print(len(follow))
   for i in range(len(follow)):
       QA_input = {
           'question': follow[i],
           'context': context
       }
-      print(follow[i])
+      print('follow question :', follow[i])
+      print('short answer :', short[i])
       res = nlp(QA_input)
       prediction=[]
       prediction.append(res['answer'])
       print(res)
-      print(len(short))
       ans=[]
       for a in short[i]:
           for p in prediction:
