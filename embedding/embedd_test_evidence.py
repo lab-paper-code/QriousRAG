@@ -10,7 +10,7 @@ from torch.utils.data import DataLoader
 
 '''run embedding
 
-nohup python3 embedd_test_evidence.py > out.txt
+CUDA_VISIBLE_DEVICES=2 nohup python3 embedd_test_evidence.py > out.txt
 
 '''
 
@@ -32,7 +32,7 @@ model = AutoModel.from_pretrained(
 )
 model.eval()
 
-batchsize = 8
+batchsize = 16
 max_len = 1024
 
 data_folder = '/raid/deallab/SF_RAG_Data/ASQA'
