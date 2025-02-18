@@ -319,7 +319,9 @@ def disambig(context,asqa):
   print(follow)
   print(short)
   
-  model_name = "deepset/roberta-base-squad2"
+  # model_name = "deepset/roberta-base-squad2"
+  model_name = "/home/dataconv/deallab/djk/sf_rag/sf_rag/roberta/roberta-squad"
+
   nlp = pipeline('question-answering', model=model_name, tokenizer=model_name, device=device)
   cnt=0
   loc_f1=0
