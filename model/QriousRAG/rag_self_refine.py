@@ -30,7 +30,7 @@ end_token = '<|eot_id|>'
 # end_token = '</s>'
 
 from evaluation import evaluate
-import prompts
+import model.prompts as prompts
 importlib.reload(prompts)
 
 #load embeddings
